@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学園アイドルマスター サポートカード能力ランキング</title>
+  <meta name="description" content="育成プラン・行動回数・Vo / Da / Viの優先順位を入力するだけ。あなたの条件に合わせてサポートカードをランキングする非公式ツールです。">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <script type="module" src="js/landing.js"></script>
+</head>
+<body class="page-landing">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-name" href="./">学園アイドルマスター<br class="sp-only"> サポートカード能力ランキング</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="global-nav">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="visually-hidden">メニューを開く</span>
+      </button>
+      <nav id="global-nav" class="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="#howto">使い方</a></li>
+          <li><a href="#features">特徴</a></li>
+          <li><a href="#about-ranking">ランキングについて</a></li>
+          <li><a href="#faq">よくある質問</a></li>
+          <li><a class="btn btn-primary nav-cta" href="ranking/">今すぐ使う</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ファーストビュー -->
+    <section class="hero">
+      <div class="hero-sparkles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">固定のTier表ではなく、<br class="sp-only">あなたの条件で変わるランキング</p>
+          <h1 class="hero-title"><span class="nowrap">あなたの育成条件に合わせて</span><br><span class="nowrap">最適なサポートカードを</span><br><span class="nowrap">見つけよう！</span></h1>
+          <p class="hero-lead">育成プラン・行動回数・Vo / Da / Viの優先順位を入力するだけ。あなたの条件に合わせてサポートカードをランキングします。</p>
+          <a class="btn btn-primary btn-hero" href="ranking/" data-testid="hero-cta">今すぐランキングを計算する</a>
+        </div>
+
+        <!-- ビジュアル：オリジナル装飾画像＋ランキング画面のイメージ。
+             images/hero/hero-visual.svg を差し替えると背景ビジュアルを変更できます。 -->
+        <div class="hero-visual">
+          <img class="hero-art" src="images/hero/hero-visual.svg" alt="" width="560" height="460">
+          <div class="mock mock-hero" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i></div>
+            <p class="mock-heading">優先パラメータランキング：第一優先 Vo ／ 第二優先 Da</p>
+            <ol class="mock-rows">
+              <li><b class="mock-rank r1">1</b><span class="mock-thumb"></span><span class="mock-name"></span><span class="mock-val vo">Vo</span></li>
+              <li><b class="mock-rank r2">2</b><span class="mock-thumb"></span><span class="mock-name"></span><span class="mock-val da">Da</span></li>
+              <li><b class="mock-rank r3">3</b><span class="mock-thumb"></span><span class="mock-name"></span><span class="mock-val vi">Vi</span></li>
+            </ol>
+            <p class="mock-caption">画面イメージ</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 特徴 -->
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="section-title"><span class="section-en">FEATURES</span>主な機能</h2>
+        <ul class="feature-grid">
+          <li class="feature-card">
+            <span class="feature-icon fi-blue" aria-hidden="true">1</span>
+            <h3>プロデュース条件を入力</h3>
+            <p>育成プラン、優先パラメータ、行動回数を設定します。</p>
+          </li>
+          <li class="feature-card">
+            <span class="feature-icon fi-pink" aria-hidden="true">2</span>
+            <h3>サポートカードを計算</h3>
+            <p>6つの効果をもとに、条件別の評価値を算出します。</p>
+          </li>
+          <li class="feature-card">
+            <span class="feature-icon fi-yellow" aria-hidden="true">3</span>
+            <h3>Vo / Da / Viを比較</h3>
+            <p>各パラメータの上昇値を個別に計算します。</p>
+          </li>
+          <li class="feature-card">
+            <span class="feature-icon fi-purple" aria-hidden="true">4</span>
+            <h3>優先順位でランキング</h3>
+            <p>第一優先、第二優先の順番で比較してランキングします。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ランキングについて -->
+    <section id="about-ranking" class="section section-tinted">
+      <div class="container">
+        <h2 class="section-title"><span class="section-en">RANKING</span>ランキングについて</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <h3>ランキング計算画面の構成</h3>
+            <p>左側で育成条件を入力し、右側に2種類のランキングを表示します。</p>
+            <ul class="check-list">
+              <li><strong>優先パラメータランキング</strong>：第一優先 → 第二優先 → 総合評価 → カードIDの順で比較</li>
+              <li><strong>総合評価ランキング</strong>：Vo + Da + Vi の合計が高い順</li>
+              <li><strong>カード詳細</strong>：カードを選ぶと6つの効果の内訳を表示</li>
+            </ul>
+            <a class="btn btn-primary" href="ranking/">ランキング計算画面へ</a>
+          </div>
+
+          <!-- 画面構成のイメージ（操作不可の図）。数値はダミーです。 -->
+          <figure class="mock mock-screen" aria-label="ランキング計算画面の構成イメージ">
+            <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="mock-layout" aria-hidden="true">
+              <div class="mock-side">
+                <p class="mock-label">育成プラン</p>
+                <div class="mock-chips"><span class="on">センス</span><span>ロジック</span><span>アノマリー</span></div>
+                <p class="mock-label">優先順位</p>
+                <div class="mock-chips"><span class="on">第一 Vo</span><span class="on">第二 Da</span></div>
+                <p class="mock-label">行動回数</p>
+                <div class="mock-counter"><span>レッスン</span><em>－ 3 ＋</em></div>
+                <div class="mock-counter"><span>授業</span><em>－ 2 ＋</em></div>
+                <div class="mock-counter"><span>おでかけ</span><em>－ 1 ＋</em></div>
+                <div class="mock-button">ランキングを計算する</div>
+              </div>
+              <div class="mock-main">
+                <p class="mock-heading">優先パラメータランキング</p>
+                <table class="mock-table">
+                  <thead><tr><th>順位</th><th>カード</th><th>Vo</th><th>Da</th><th>Vi</th><th>総合</th></tr></thead>
+                  <tbody>
+                    <tr><td>1</td><td><span class="mock-thumb"></span>カード名</td><td>●●</td><td>●●</td><td>●●</td><td>●●</td></tr>
+                    <tr><td>2</td><td><span class="mock-thumb"></span>カード名</td><td>●●</td><td>●●</td><td>●●</td><td>●●</td></tr>
+                    <tr><td>3</td><td><span class="mock-thumb"></span>カード名</td><td>●●</td><td>●●</td><td>●●</td><td>●●</td></tr>
+                  </tbody>
+                </table>
+                <p class="mock-heading">総合評価ランキング</p>
+                <div class="mock-lines"><i></i><i></i></div>
+              </div>
+            </div>
+            <figcaption>ランキング計算画面の構成イメージ（図のため操作できません）</figcaption>
+          </figure>
+        </div>
+
+        <div id="method" class="method">
+          <h3>評価方法</h3>
+          <ol class="method-steps">
+            <li><span class="method-no">1</span>入力した行動回数と、効果の最大発動回数を比較します。</li>
+            <li><span class="method-no">2</span>小さいほうを実際の発動回数とします。<code>実際の発動回数 = MIN(行動回数, 最大発動回数)</code></li>
+            <li><span class="method-no">3</span>1回あたりの上昇値を掛けます。<code>上昇値 = 実際の発動回数 × 1回あたりの上昇値</code></li>
+            <li><span class="method-no">4</span>6つの効果の上昇値を Vo / Da / Vi 別に合計します。<code>総合 = Vo + Da + Vi</code></li>
+            <li><span class="method-no">5</span>優先順位（第一優先 → 第二優先）または総合評価でランキングします。</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 使い方 -->
+    <section id="howto" class="section">
+      <div class="container">
+        <h2 class="section-title"><span class="section-en">HOW TO USE</span>使い方</h2>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-no">STEP 1</span>
+            <h3>育成条件を入力</h3>
+            <p>育成プラン、Vo / Da / Viの第一優先・第二優先、各行動の回数を入力します。</p>
+          </li>
+          <li class="step">
+            <span class="step-no">STEP 2</span>
+            <h3>ランキングを計算</h3>
+            <p>「ランキングを計算する」ボタンを押すと、選んだプランのカードがランキング表示されます。</p>
+          </li>
+          <li class="step">
+            <span class="step-no">STEP 3</span>
+            <h3>評価と内訳を確認</h3>
+            <p>カードを選ぶと、Vo / Da / Vi・総合の評価値と6つの効果の内訳を確認できます。</p>
+          </li>
+        </ol>
+        <div class="center">
+          <a class="btn btn-primary btn-hero" href="ranking/">今すぐランキングを計算する</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- よくある質問 -->
+    <section id="faq" class="section section-tinted">
+      <div class="container narrow">
+        <h2 class="section-title"><span class="section-en">FAQ</span>よくある質問</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>このツールは何をするものですか？</summary>
+            <p>入力した育成プラン・行動回数・パラメータ優先順位をもとに、サポートカードの効果によるVo / Da / Viの上昇値を計算し、ランキング形式で表示するツールです。固定のおすすめ表ではなく、条件を変えるとランキングも変わります。</p>
+          </details>
+          <details class="faq-item">
+            <summary>ランキングはどのように計算されますか？</summary>
+            <p>カードの6つの効果それぞれについて「実際の発動回数 = MIN(入力した行動回数, 最大発動回数)」を求め、1回あたりの上昇値を掛けて、対象パラメータ（Vo / Da / Vi）ごとに合計します。総合評価は Vo + Da + Vi です。優先パラメータランキングは第一優先 → 第二優先 → 総合評価 → カードIDの順で比較します（重み付けの合算はしません）。総合評価ランキングは総合評価の高い順で、同値の場合はカードID順です。</p>
+          </details>
+          <details class="faq-item">
+            <summary>育成プランによってランキングは変わりますか？</summary>
+            <p>変わります。選択した育成プラン（センス / ロジック / アノマリー）に対応するカードだけがランキングの対象になります。</p>
+          </details>
+          <details class="faq-item">
+            <summary>カードの効果はどこで確認できますか？</summary>
+            <p>ランキング計算画面でカードを選ぶと、ランキングの下にカード詳細が表示され、6つの効果それぞれの効果種類・対象・最大発動回数・実際の発動回数・上昇値を確認できます。なお、現在登録されているカードは動作確認用のサンプル（ダミー）データで、実際のゲームのカード・効果ではありません。</p>
+          </details>
+          <details class="faq-item">
+            <summary>スマートフォンでも利用できますか？</summary>
+            <p>はい。スマートフォンでは入力欄とランキングが縦に並び、行動回数は「＋」「－」ボタンでも入力できます。表は横にスクロールして確認できます。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 注意事項 -->
+    <section id="notes" class="section">
+      <div class="container narrow">
+        <h2 class="section-title"><span class="section-en">NOTES</span>注意事項</h2>
+        <ul class="notes-list">
+          <li>本ツールは非公式のファンツールです。ゲームの公式運営が提供・監修するものではありません。</li>
+          <li>現在登録されているサポートカードは、動作確認用のサンプル（ダミー）データです。実際のゲームのカード名・効果・数値ではありません。</li>
+          <li>初期版は、すべてのカードを完凸状態として計算します。</li>
+          <li>計算結果は入力条件とデータに基づく目安であり、ゲーム内の実際の結果を保証するものではありません。</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-name">学園アイドルマスター サポートカード能力ランキング</p>
+      <nav class="footer-links" aria-label="フッターリンク">
+        <a href="#howto">使い方</a>
+        <a href="ranking/">ランキング計算</a>
+        <a href="#notes">注意事項</a>
+        <a href="#faq">よくある質問</a>
+      </nav>
+      <p class="disclaimer">本サイトは個人が作成した非公式のファンツールであり、ゲームの公式運営とは一切関係ありません。ゲームに関する著作権・商標権その他の権利は各権利者に帰属します。掲載している計算結果は入力条件とデータに基づく目安であり、ゲーム内の実際の結果を保証するものではありません。</p>
+    </div>
+  </footer>
+</body>
+</html>

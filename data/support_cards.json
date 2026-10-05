@@ -1,0 +1,521 @@
+[
+  {
+    "id": "sample_001",
+    "name": "【サンプル】ダミーカードA",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/sample_001.svg",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 10
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 2,
+        "value": 15
+      },
+      {
+        "type": "削除",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "削除",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 8
+      },
+      {
+        "type": "授業",
+        "target": "Da",
+        "max_count": 3,
+        "value": 6
+      }
+    ]
+  },
+  {
+    "id": "sample_002",
+    "name": "【サンプル】ダミーカードB",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "レッスン",
+        "target": "Da",
+        "max_count": 4,
+        "value": 9
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Da",
+        "max_count": 3,
+        "value": 12
+      },
+      {
+        "type": "強化",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 14
+      },
+      {
+        "type": "休む",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "活動支給",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": "sample_003",
+    "name": "【サンプル】ダミーカードC",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "授業",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 10
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 12
+      },
+      {
+        "type": "削除",
+        "target": "Da",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "レッスン",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "休む",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "id": "sample_004",
+    "name": "【サンプル】ダミーカードD",
+    "rarity": "R",
+    "plan": "センス",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "レッスン",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "type": "授業",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 1,
+        "value": 10
+      },
+      {
+        "type": "強化",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "sample_005",
+    "name": "【サンプル】ダミーカードE",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "強化",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 12
+      },
+      {
+        "type": "削除",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 15
+      },
+      {
+        "type": "授業",
+        "target": "Da",
+        "max_count": 3,
+        "value": 8
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 14
+      },
+      {
+        "type": "活動支給",
+        "target": "Da",
+        "max_count": 2,
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": "sample_006",
+    "name": "【サンプル】ダミーカードF",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "SPレッスン",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 10
+      },
+      {
+        "type": "レッスン",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 7
+      },
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 12
+      },
+      {
+        "type": "休む",
+        "target": "Da",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "強化",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 11
+      },
+      {
+        "type": "授業",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 6
+      }
+    ]
+  },
+  {
+    "id": "sample_007",
+    "name": "【サンプル】ダミーカードG",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "おでかけ",
+        "target": "Da",
+        "max_count": 3,
+        "value": 9
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 2,
+        "value": 12
+      },
+      {
+        "type": "削除",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 18
+      },
+      {
+        "type": "レッスン",
+        "target": "Da",
+        "max_count": 2,
+        "value": 7
+      },
+      {
+        "type": "活動支給",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "sample_008",
+    "name": "【サンプル】ダミーカードH",
+    "rarity": "R",
+    "plan": "ロジック",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "授業",
+        "target": "Da",
+        "max_count": 2,
+        "value": 7
+      },
+      {
+        "type": "休む",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 7
+      },
+      {
+        "type": "レッスン",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "sample_009",
+    "name": "【サンプル】ダミーカードI",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "SPレッスン",
+        "target": "Da",
+        "max_count": 4,
+        "value": 11
+      },
+      {
+        "type": "強化",
+        "target": "Da",
+        "max_count": 2,
+        "value": 13
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "削除",
+        "target": "Da",
+        "max_count": 2,
+        "value": 12
+      },
+      {
+        "type": "授業",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 7
+      },
+      {
+        "type": "休む",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": "sample_010",
+    "name": "【サンプル】ダミーカードJ",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 12
+      },
+      {
+        "type": "活動支給",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 14
+      },
+      {
+        "type": "レッスン",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 8
+      },
+      {
+        "type": "強化",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "授業",
+        "target": "Da",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "id": "sample_011",
+    "name": "【サンプル】ダミーカードK",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "レッスン",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 9
+      },
+      {
+        "type": "削除",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "授業",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 2,
+        "value": 9
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "休む",
+        "target": "Da",
+        "max_count": 1,
+        "value": 12
+      }
+    ]
+  },
+  {
+    "id": "sample_012",
+    "name": "【サンプル】ダミーカードL",
+    "rarity": "R",
+    "plan": "アノマリー",
+    "image": "",
+    "is_sample": true,
+    "effects": [
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 7
+      },
+      {
+        "type": "授業",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 6
+      },
+      {
+        "type": "強化",
+        "target": "Da",
+        "max_count": 2,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  }
+]
