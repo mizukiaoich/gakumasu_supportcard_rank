@@ -1,0 +1,2 @@
+# gakumasu_supportcard_rank
+学マスサポートカードランキング作成
