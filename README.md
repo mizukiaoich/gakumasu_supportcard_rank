@@ -172,13 +172,15 @@ npm run test:e2e     # ブラウザでの画面テスト（サブパス配下で
 
 ## GitHub Pages の設定手順
 
-ビルドは不要です。リポジトリのファイルをそのまま公開します。
+ビルドは不要です。`.github/workflows/pages.yml` が `main` へのプッシュ時にリポジトリのファイルをそのまま公開します。
 
 1. 変更を `main` ブランチにマージ（またはプッシュ）します。
 2. GitHub のリポジトリ画面で **Settings → Pages** を開きます。
-3. **Build and deployment** の **Source** を **Deploy from a branch** にします。
-4. **Branch** を `main`、フォルダを `/ (root)` にして **Save** します。
-5. 数分後、`https://<ユーザー名>.github.io/gakumasu_supportcard_rank/` で公開されます。
+3. **Build and deployment** の **Source** を **GitHub Actions** にします。
+4. **Actions** タブで「Deploy to GitHub Pages」が実行されます。設定変更前にマージ済みの場合は、ワークフローを選んで **Run workflow** を押してください。
+5. 完了後、`https://<ユーザー名>.github.io/gakumasu_supportcard_rank/` で公開されます。
+
+（Source を **Deploy from a branch**・`main`・`/ (root)` にする方法でも公開できます。）
 
 リンク・データ・画像はすべて相対パス（データと画像は `js/data-loader.js` の位置を基準に解決）なので、プロジェクトサイト（サブパス）でも独自ドメイン（ルート）でも同じファイルのまま動作します。`.nojekyll` により Jekyll の処理は行われません。
 
