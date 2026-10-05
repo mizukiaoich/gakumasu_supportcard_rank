@@ -1,0 +1,11 @@
+[
+  { "name": "レッスン", "default": 0 },
+  { "name": "SPレッスン", "default": 0 },
+  { "name": "授業", "default": 0 },
+  { "name": "おでかけ", "default": 0 },
+  { "name": "相談", "default": 0 },
+  { "name": "強化", "default": 0 },
+  { "name": "削除", "default": 0 },
+  { "name": "活動支給", "default": 0 },
+  { "name": "休む", "default": 0 }
+]

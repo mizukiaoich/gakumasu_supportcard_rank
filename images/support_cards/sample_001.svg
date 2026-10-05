@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="サンプル画像（ダミー）">
+  <!-- 動作確認用のオリジナルのダミー画像です。実際のゲームのカード画像ではありません。 -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#cfeafe"/><stop offset="0.55" stop-color="#f1e9ff"/><stop offset="1" stop-color="#ffe6f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" rx="24" fill="url(#bg)"/>
+  <rect x="12" y="12" width="276" height="376" rx="18" fill="none" stroke="#fff" stroke-width="6"/>
+  <path d="M150 110 166 162 220 178 166 194 150 246 134 194 80 178 134 162Z" fill="#ffc83d"/>
+  <text x="150" y="310" text-anchor="middle" font-family="sans-serif" font-size="40" font-weight="800" fill="#8e6cf0">SAMPLE</text>
+  <text x="150" y="350" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="700" fill="#5b6b82">DUMMY IMAGE</text>
+</svg>

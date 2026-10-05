@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ランキング計算 | 学園アイドルマスター サポートカード能力ランキング</title>
+  <meta name="description" content="育成プラン・行動回数・Vo / Da / Viの優先順位を入力して、サポートカードをランキングします。">
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/ranking.css">
+  <script type="module" src="../js/app.js"></script>
+</head>
+<body class="page-ranking">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-name" href="../">学園アイドルマスター<br class="sp-only"> サポートカード能力ランキング</a>
+      <nav class="header-links" aria-label="サイト内リンク">
+        <a href="../#howto">使い方</a>
+        <a href="../#faq">よくある質問</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container ranking-main">
+    <div class="page-title">
+      <h1>ランキング計算</h1>
+      <p>育成条件を入力して「ランキングを計算する」を押してください。表示中のカードはすべて完凸状態として計算します。</p>
+    </div>
+
+    <div id="sample-notice" class="notice notice-sample" role="note" hidden>
+      <strong>サンプルデータ表示中：</strong>
+      <span id="sample-notice-text"></span>
+    </div>
+
+    <div id="load-error" class="notice notice-error" role="alert" hidden>
+      <strong>データを読み込めませんでした。</strong>
+      <ul id="load-error-list"></ul>
+    </div>
+
+    <div class="ranking-layout">
+      <!-- 左：条件入力 -->
+      <form id="condition-form" class="panel condition-panel" novalidate aria-labelledby="condition-title">
+        <h2 id="condition-title" class="panel-title">育成条件</h2>
+
+        <fieldset class="field">
+          <legend class="field-label">育成プラン</legend>
+          <div id="plan-options" class="plan-options" role="radiogroup"></div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="field-label">パラメータ優先順位</legend>
+          <div class="priority-grid">
+            <label class="priority-item">
+              <span class="priority-label">第一優先</span>
+              <select id="priority-first" name="priority-first"></select>
+            </label>
+            <label class="priority-item">
+              <span class="priority-label">第二優先</span>
+              <select id="priority-second" name="priority-second"></select>
+            </label>
+          </div>
+          <p class="field-help">第一優先と第二優先には異なるパラメータを選んでください。</p>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="field-label">行動回数</legend>
+          <p class="field-help">各行動を育成中に何回行うかを0以上の整数で入力してください。</p>
+          <ul id="action-list" class="action-list"></ul>
+        </fieldset>
+
+        <div id="form-error" class="notice notice-error" role="alert" hidden></div>
+
+        <button type="submit" id="calculate-button" class="btn btn-primary btn-block" disabled>ランキングを計算する</button>
+      </form>
+
+      <!-- 右：ランキング -->
+      <section class="results" aria-labelledby="results-title">
+        <h2 id="results-title" class="visually-hidden">ランキング結果</h2>
+
+        <div id="stale-notice" class="notice notice-stale" role="status" hidden>
+          入力内容が変更されています。「ランキングを計算する」を押すと最新の条件で更新されます。
+        </div>
+
+        <div id="results-empty" class="panel results-empty">
+          <p>条件を入力して「ランキングを計算する」を押すと、ここにランキングが表示されます。</p>
+        </div>
+
+        <div id="results-body" hidden>
+          <div class="panel result-summary">
+            <p id="result-conditions" class="result-conditions"></p>
+            <nav class="result-tabs" aria-label="ランキングの表示切替">
+              <a href="#priority-ranking">優先パラメータランキング</a>
+              <a href="#total-ranking">総合評価ランキング</a>
+              <a href="#card-detail">カード詳細</a>
+            </nav>
+          </div>
+
+          <section id="priority-ranking" class="panel ranking-section" aria-labelledby="priority-title">
+            <h3 id="priority-title" class="ranking-title"></h3>
+            <p id="priority-tiebreak" class="tiebreak"></p>
+            <p class="scroll-hint">表は横にスクロールできます →</p>
+            <div class="table-scroll" tabindex="0" aria-label="優先パラメータランキング表">
+              <table class="ranking-table" data-ranking="priority"></table>
+            </div>
+          </section>
+
+          <section id="total-ranking" class="panel ranking-section" aria-labelledby="total-title">
+            <h3 id="total-title" class="ranking-title">総合評価ランキング（Vo + Da + Vi）</h3>
+            <p id="total-tiebreak" class="tiebreak"></p>
+            <p class="scroll-hint">表は横にスクロールできます →</p>
+            <div class="table-scroll" tabindex="0" aria-label="総合評価ランキング表">
+              <table class="ranking-table" data-ranking="total"></table>
+            </div>
+          </section>
+
+          <section id="card-detail" class="panel detail-panel" aria-labelledby="detail-title" tabindex="-1">
+            <h3 id="detail-title" class="ranking-title">カード詳細</h3>
+            <div id="detail-content">
+              <p class="detail-placeholder">ランキング内のカードを選択すると、評価値と6つの効果の内訳が表示されます。</p>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-name">学園アイドルマスター サポートカード能力ランキング</p>
+      <nav class="footer-links" aria-label="フッターリンク">
+        <a href="../">トップページ</a>
+        <a href="../#howto">使い方</a>
+        <a href="./">ランキング計算</a>
+        <a href="../#notes">注意事項</a>
+      </nav>
+      <p class="disclaimer">本サイトは個人が作成した非公式のファンツールであり、ゲームの公式運営とは一切関係ありません。ゲームに関する著作権・商標権その他の権利は各権利者に帰属します。掲載している計算結果は入力条件とデータに基づく目安であり、ゲーム内の実際の結果を保証するものではありません。</p>
+    </div>
+  </footer>
+</body>
+</html>

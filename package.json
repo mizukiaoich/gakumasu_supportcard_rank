@@ -1,0 +1,18 @@
+{
+  "name": "gakumasu-supportcard-rank",
+  "version": "1.0.0",
+  "private": true,
+  "description": "学園アイドルマスター サポートカード能力ランキング（非公式・静的Webアプリ）",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs --port 8080",
+    "start:pages": "node scripts/serve.mjs --port 8080 --base /gakumasu_supportcard_rank/",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "node --test \"tests/unit/*.test.js\"",
+    "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.js\""
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  },
+  "license": "MIT"
+}
