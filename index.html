@@ -75,7 +75,7 @@
           <li class="feature-card">
             <span class="feature-icon fi-pink" aria-hidden="true">2</span>
             <h3>サポートカードを計算</h3>
-            <p>6つの効果をもとに、条件別の評価値を算出します。</p>
+            <p>初期評価・イベント効果と6つの効果をもとに、条件別の評価値を算出します。</p>
           </li>
           <li class="feature-card">
             <span class="feature-icon fi-yellow" aria-hidden="true">3</span>
@@ -102,7 +102,7 @@
             <ul class="check-list">
               <li><strong>優先パラメータランキング</strong>：第一優先 → 第二優先 → 総合評価 → カードIDの順で比較</li>
               <li><strong>総合評価ランキング</strong>：Vo + Da + Vi の合計が高い順</li>
-              <li><strong>カード詳細</strong>：カードを選ぶと6つの効果の内訳を表示</li>
+              <li><strong>カード詳細</strong>：カードを選ぶと初期評価・イベント効果と6つの効果の内訳を表示</li>
             </ul>
             <a class="btn btn-primary" href="ranking/">ランキング計算画面へ</a>
           </div>
@@ -146,8 +146,9 @@
             <li><span class="method-no">1</span>入力した行動回数と、効果の最大発動回数を比較します。</li>
             <li><span class="method-no">2</span>小さいほうを実際の発動回数とします。<code>実際の発動回数 = MIN(行動回数, 最大発動回数)</code></li>
             <li><span class="method-no">3</span>1回あたりの上昇値を掛けます。<code>上昇値 = 実際の発動回数 × 1回あたりの上昇値</code></li>
-            <li><span class="method-no">4</span>6つの効果の上昇値を Vo / Da / Vi 別に合計します。<code>総合 = Vo + Da + Vi</code></li>
-            <li><span class="method-no">5</span>優先順位（第一優先 → 第二優先）または総合評価でランキングします。</li>
+            <li><span class="method-no">4</span>6つの効果の上昇値を Vo / Da / Vi 別に合計します。</li>
+            <li><span class="method-no">5</span>カードの初期評価（例：Vo +65）とイベント効果は、行動回数に関係なく1回だけ固定で加算します。<code>総合 = Vo + Da + Vi</code></li>
+            <li><span class="method-no">6</span>優先順位（第一優先 → 第二優先）または総合評価でランキングします。</li>
           </ol>
         </div>
       </div>
@@ -171,7 +172,7 @@
           <li class="step">
             <span class="step-no">STEP 3</span>
             <h3>評価と内訳を確認</h3>
-            <p>カードを選ぶと、Vo / Da / Vi・総合の評価値と6つの効果の内訳を確認できます。</p>
+            <p>カードを選ぶと、Vo / Da / Vi・総合の評価値と、初期評価・イベント効果・6つの効果の内訳を確認できます。</p>
           </li>
         </ol>
         <div class="center">
@@ -191,7 +192,7 @@
           </details>
           <details class="faq-item">
             <summary>ランキングはどのように計算されますか？</summary>
-            <p>カードの6つの効果それぞれについて「実際の発動回数 = MIN(入力した行動回数, 最大発動回数)」を求め、1回あたりの上昇値を掛けて、対象パラメータ（Vo / Da / Vi）ごとに合計します。総合評価は Vo + Da + Vi です。優先パラメータランキングは第一優先 → 第二優先 → 総合評価 → カードIDの順で比較します（重み付けの合算はしません）。総合評価ランキングは総合評価の高い順で、同値の場合はカードID順です。</p>
+            <p>カードの6つの効果それぞれについて「実際の発動回数 = MIN(入力した行動回数, 最大発動回数)」を求め、1回あたりの上昇値を掛けて、対象パラメータ（Vo / Da / Vi）ごとに合計します。カードの初期評価（例：Vo +65）とイベント効果は、行動回数に関係なく1回だけ固定で加算します。総合評価は Vo + Da + Vi です。優先パラメータランキングは第一優先 → 第二優先 → 総合評価 → カードIDの順で比較します（重み付けの合算はしません）。総合評価ランキングは総合評価の高い順で、同値の場合はカードID順です。</p>
           </details>
           <details class="faq-item">
             <summary>育成プランによってランキングは変わりますか？</summary>
@@ -199,7 +200,7 @@
           </details>
           <details class="faq-item">
             <summary>カードの効果はどこで確認できますか？</summary>
-            <p>ランキング計算画面でカードを選ぶと、ランキングの下にカード詳細が表示され、6つの効果それぞれの効果種類・対象・最大発動回数・実際の発動回数・上昇値を確認できます。なお、現在登録されているカードは動作確認用のサンプル（ダミー）データで、実際のゲームのカード・効果ではありません。</p>
+            <p>ランキング計算画面でカードを選ぶと、ランキングの下にカード詳細が表示され、初期評価・イベント効果と、6つの効果それぞれの効果種類・対象・最大発動回数・実際の発動回数・上昇値を確認できます。なお、現在登録されているカードは動作確認用のサンプル（ダミー）データで、実際のゲームのカード・効果ではありません。</p>
           </details>
           <details class="faq-item">
             <summary>スマートフォンでも利用できますか？</summary>

@@ -199,10 +199,10 @@ function showDetail(cardId, scroll) {
     tr.classList.toggle('is-selected', tr.dataset.cardId === state.selectedId);
   }
   if (!result) {
-    content.replaceChildren(el('p', { class: 'detail-placeholder', text: 'ランキング内のカードを選択すると、評価値と6つの効果の内訳が表示されます。' }));
+    content.replaceChildren(el('p', { class: 'detail-placeholder', text: 'ランキング内のカードを選択すると、評価値と初期評価・イベント効果・6つの効果の内訳が表示されます。' }));
     return;
   }
-  const { card, scores, total, breakdown } = result;
+  const { card, scores, total, fixedBonuses, breakdown } = result;
   const cond = state.results.cond;
 
   const head = el('div', { class: 'detail-head' }, [
@@ -249,8 +249,23 @@ function showDetail(cardId, scroll) {
     ]);
   });
 
+  const fixedSection = el('div', { class: 'fixed-bonus-section' }, [
+    el('h4', { class: 'breakdown-title', text: '固定加算（初期評価・イベント効果）' }),
+    el('p', { class: 'breakdown-help', text: '行動回数に関係なく、1回だけそのまま評価値に加算されます。' }),
+    el('dl', { class: 'fixed-bonus-list' }, fixedBonuses.flatMap(({ key, label, items }) => [
+      el('dt', { class: 'fixed-bonus-label', text: label }),
+      el('dd', { class: 'fixed-bonus-items', dataset: { bonus: key } }, items.length === 0
+        ? [el('span', { class: 'fixed-bonus-none', text: `${label}なし` })]
+        : items.map((b) => el('span', { class: 'fixed-bonus-item' }, [
+          paramBadge(b.target),
+          el('span', { class: 'fixed-bonus-value', text: `${b.target} +${fmt(b.value)}` }),
+        ]))),
+    ])),
+  ]);
+
   content.replaceChildren(
     head,
+    fixedSection,
     el('h4', { class: 'breakdown-title', text: '6つの効果の内訳' }),
     el('p', { class: 'breakdown-help', text: `実際の発動回数 = MIN(入力された行動回数, 最大発動回数)、今回の上昇値 = 実際の発動回数 × 1回あたりの上昇値（育成プラン：${cond.plan}）` }),
     el('div', { class: 'table-scroll', tabindex: '0', 'aria-label': '効果の内訳表' }, [

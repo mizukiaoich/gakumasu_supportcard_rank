@@ -1,8 +1,10 @@
-import { PARAMETERS } from './constants.js';
+import { PARAMETERS, FIXED_BONUS_TYPES } from './constants.js';
 import { isEmptySlot } from './validator.js';
 
 /**
  * 1枚のカードの評価値を計算する。
+ *   初期評価（initial_bonus）・イベント効果（event_bonus）は行動回数に関係なく
+ *   value を1回だけそのまま対象パラメータに加算（固定加算）
  *   actualCount  = MIN(ユーザー入力の行動回数, max_count)
  *   contribution = actualCount × value
  *   対象パラメータ（Vo / Da / Vi）ごとに加算し、total = Vo + Da + Vi
@@ -14,6 +16,20 @@ import { isEmptySlot } from './validator.js';
  */
 export function calculateCard(card, actionCounts) {
   const scores = Object.fromEntries(PARAMETERS.map((p) => [p, 0]));
+
+  // 初期評価・イベント効果：回数に依存しない固定加算（1回のみ）
+  const fixedBonuses = FIXED_BONUS_TYPES.map(({ key, label }) => ({
+    key,
+    label,
+    items: (card[key] ?? []).map((bonus) => {
+      if (!PARAMETERS.includes(bonus.target)) {
+        throw new Error(`カード ${card.id} の${label}: 対象パラメータ「${bonus.target}」が不正です`);
+      }
+      scores[bonus.target] += bonus.value;
+      return { target: bonus.target, value: bonus.value };
+    }),
+  }));
+
   const breakdown = card.effects.map((effect, index) => {
     const no = index + 1;
     if (isEmptySlot(effect)) return { no, empty: true };
@@ -41,7 +57,7 @@ export function calculateCard(card, actionCounts) {
     };
   });
   const total = PARAMETERS.reduce((sum, p) => sum + scores[p], 0);
-  return { card, scores, total, breakdown };
+  return { card, scores, total, fixedBonuses, breakdown };
 }
 
 /** 選択した育成プランのカードだけを抽出して計算する */
