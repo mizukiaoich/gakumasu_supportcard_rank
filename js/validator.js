@@ -1,4 +1,4 @@
-import { PARAMETERS, EFFECT_SLOT_COUNT } from './constants.js';
+import { PARAMETERS, EFFECT_SLOT_COUNT, FIXED_BONUS_TYPES } from './constants.js';
 
 /**
  * データ不備を表すエラー。どのファイルのどの項目が不正かを messages に保持する。
@@ -92,24 +92,26 @@ export function validateCards(cards, { planNames, actionNames }, file = 'support
     if (card.is_sample !== undefined && typeof card.is_sample !== 'boolean') {
       errors.push(`${where}.is_sample: true / false が必要です（値: ${show(card.is_sample)}）`);
     }
-    if (card.initial_bonus !== undefined) {
-      if (!Array.isArray(card.initial_bonus)) {
-        errors.push(`${where}.initial_bonus: 初期評価は配列で定義してください（例: [{ "target": "Vo", "value": 65 }]、なしの場合は []）`);
-      } else {
-        card.initial_bonus.forEach((bonus, j) => {
-          const at = `${where}.initial_bonus[${j}]`;
-          if (!isPlainObject(bonus)) {
-            errors.push(`${at}: 初期評価はオブジェクトで定義してください`);
-            return;
-          }
-          if (!PARAMETERS.includes(bonus.target)) {
-            errors.push(`${at}.target: ${PARAMETERS.join(' / ')} のいずれかが必要です（値: ${show(bonus.target)}）`);
-          }
-          if (typeof bonus.value !== 'number' || !Number.isFinite(bonus.value)) {
-            errors.push(`${at}.value: 数値が必要です（値: ${show(bonus.value)}）`);
-          }
-        });
+    for (const { key, label } of FIXED_BONUS_TYPES) {
+      const list = card[key];
+      if (list === undefined) continue;
+      if (!Array.isArray(list)) {
+        errors.push(`${where}.${key}: ${label}は配列で定義してください（例: [{ "target": "Vo", "value": 65 }]、なしの場合は []）`);
+        continue;
       }
+      list.forEach((bonus, j) => {
+        const at = `${where}.${key}[${j}]`;
+        if (!isPlainObject(bonus)) {
+          errors.push(`${at}: ${label}はオブジェクトで定義してください`);
+          return;
+        }
+        if (!PARAMETERS.includes(bonus.target)) {
+          errors.push(`${at}.target: ${PARAMETERS.join(' / ')} のいずれかが必要です（値: ${show(bonus.target)}）`);
+        }
+        if (typeof bonus.value !== 'number' || !Number.isFinite(bonus.value)) {
+          errors.push(`${at}.value: 数値が必要です（値: ${show(bonus.value)}）`);
+        }
+      });
     }
     if (!Array.isArray(card.effects) || card.effects.length !== EFFECT_SLOT_COUNT) {
       const len = Array.isArray(card.effects) ? `${card.effects.length}件` : show(card.effects);

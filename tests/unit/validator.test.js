@@ -86,3 +86,14 @@ test('初期評価（initial_bonus）を検証する', () => {
   assert.ok(bad.some((e) => e.includes('initial_bonus[0].target')));
   assert.ok(bad.some((e) => e.includes('initial_bonus[0].value')));
 });
+
+test('イベント効果（event_bonus）を検証する', () => {
+  const ok = { ...card('a', 'センス', sixEffects()), event_bonus: [{ target: 'Da', value: 20 }] };
+  assert.deepEqual(validateCards([ok], ctx), []);
+  assert.deepEqual(validateCards([{ ...ok, event_bonus: [] }], ctx), []);
+  assert.match(validateCards([{ ...ok, event_bonus: 20 }], ctx)[0], /\(id: a\)\.event_bonus: イベント効果は配列/);
+  const bad = validateCards([{ ...ok, event_bonus: [{ target: 'DA', value: null }] }], ctx);
+  assert.equal(bad.length, 2);
+  assert.ok(bad.some((e) => e.includes('event_bonus[0].target')));
+  assert.ok(bad.some((e) => e.includes('event_bonus[0].value')));
+});

@@ -12,6 +12,12 @@
         "value": 65
       }
     ],
+    "event_bonus": [
+      {
+        "target": "Da",
+        "value": 20
+      }
+    ],
     "effects": [
       {
         "type": "おでかけ",
@@ -62,6 +68,12 @@
       {
         "target": "Da",
         "value": 60
+      }
+    ],
+    "event_bonus": [
+      {
+        "target": "Vo",
+        "value": 30
       }
     ],
     "effects": [
@@ -116,6 +128,7 @@
         "value": 40
       }
     ],
+    "event_bonus": [],
     "effects": [
       {
         "type": "授業",
@@ -160,6 +173,12 @@
     "image": "",
     "is_sample": true,
     "initial_bonus": [],
+    "event_bonus": [
+      {
+        "target": "Vo",
+        "value": 10
+      }
+    ],
     "effects": [
       {
         "type": "レッスン",
@@ -204,6 +223,12 @@
       {
         "target": "Vi",
         "value": 65
+      }
+    ],
+    "event_bonus": [
+      {
+        "target": "Vo",
+        "value": 20
       }
     ],
     "effects": [
@@ -258,6 +283,12 @@
         "value": 60
       }
     ],
+    "event_bonus": [
+      {
+        "target": "Vi",
+        "value": 30
+      }
+    ],
     "effects": [
       {
         "type": "SPレッスン",
@@ -310,6 +341,7 @@
         "value": 40
       }
     ],
+    "event_bonus": [],
     "effects": [
       {
         "type": "おでかけ",
@@ -359,6 +391,12 @@
         "value": 20
       }
     ],
+    "event_bonus": [
+      {
+        "target": "Vo",
+        "value": 10
+      }
+    ],
     "effects": [
       {
         "type": "授業",
@@ -400,6 +438,12 @@
       {
         "target": "Da",
         "value": 65
+      }
+    ],
+    "event_bonus": [
+      {
+        "target": "Vi",
+        "value": 20
       }
     ],
     "effects": [
@@ -454,6 +498,12 @@
         "value": 60
       }
     ],
+    "event_bonus": [
+      {
+        "target": "Da",
+        "value": 30
+      }
+    ],
     "effects": [
       {
         "type": "相談",
@@ -506,6 +556,7 @@
         "value": 40
       }
     ],
+    "event_bonus": [],
     "effects": [
       {
         "type": "レッスン",
@@ -553,6 +604,12 @@
       {
         "target": "Vi",
         "value": 20
+      }
+    ],
+    "event_bonus": [
+      {
+        "target": "Da",
+        "value": 10
       }
     ],
     "effects": [
