@@ -1,6 +1,10 @@
 [
-  { "name": "レッスン", "default": 0 },
-  { "name": "SPレッスン", "default": 0 },
+  { "name": "Voレッスン", "default": 0 },
+  { "name": "Daレッスン", "default": 0 },
+  { "name": "Viレッスン", "default": 0 },
+  { "name": "VoSPレッスン", "default": 0 },
+  { "name": "DaSPレッスン", "default": 0 },
+  { "name": "ViSPレッスン", "default": 0 },
   { "name": "授業", "default": 0 },
   { "name": "おでかけ", "default": 0 },
   { "name": "相談", "default": 0 },

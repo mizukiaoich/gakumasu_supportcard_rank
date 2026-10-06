@@ -11,10 +11,13 @@ import { isEmptySlot } from './validator.js';
  * 空スロットは計算対象外。データは validator.js で検証済みである前提だが、
  * 想定外の値が来た場合は誤った数値を出さずに例外を投げる。
  *
+ * 発動回数の元になる行動回数は countSources で決まる（例: 効果「VoSP終了時」→ 行動「VoSPレッスン」の回数）。
+ *
  * @param {object} card カードデータ
  * @param {Record<string, number>} actionCounts 行動種類名 → 入力回数
+ * @param {Record<string, string>} [countSources] 効果種類名 → 回数を参照する行動種類名（省略時は効果種類名と同名の行動）
  */
-export function calculateCard(card, actionCounts) {
+export function calculateCard(card, actionCounts, countSources = {}) {
   const scores = Object.fromEntries(PARAMETERS.map((p) => [p, 0]));
 
   // 初期評価・イベント効果：回数に依存しない固定加算（1回のみ）
@@ -34,9 +37,10 @@ export function calculateCard(card, actionCounts) {
     const no = index + 1;
     if (isEmptySlot(effect)) return { no, empty: true };
 
-    const inputCount = actionCounts[effect.type];
+    const countFrom = countSources[effect.type] ?? effect.type;
+    const inputCount = actionCounts[countFrom];
     if (!Number.isInteger(inputCount) || inputCount < 0) {
-      throw new Error(`カード ${card.id} の効果${no}: 行動「${effect.type}」の入力回数が不正です（値: ${inputCount}）`);
+      throw new Error(`カード ${card.id} の効果${no}: 行動「${countFrom}」の入力回数が不正です（値: ${inputCount}）`);
     }
     if (!PARAMETERS.includes(effect.target)) {
       throw new Error(`カード ${card.id} の効果${no}: 対象パラメータ「${effect.target}」が不正です`);
@@ -48,6 +52,7 @@ export function calculateCard(card, actionCounts) {
       no,
       empty: false,
       type: effect.type,
+      countFrom,
       target: effect.target,
       maxCount: effect.max_count,
       inputCount,
@@ -61,6 +66,6 @@ export function calculateCard(card, actionCounts) {
 }
 
 /** 選択した育成プランのカードだけを抽出して計算する */
-export function calculateForPlan(cards, plan, actionCounts) {
-  return cards.filter((card) => card.plan === plan).map((card) => calculateCard(card, actionCounts));
+export function calculateForPlan(cards, plan, actionCounts, countSources = {}) {
+  return cards.filter((card) => card.plan === plan).map((card) => calculateCard(card, actionCounts, countSources));
 }

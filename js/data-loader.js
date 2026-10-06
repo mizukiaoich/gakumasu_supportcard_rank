@@ -1,4 +1,4 @@
-import { validateAll } from './validator.js';
+import { validateAll, buildCountSources } from './validator.js';
 
 // サイトのルート（js/ の1つ上）。GitHub Pages のプロジェクトサイト（/リポジトリ名/）でも
 // ドメイン直下でも同じように解決できるよう、このファイル自身の URL を基準にする。
@@ -24,13 +24,14 @@ async function fetchJson(path) {
   }
 }
 
-/** 育成プラン・行動種類・サポートカードを読み込み、検証して返す */
+/** 育成プラン・行動種類・効果種類・サポートカードを読み込み、検証して返す */
 export async function loadGameData() {
-  const [plans, actionTypes, cards] = await Promise.all([
+  const [plans, actionTypes, effectTypes, cards] = await Promise.all([
     fetchJson('data/plans.json'),
     fetchJson('data/action_types.json'),
+    fetchJson('data/effect_types.json'),
     fetchJson('data/support_cards.json'),
   ]);
-  validateAll({ plans, actionTypes, cards });
-  return { plans, actionTypes, cards };
+  validateAll({ plans, actionTypes, effectTypes, cards });
+  return { plans, actionTypes, effectTypes, cards, countSources: buildCountSources(actionTypes, effectTypes) };
 }

@@ -60,11 +60,48 @@ export function validateActionTypes(actionTypes, file = 'action_types.json') {
   return errors;
 }
 
-export function validateCards(cards, { planNames, actionNames }, file = 'support_cards.json') {
+/**
+ * 効果種類の定義（effect_types.json）を検証する。
+ * 例: { "name": "VoSP終了時", "count_from": "VoSPレッスン" }
+ *   → 効果「VoSP終了時」の発動回数には、行動「VoSPレッスン」の入力回数を使う
+ */
+export function validateEffectTypes(effectTypes, actionNames, file = 'effect_types.json') {
+  const errors = [];
+  if (!Array.isArray(effectTypes)) return [`${file}: 効果種類を配列で定義してください（なしの場合は []）`];
+  const actions = new Set(actionNames);
+  const seen = new Set();
+  effectTypes.forEach((effectType, i) => {
+    const where = `${file}: [${i}]`;
+    if (!isPlainObject(effectType) || !isNonEmptyString(effectType.name)) {
+      errors.push(`${where}.name: 空でない文字列が必要です（値: ${show(effectType?.name)}）`);
+      return;
+    }
+    if (seen.has(effectType.name)) errors.push(`${where}.name: "${effectType.name}" が重複しています`);
+    if (actions.has(effectType.name)) errors.push(`${where}.name: "${effectType.name}" は action_types.json の行動種類と重複しています`);
+    seen.add(effectType.name);
+    if (!actions.has(effectType.count_from)) {
+      errors.push(`${where}.count_from: action_types.json に存在しない行動種類です（値: ${show(effectType.count_from)}）`);
+    }
+  });
+  return errors;
+}
+
+/**
+ * カードの効果に使える効果種類名 → 回数を参照する行動種類名 の対応表を作る。
+ * 行動種類はそれ自身の回数を、effect_types.json の効果種類は count_from の回数を参照する。
+ */
+export function buildCountSources(actionTypes, effectTypes = []) {
+  return Object.fromEntries([
+    ...actionTypes.map((a) => [a.name, a.name]),
+    ...effectTypes.map((e) => [e.name, e.count_from]),
+  ]);
+}
+
+export function validateCards(cards, { planNames, effectTypeNames }, file = 'support_cards.json') {
   const errors = [];
   if (!Array.isArray(cards)) return [`${file}: カードを配列で定義してください`];
   const plans = new Set(planNames);
-  const actions = new Set(actionNames);
+  const effectTypeSet = new Set(effectTypeNames);
   const seenIds = new Set();
 
   cards.forEach((card, i) => {
@@ -128,8 +165,8 @@ export function validateCards(cards, { planNames, actionNames }, file = 'support
       if (effect.empty !== undefined) {
         errors.push(`${at}.empty: 空スロットにする場合は true を指定してください（値: ${show(effect.empty)}）`);
       }
-      if (!actions.has(effect.type)) {
-        errors.push(`${at}.type: action_types.json に存在しない効果種類です（値: ${show(effect.type)}）`);
+      if (!effectTypeSet.has(effect.type)) {
+        errors.push(`${at}.type: action_types.json / effect_types.json に存在しない効果種類です（値: ${show(effect.type)}）`);
       }
       if (!PARAMETERS.includes(effect.target)) {
         errors.push(`${at}.target: ${PARAMETERS.join(' / ')} のいずれかが必要です（値: ${show(effect.target)}）`);
@@ -145,13 +182,16 @@ export function validateCards(cards, { planNames, actionNames }, file = 'support
   return errors;
 }
 
-/** 3種類のデータをまとめて検証し、問題があれば DataValidationError を投げる */
-export function validateAll({ plans, actionTypes, cards }) {
+/** データをまとめて検証し、問題があれば DataValidationError を投げる */
+export function validateAll({ plans, actionTypes, effectTypes = [], cards }) {
   const errors = [...validatePlans(plans), ...validateActionTypes(actionTypes)];
+  if (errors.length === 0) {
+    errors.push(...validateEffectTypes(effectTypes, actionTypes.map((a) => a.name)));
+  }
   if (errors.length === 0) {
     errors.push(...validateCards(cards, {
       planNames: plans.map((p) => p.name),
-      actionNames: actionTypes.map((a) => a.name),
+      effectTypeNames: Object.keys(buildCountSources(actionTypes, effectTypes)),
     }));
   }
   if (errors.length > 0) throw new DataValidationError(errors);

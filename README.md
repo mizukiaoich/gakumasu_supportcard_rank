@@ -84,7 +84,8 @@ npm run test:e2e     # ブラウザでの画面テスト（サブパス配下で
 ├─ data/
 │  ├─ support_cards.json      サポートカード（現在はダミーデータのみ）
 │  ├─ plans.json              育成プラン
-│  └─ action_types.json       行動種類
+│  ├─ action_types.json       行動種類（行動回数の入力欄）
+│  └─ effect_types.json       効果種類（SP終了時など、別の行動の回数で発動する効果）
 ├─ images/
 │  ├─ hero/hero-visual.svg    ファーストビューの装飾（オリジナル・差し替え可）
 │  ├─ support_cards/          カード画像（sample_001.svg はダミー画像）
@@ -120,7 +121,7 @@ npm run test:e2e     # ブラウザでの画面テスト（サブパス配下で
     { "type": "相談", "target": "Da", "max_count": 2, "value": 15 },
     { "type": "削除", "target": "Vo", "max_count": 2, "value": 10 },
     { "type": "削除", "target": "Vi", "max_count": 1, "value": 20 },
-    { "type": "SPレッスン", "target": "Vo", "max_count": 4, "value": 8 },
+    { "type": "VoSP終了時", "target": "Vo", "max_count": 4, "value": 8 },
     { "empty": true }
   ]
 }
@@ -139,7 +140,7 @@ npm run test:e2e     # ブラウザでの画面テスト（サブパス配下で
 | `initial_bonus[].value` | 加算する値（数値） |
 | `event_bonus` | イベント効果。`initial_bonus` と同じ形式で、行動回数に関係なく1回だけ固定で加算。なしの場合は `[]` または省略 |
 | `effects` | **ちょうど 6 件**。完凸状態の効果を記入 |
-| `effects[].type` | `data/action_types.json` の `name` のいずれか |
+| `effects[].type` | `data/action_types.json` または `data/effect_types.json` の `name` のいずれか |
 | `effects[].target` | `Vo` / `Da` / `Vi` |
 | `effects[].max_count` | 最大発動回数（0 以上の整数） |
 | `effects[].value` | 1 回あたりの上昇値（数値） |
@@ -176,6 +177,22 @@ npm run test:e2e     # ブラウザでの画面テスト（サブパス配下で
 ## 行動種類の追加方法
 
 `data/action_types.json` に追加します。行動回数の入力欄が自動で増え、カード効果の `type` として使えるようになります。`default` は入力欄の初期値（0 以上の整数、省略時 0）です。
+
+現在の行動種類は、Voレッスン / Daレッスン / Viレッスン / VoSPレッスン / DaSPレッスン / ViSPレッスン / 授業 / おでかけ / 相談 / 強化 / 削除 / 活動支給 / 休む です（レッスン・SPレッスンは Vo / Da / Vi 別に入力します）。
+
+## 効果種類の追加方法
+
+行動回数の入力欄は増やさずに、**既存の行動の回数で発動する効果**を追加する場合は `data/effect_types.json` に追加します。`count_from` には、発動回数として参照する `action_types.json` の行動種類を指定します。
+
+```json
+[
+  { "name": "VoSP終了時", "count_from": "VoSPレッスン" },
+  { "name": "DaSP終了時", "count_from": "DaSPレッスン" },
+  { "name": "ViSP終了時", "count_from": "ViSPレッスン" }
+]
+```
+
+たとえば効果 `{ "type": "VoSP終了時", "max_count": 4, "value": 17 }` は、入力した VoSPレッスン の回数（最大4回）× 17 を加算します。DaSPレッスン・ViSPレッスンの回数では発動しません。
 
 ```json
 { "name": "新しい行動", "default": 0 }

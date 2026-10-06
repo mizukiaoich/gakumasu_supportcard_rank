@@ -1,11 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateCards, validateAll, validatePlans, validateActionTypes, validateActionCounts, DataValidationError } from '../../js/validator.js';
-import { ACTIONS, card, effect, EMPTY, counts } from './helpers.js';
+import { validateCards, validateEffectTypes, buildCountSources, validateAll, validatePlans, validateActionTypes, validateActionCounts, DataValidationError } from '../../js/validator.js';
+import { ACTIONS, EFFECT_TYPES, card, effect, EMPTY, counts } from './helpers.js';
 
-const ctx = { planNames: ['センス', 'ロジック', 'アノマリー'], actionNames: ACTIONS };
+const ctx = {
+  planNames: ['センス', 'ロジック', 'アノマリー'],
+  effectTypeNames: Object.keys(buildCountSources(ACTIONS.map((name) => ({ name })), EFFECT_TYPES)),
+};
 const sixEffects = () => [
-  effect('レッスン', 'Vo', 1, 1), effect('授業', 'Da', 1, 1), effect('相談', 'Vi', 1, 1),
+  effect('Voレッスン', 'Vo', 1, 1), effect('授業', 'Da', 1, 1), effect('相談', 'Vi', 1, 1),
   EMPTY, EMPTY, EMPTY,
 ];
 
@@ -53,8 +56,8 @@ test('プラン・行動種類の定義を検証する', () => {
   assert.deepEqual(validatePlans([{ name: 'センス' }]), []);
   assert.equal(validatePlans([]).length, 1);
   assert.equal(validatePlans([{ name: 'A' }, { name: 'A' }]).length, 1);
-  assert.deepEqual(validateActionTypes([{ name: 'レッスン', default: 0 }]), []);
-  assert.equal(validateActionTypes([{ name: 'レッスン', default: -1 }]).length, 1);
+  assert.deepEqual(validateActionTypes([{ name: 'Voレッスン', default: 0 }]), []);
+  assert.equal(validateActionTypes([{ name: 'Voレッスン', default: -1 }]).length, 1);
 });
 
 test('validateAll は問題があれば DataValidationError を投げる', () => {
@@ -68,9 +71,9 @@ test('validateAll は問題があれば DataValidationError を投げる', () =>
 });
 
 test('行動回数の入力検証：0以上の整数のみ許可', () => {
-  assert.deepEqual(validateActionCounts(counts({ レッスン: 3 }), ACTIONS), []);
-  const errors = validateActionCounts(counts({ レッスン: -1, 授業: 1.5, 休む: Number.NaN }), ACTIONS);
-  assert.deepEqual(errors.map((e) => e.name), ['レッスン', '授業', '休む']);
+  assert.deepEqual(validateActionCounts(counts({ Voレッスン: 3 }), ACTIONS), []);
+  const errors = validateActionCounts(counts({ Voレッスン: -1, 授業: 1.5, 休む: Number.NaN }), ACTIONS);
+  assert.deepEqual(errors.map((e) => e.name), ['Voレッスン', '授業', '休む']);
 });
 
 test('初期評価（initial_bonus）を検証する', () => {
@@ -96,4 +99,24 @@ test('イベント効果（event_bonus）を検証する', () => {
   assert.equal(bad.length, 2);
   assert.ok(bad.some((e) => e.includes('event_bonus[0].target')));
   assert.ok(bad.some((e) => e.includes('event_bonus[0].value')));
+});
+
+test('効果種類（effect_types.json）を検証する', () => {
+  assert.deepEqual(validateEffectTypes(EFFECT_TYPES, ACTIONS), []);
+  assert.deepEqual(validateEffectTypes([], ACTIONS), []);
+  const errors = validateEffectTypes([
+    { name: 'VoSP終了時', count_from: 'SPレッスン' },
+    { name: 'VoSP終了時', count_from: 'VoSPレッスン' },
+    { name: '授業', count_from: '授業' },
+  ], ACTIONS);
+  assert.ok(errors.some((e) => e.includes('[0].count_from')));
+  assert.ok(errors.some((e) => e.includes('[1].name: "VoSP終了時" が重複')));
+  assert.ok(errors.some((e) => e.includes('[2].name: "授業" は action_types.json の行動種類と重複')));
+});
+
+test('カードの効果には行動種類と effect_types.json の効果種類が使え、旧「SPレッスン」は使えない', () => {
+  const effects = [effect('VoSP終了時', 'Vo', 4, 17), effect('Daレッスン', 'Da', 2, 5), EMPTY, EMPTY, EMPTY, EMPTY];
+  assert.deepEqual(validateCards([card('a', 'センス', effects)], ctx), []);
+  effects[0] = effect('SPレッスン', 'Vo', 4, 17);
+  assert.match(validateCards([card('a', 'センス', effects)], ctx)[0], /effects\[0\]\.type/);
 });

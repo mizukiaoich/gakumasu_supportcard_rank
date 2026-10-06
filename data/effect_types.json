@@ -1,0 +1,5 @@
+[
+  { "name": "VoSP終了時", "count_from": "VoSPレッスン" },
+  { "name": "DaSP終了時", "count_from": "DaSPレッスン" },
+  { "name": "ViSP終了時", "count_from": "ViSPレッスン" }
+]

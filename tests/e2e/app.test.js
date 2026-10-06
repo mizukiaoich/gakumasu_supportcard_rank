@@ -17,10 +17,16 @@ let page;
 let consoleErrors;
 let cards;
 let actionTypes;
+let countFrom;
 
 before(async () => {
   cards = await load('support_cards.json');
   actionTypes = await load('action_types.json');
+  // 効果種類 → 回数を参照する行動（行動種類は自分自身、SP終了時は各SPレッスン）
+  countFrom = Object.fromEntries([
+    ...actionTypes.map((a) => [a.name, a.name]),
+    ...(await load('effect_types.json')).map((e) => [e.name, e.count_from]),
+  ]);
   server = createServer({ base: BASE_PATH });
   await new Promise((resolve) => server.listen(0, resolve));
   origin = `http://localhost:${server.address().port}`;
@@ -80,7 +86,7 @@ function expectedScores(card, counts) {
   for (const b of [...(card.initial_bonus ?? []), ...(card.event_bonus ?? [])]) s[b.target] += b.value;
   for (const e of card.effects) {
     if (e.empty) continue;
-    s[e.target] += Math.min(counts[e.type] ?? 0, e.max_count) * e.value;
+    s[e.target] += Math.min(counts[countFrom[e.type]] ?? 0, e.max_count) * e.value;
   }
   return { ...s, total: s.Vo + s.Da + s.Vi };
 }
@@ -96,7 +102,9 @@ async function readTable(kind) {
   }));
 }
 
-const COUNTS = { レッスン: 3, SPレッスン: 2, 授業: 4, おでかけ: 1, 相談: 2, 強化: 3, 削除: 2, 活動支給: 1, 休む: 5 };
+const COUNTS = {
+  Voレッスン: 3, Daレッスン: 1, Viレッスン: 2, VoSPレッスン: 2, DaSPレッスン: 4, ViSPレッスン: 1,
+  授業: 4, おでかけ: 1, 相談: 2, 強化: 3, 削除: 2, 活動支給: 1, 休む: 5 };
 
 async function fillCounts(counts) {
   for (const [name, value] of Object.entries(counts)) await setCount(name, value);
@@ -156,9 +164,9 @@ test('第一優先と同じパラメータは第二優先で選べない', async
 
 test('行動回数は＋／－ボタンと直接入力で変更でき、0未満にならない', async () => {
   await openRanking();
-  const input = '.count-input[data-action="レッスン"]';
-  const plus = '.action-item:has(input[data-action="レッスン"]) .count-btn:last-child';
-  const minus = '.action-item:has(input[data-action="レッスン"]) .count-btn:first-child';
+  const input = '.count-input[data-action="Voレッスン"]';
+  const plus = '.action-item:has(input[data-action="Voレッスン"]) .count-btn:last-child';
+  const minus = '.action-item:has(input[data-action="Voレッスン"]) .count-btn:first-child';
   await page.click(plus);
   await page.click(plus);
   assert.equal(await page.inputValue(input), '2');
@@ -249,14 +257,14 @@ test('入力変更後に再計算すると最新の条件で更新される', as
     const fixed = [...(card.initial_bonus ?? []), ...(card.event_bonus ?? [])].reduce((sum, b) => sum + b.value, 0);
     assert.equal(row.total, fixed, row.id);
   }
-  await setCount('レッスン', 4);
+  await setCount('Voレッスン', 4);
   assert.equal(await page.isVisible('#stale-notice'), true);
   await page.click('#calculate-button');
   assert.equal(await page.isVisible('#stale-notice'), false);
   const updated = await readTable('total');
   for (const row of updated) {
     const card = cards.find((c) => c.id === row.id);
-    assert.equal(row.total, expectedScores(card, { レッスン: 4 }).total, row.id);
+    assert.equal(row.total, expectedScores(card, { Voレッスン: 4 }).total, row.id);
   }
   assert.ok(updated.some((r) => r.total !== zero.find((z) => z.id === r.id).total), "再計算で値が更新される");
 });
@@ -283,12 +291,12 @@ test('カードを選ぶと詳細に6つの効果の内訳が表示され、発�
   const cells = await detail.locator('.breakdown-table tbody tr').evaluateAll((trs) => trs.map((tr) => [...tr.cells].map((td) => td.textContent)));
   card.effects.forEach((e, i) => {
     const [no, type, target, max, input, actual, value, contribution] = cells[i];
-    const actualCount = Math.min(counts[e.type], e.max_count);
+    const actualCount = Math.min(counts[countFrom[e.type]], e.max_count);
     assert.equal(no, String(i + 1));
-    assert.equal(type, e.type);
+    assert.equal(type, countFrom[e.type] === e.type ? e.type : `${e.type}（${countFrom[e.type]}の回数）`);
     assert.equal(target, e.target);
     assert.equal(Number(max), e.max_count);
-    assert.equal(Number(input), counts[e.type]);
+    assert.equal(Number(input), counts[countFrom[e.type]]);
     assert.equal(Number(actual.replace('（上限）', '')), actualCount);
     assert.ok(actualCount <= e.max_count);
     assert.equal(Number(value), e.value);

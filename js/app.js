@@ -171,7 +171,7 @@ function renderTable(table, ranked, highlight = []) {
 }
 
 function renderResults(cond) {
-  const results = calculateForPlan(state.data.cards, cond.plan, cond.actionCounts);
+  const results = calculateForPlan(state.data.cards, cond.plan, cond.actionCounts, state.data.countSources);
   state.results = { cond, list: results };
 
   $('result-conditions').textContent = `育成プラン：${cond.plan} ／ 対象カード：${results.length}枚 ／ 完凸状態で計算`;
@@ -237,7 +237,9 @@ function showDetail(cardId, scroll) {
     const capped = b.inputCount > b.maxCount;
     return el('tr', {}, [
       el('td', { class: 'num', text: String(b.no) }),
-      el('td', { text: b.type }),
+      el('td', {}, [b.type, ...(b.countFrom !== b.type
+        ? [el('span', { class: 'count-from', text: `（${b.countFrom}の回数）` })]
+        : [])]),
       el('td', {}, [paramBadge(b.target)]),
       el('td', { class: 'num', text: fmt(b.maxCount) }),
       el('td', { class: 'num', text: fmt(b.inputCount) }),
