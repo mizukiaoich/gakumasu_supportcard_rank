@@ -58,3 +58,29 @@ test('calculateForPlan は選択したプランのカードだけを対象にす
   assert.deepEqual(calculateForPlan(cards, 'センス', counts()).map((r) => r.card.id), ['a', 'c']);
   assert.deepEqual(calculateForPlan(cards, 'アノマリー', counts()), []);
 });
+
+test('初期評価は行動回数に関係なく固定で加算される', () => {
+  const c = {
+    ...card('init', 'センス', [effect('レッスン', 'Vo', 2, 5), effect('授業', 'Da', 3, 4), EMPTY, EMPTY, EMPTY, EMPTY]),
+    initial_bonus: [{ target: 'Vo', value: 65 }, { target: 'Vi', value: 10 }],
+  };
+  // 行動回数0でも初期評価だけは加算される
+  const zero = calculateCard(c, counts());
+  assert.deepEqual(zero.scores, { Vo: 65, Da: 0, Vi: 10 });
+  assert.equal(zero.total, 75);
+  assert.deepEqual(zero.initialBonus, [{ target: 'Vo', value: 65 }, { target: 'Vi', value: 10 }]);
+
+  // 行動回数を増やしても初期評価の値は変わらず、効果分だけが増える
+  const many = calculateCard(c, counts({ レッスン: 9, 授業: 1 }));
+  assert.deepEqual(many.scores, { Vo: 65 + 10, Da: 4, Vi: 10 });
+  assert.equal(many.total, 89);
+});
+
+test('initial_bonus がない・空配列のカードは初期評価0として扱う', () => {
+  const effects = [effect('レッスン', 'Vo', 1, 5), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY];
+  const none = calculateCard(card('n', 'センス', effects), counts({ レッスン: 1 }));
+  const empty = calculateCard({ ...card('e', 'センス', effects), initial_bonus: [] }, counts({ レッスン: 1 }));
+  assert.deepEqual(none.scores, { Vo: 5, Da: 0, Vi: 0 });
+  assert.deepEqual(empty.scores, { Vo: 5, Da: 0, Vi: 0 });
+  assert.deepEqual(none.initialBonus, []);
+});

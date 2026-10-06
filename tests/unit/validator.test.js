@@ -72,3 +72,17 @@ test('行動回数の入力検証：0以上の整数のみ許可', () => {
   const errors = validateActionCounts(counts({ レッスン: -1, 授業: 1.5, 休む: Number.NaN }), ACTIONS);
   assert.deepEqual(errors.map((e) => e.name), ['レッスン', '授業', '休む']);
 });
+
+test('初期評価（initial_bonus）を検証する', () => {
+  const ok = { ...card('a', 'センス', sixEffects()), initial_bonus: [{ target: 'Vo', value: 65 }] };
+  assert.deepEqual(validateCards([ok], ctx), []);
+  assert.deepEqual(validateCards([{ ...ok, initial_bonus: [] }], ctx), []);
+
+  const notArray = validateCards([{ ...ok, initial_bonus: { target: 'Vo', value: 65 } }], ctx);
+  assert.match(notArray[0], /\(id: a\)\.initial_bonus: 初期評価は配列/);
+
+  const bad = validateCards([{ ...ok, initial_bonus: [{ target: 'vo', value: '65' }] }], ctx);
+  assert.equal(bad.length, 2);
+  assert.ok(bad.some((e) => e.includes('initial_bonus[0].target')));
+  assert.ok(bad.some((e) => e.includes('initial_bonus[0].value')));
+});

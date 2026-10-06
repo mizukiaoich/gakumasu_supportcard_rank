@@ -74,9 +74,10 @@ async function selectPlan(name) {
   await page.click(`.plan-option:has(input[value="${name}"])`);
 }
 
-/** 期待値をテスト側で独立に計算する（actualCount = MIN(入力, max_count)、contribution = actualCount × value） */
+/** 期待値をテスト側で独立に計算する（初期評価は固定加算、actualCount = MIN(入力, max_count)、contribution = actualCount × value） */
 function expectedScores(card, counts) {
   const s = { Vo: 0, Da: 0, Vi: 0 };
+  for (const b of card.initial_bonus ?? []) s[b.target] += b.value;
   for (const e of card.effects) {
     if (e.empty) continue;
     s[e.target] += Math.min(counts[e.type] ?? 0, e.max_count) * e.value;
@@ -241,16 +242,23 @@ test('総合評価ランキングは総合の降順（同値はID順）に並ぶ
 test('入力変更後に再計算すると最新の条件で更新される', async () => {
   await openRanking();
   await page.click('#calculate-button');
+  // 行動回数がすべて0のときは初期評価だけが加算される
   const zero = await readTable('total');
-  assert.ok(zero.every((r) => r.total === 0));
+  for (const row of zero) {
+    const card = cards.find((c) => c.id === row.id);
+    const initial = (card.initial_bonus ?? []).reduce((sum, b) => sum + b.value, 0);
+    assert.equal(row.total, initial, row.id);
+  }
   await setCount('レッスン', 4);
   assert.equal(await page.isVisible('#stale-notice'), true);
   await page.click('#calculate-button');
   assert.equal(await page.isVisible('#stale-notice'), false);
   const updated = await readTable('total');
-  const card = cards.find((c) => c.id === updated[0].id);
-  assert.equal(updated[0].total, expectedScores(card, { レッスン: 4 }).total);
-  assert.ok(updated[0].total > 0);
+  for (const row of updated) {
+    const card = cards.find((c) => c.id === row.id);
+    assert.equal(row.total, expectedScores(card, { レッスン: 4 }).total, row.id);
+  }
+  assert.ok(updated.some((r) => r.total !== zero.find((z) => z.id === r.id).total), "再計算で値が更新される");
 });
 
 /* ---------- カード詳細 ---------- */
@@ -286,6 +294,11 @@ test('カードを選ぶと詳細に6つの効果の内訳が表示され、発�
     assert.equal(Number(value), e.value);
     assert.equal(contribution, `${e.target} +${actualCount * e.value}`);
   });
+  // 初期評価（固定加算）が詳細に表示される
+  const initialTexts = await detail.locator('.initial-value').allTextContents();
+  assert.deepEqual(initialTexts, card.initial_bonus.map((b) => `${b.target} +${b.value}`));
+  assert.ok(initialTexts.length > 0);
+
   const exp = expectedScores(card, counts);
   const tiles = await detail.locator('.score-value').allTextContents();
   assert.deepEqual(tiles.map(Number), [exp.Vo, exp.Da, exp.Vi, exp.total]);
@@ -301,6 +314,8 @@ test('空スロットは詳細で「計算対象外」と表示される', async
   assert.equal(await rows.count(), 6);
   assert.equal(await page.locator('.breakdown-table tr.is-empty-slot').count(), 2);
   assert.match(await page.locator('.breakdown-table tr.is-empty-slot').first().textContent(), /計算対象外/);
+  // sample_004 は初期評価なし
+  assert.equal(await page.textContent('.initial-none'), '初期評価なし');
 });
 
 /* ---------- 画像 ---------- */

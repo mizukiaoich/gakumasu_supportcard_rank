@@ -166,6 +166,13 @@ td.col-total { font-size: 1rem; }
 .breakdown-title { font-size: 1rem; margin-top: 20px; }
 .breakdown-help { font-size: 0.8rem; color: var(--c-text-sub); margin: 4px 0 10px; }
 .breakdown-table td, .breakdown-table th { white-space: nowrap; }
+.initial-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.initial-item {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px;
+  border-radius: var(--radius-sm); background: var(--c-bg); border: 1px solid var(--c-border);
+}
+.initial-value { font-weight: 800; font-variant-numeric: tabular-nums; }
+.initial-none { font-size: 0.9rem; color: var(--c-text-sub); }
 .breakdown-table .is-empty-slot td { color: var(--c-text-sub); background: #f8fafc; font-style: italic; }
 .is-capped { color: var(--c-purple); }
 .cap-note { font-size: 0.72rem; font-weight: 600; }

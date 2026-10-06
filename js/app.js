@@ -199,10 +199,10 @@ function showDetail(cardId, scroll) {
     tr.classList.toggle('is-selected', tr.dataset.cardId === state.selectedId);
   }
   if (!result) {
-    content.replaceChildren(el('p', { class: 'detail-placeholder', text: 'ランキング内のカードを選択すると、評価値と6つの効果の内訳が表示されます。' }));
+    content.replaceChildren(el('p', { class: 'detail-placeholder', text: 'ランキング内のカードを選択すると、評価値と初期評価・6つの効果の内訳が表示されます。' }));
     return;
   }
-  const { card, scores, total, breakdown } = result;
+  const { card, scores, total, initialBonus, breakdown } = result;
   const cond = state.results.cond;
 
   const head = el('div', { class: 'detail-head' }, [
@@ -249,8 +249,20 @@ function showDetail(cardId, scroll) {
     ]);
   });
 
+  const initialSection = [
+    el('h4', { class: 'breakdown-title', text: '初期評価（固定加算）' }),
+    el('p', { class: 'breakdown-help', text: '行動回数に関係なく、そのまま評価値に加算されます。' }),
+    initialBonus.length === 0
+      ? el('p', { class: 'initial-none', text: '初期評価なし' })
+      : el('ul', { class: 'initial-list' }, initialBonus.map((b) => el('li', { class: 'initial-item' }, [
+        paramBadge(b.target),
+        el('span', { class: 'initial-value', text: `${b.target} +${fmt(b.value)}` }),
+      ]))),
+  ];
+
   content.replaceChildren(
     head,
+    ...initialSection,
     el('h4', { class: 'breakdown-title', text: '6つの効果の内訳' }),
     el('p', { class: 'breakdown-help', text: `実際の発動回数 = MIN(入力された行動回数, 最大発動回数)、今回の上昇値 = 実際の発動回数 × 1回あたりの上昇値（育成プラン：${cond.plan}）` }),
     el('div', { class: 'table-scroll', tabindex: '0', 'aria-label': '効果の内訳表' }, [

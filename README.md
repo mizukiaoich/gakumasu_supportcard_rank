@@ -22,9 +22,10 @@
 
 ## 計算方法
 
-各カードの 6 つの効果スロットについて計算します（初期版は完凸状態のみ）。
+各カードの初期評価と 6 つの効果スロットについて計算します（初期版は完凸状態のみ）。
 
 ```
+初期評価（initial_bonus）は行動回数に関係なく value を target のパラメータに固定で加算
 actualCount  = MIN(ユーザー入力の行動回数, max_count)
 contribution = actualCount × value
 target が Vo / Da / Vi のパラメータに contribution を加算
@@ -108,6 +109,9 @@ npm run test:e2e     # ブラウザでの画面テスト（サブパス配下で
   "rarity": "SSR",
   "plan": "センス",
   "image": "images/support_cards/card_0001.webp",
+  "initial_bonus": [
+    { "target": "Vo", "value": 65 }
+  ],
   "effects": [
     { "type": "おでかけ", "target": "Vo", "max_count": 3, "value": 10 },
     { "type": "相談", "target": "Da", "max_count": 2, "value": 15 },
@@ -127,6 +131,9 @@ npm run test:e2e     # ブラウザでの画面テスト（サブパス配下で
 | `plan` | `data/plans.json` の `name` のいずれか |
 | `image` | サイトルートからの画像パス。画像がない場合は `""`（プレースホルダー表示） |
 | `is_sample` | 任意。`true` の場合は画面に「サンプル」と表示。**実データには付けない** |
+| `initial_bonus` | 初期評価（例：Vo +65）。行動回数に関係なく固定で加算。複数指定可、なしの場合は `[]` または省略 |
+| `initial_bonus[].target` | `Vo` / `Da` / `Vi` |
+| `initial_bonus[].value` | 加算する値（数値） |
 | `effects` | **ちょうど 6 件**。完凸状態の効果を記入 |
 | `effects[].type` | `data/action_types.json` の `name` のいずれか |
 | `effects[].target` | `Vo` / `Da` / `Vi` |
