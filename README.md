@@ -25,7 +25,8 @@
 各カードの 6 つの効果スロット（初期評価を含む）とイベント効果について計算します（初期版は完凸状態のみ）。
 
 ```
-固定加算の効果（初期評価）・イベント効果（event_bonus）は行動回数に関係なく value を target のパラメータに1回だけ加算
+効果（effects）とイベント効果（event_bonus）は同じ形式・同じ計算方法
+固定加算の効果（初期評価）: 行動回数に関係なく value を target のパラメータに1回だけ加算
 それ以外の効果: actualCount  = MIN(ユーザー入力の行動回数, max_count)
 contribution = actualCount × value
 target が Vo / Da / Vi のパラメータに contribution を加算
@@ -115,7 +116,7 @@ npm run cards:check    # 検証のみ（JSON は変更しない）
 npm run cards:import   # 検証して問題がなければ data/support_cards.json を上書き
 ```
 
-- 「カード一覧」シートに **1行＝1カード** で入力します。効果1〜6・イベント効果1〜2は横に並んでいます。
+- 「カード一覧」シートに **1行＝1カード** で入力します。効果1〜6・イベント効果1〜2は横に並んでいます（イベント効果も効果と同じく「種類・対象・最大回数・値」の4列）。
 - プラン・対象・効果種類・サンプル列はプルダウンで選べます（選択肢は `data/plans.json`・`data/action_types.json`・`data/effect_types.json` から作成）。
 - 使わない効果スロット、今の計算式で表せない効果（パラメータ上昇量%アップ、条件付きの効果など）は、その効果の4列をすべて空欄にします（空スロット）。
 - 初期評価は効果スロットの1つとして「種類＝初期評価」で入力し、最大回数は空欄にします。
@@ -135,7 +136,7 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
   "plan": "センス",
   "image": "images/support_cards/card_0001.webp",
   "event_bonus": [
-    { "target": "Da", "value": 20 }
+    { "type": "初期評価", "target": "Da", "value": 20 }
   ],
   "effects": [
     { "type": "おでかけ", "target": "Vo", "max_count": 3, "value": 10 },
@@ -156,7 +157,7 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
 | `plan` | `data/plans.json` の `name` のいずれか |
 | `image` | サイトルートからの画像パス。画像がない場合は `""`（プレースホルダー表示） |
 | `is_sample` | 任意。`true` の場合は画面に「サンプル」と表示。**実データには付けない** |
-| `event_bonus` | イベント効果。`{ "target": "Vo", "value": 20 }` の配列で、行動回数に関係なく1回だけ固定で加算。なしの場合は `[]` または省略 |
+| `event_bonus` | イベント効果。`effects` と同じ形式（`type` / `target` / `max_count` / `value`）の配列で、計算方法も同じ。件数の制限なし、空スロットは使わない。なしの場合は `[]` または省略。例：固定で Vo +20 なら `{ "type": "初期評価", "target": "Vo", "value": 20 }` |
 | `effects` | **ちょうど 6 件**。完凸状態の効果を記入 |
 | `effects[].type` | `data/action_types.json` または `data/effect_types.json` の `name` のいずれか |
 | `effects[].target` | `Vo` / `Da` / `Vi` |

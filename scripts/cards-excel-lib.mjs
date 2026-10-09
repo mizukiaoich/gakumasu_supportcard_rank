@@ -18,10 +18,6 @@ const BASE_COLUMNS = [
   { key: 'image', header: '画像パス', width: 24 },
   { key: 'is_sample', header: 'サンプル', width: 9 },
 ];
-const EVENT_FIELDS = [
-  { key: 'target', label: '対象', width: 8 },
-  { key: 'value', label: '値', width: 8 },
-];
 const EFFECT_FIELDS = [
   { key: 'type', label: '種類', width: 14 },
   { key: 'target', label: '対象', width: 7 },
@@ -33,7 +29,7 @@ const EFFECT_FIELDS = [
 export function columnDefs() {
   const cols = BASE_COLUMNS.map((c) => ({ ...c, group: 'base' }));
   for (let i = 1; i <= EVENT_SLOT_COUNT; i++) {
-    for (const f of EVENT_FIELDS) cols.push({ key: `event${i}_${f.key}`, header: `イベント${i} ${f.label}`, width: f.width, group: 'event', slot: i, field: f.key });
+    for (const f of EFFECT_FIELDS) cols.push({ key: `event${i}_${f.key}`, header: `イベント${i} ${f.label}`, width: f.width, group: 'event', slot: i, field: f.key });
   }
   for (let i = 1; i <= EFFECT_SLOT_COUNT; i++) {
     for (const f of EFFECT_FIELDS) cols.push({ key: `effect${i}_${f.key}`, header: `効果${i} ${f.label}`, width: f.width, group: 'effect', slot: i, field: f.key });
@@ -62,15 +58,14 @@ export function cardToRow(card) {
   if (events.length > EVENT_SLOT_COUNT) {
     throw new Error(`カード ${card.id}: イベント効果が${events.length}件あります。Excel には${EVENT_SLOT_COUNT}件まで書けます`);
   }
-  events.forEach((b, i) => {
-    row[`event${i + 1}_target`] = b.target;
-    row[`event${i + 1}_value`] = b.value;
-  });
-  card.effects.forEach((e, i) => {
-    if (e.empty) return;
+  const put = (prefix, e) => {
     for (const f of EFFECT_FIELDS) {
-      if (e[f.key] !== undefined && e[f.key] !== null) row[`effect${i + 1}_${f.key}`] = e[f.key];
+      if (e[f.key] !== undefined && e[f.key] !== null) row[`${prefix}_${f.key}`] = e[f.key];
     }
+  };
+  events.forEach((e, i) => put(`event${i + 1}`, e));
+  card.effects.forEach((e, i) => {
+    if (!e.empty) put(`effect${i + 1}`, e);
   });
   return row;
 }
@@ -147,7 +142,7 @@ export function buildWorkbook({ plans, actionTypes, effectTypes, cards }) {
     `・固定加算の効果: ${fixed.join(' / ') || 'なし'} … 行動回数に関係なく値を1回だけ加算します。最大回数は空欄にしてください。`,
     `・別の行動の回数で発動する効果: ${counted.join(' / ') || 'なし'}`,
     `・上記以外の効果種類は、同じ名前の行動回数（${actionTypes.map((a) => a.name).join(' / ')}）で発動します。`,
-    `・イベント効果1〜${EVENT_SLOT_COUNT} は、行動回数に関係なく1回だけ加算する値です。なければ空欄にしてください。`,
+    `・イベント効果1〜${EVENT_SLOT_COUNT} は効果と同じ書き方（種類・対象・最大回数・値）で、計算方法も効果と同じです。なければ4列とも空欄にしてください。`,
     '・サンプル列に ○ を付けたカードは、画面に「サンプル（ダミー）」として表示されます。実データには付けないでください。',
     '・画像パスは images/support_cards/ 以下のファイル（例: images/support_cards/ssr_0001.webp）。なければ空欄で構いません。',
     '・効果種類・プランの選択肢は data/action_types.json・data/effect_types.json・data/plans.json から作られます。増やした場合は npm run cards:export で作り直してください。',
@@ -226,30 +221,29 @@ export function readCards(wb, countSources) {
       else errors.push(`${CARD_SHEET} ${r}行目: サンプル列は ○ か空欄にしてください（値: ${values.is_sample}）`);
     }
 
-    const events = [];
+    // 効果1件分（種類・対象・最大回数・値）を読む。4列すべて空欄なら null
+    const readEffect = (prefix) => {
+      const effect = {
+        type: values[`${prefix}_type`],
+        target: values[`${prefix}_target`],
+        max_count: toNumber(values[`${prefix}_max_count`]),
+        value: toNumber(values[`${prefix}_value`]),
+      };
+      if (Object.values(effect).every((v) => v === undefined)) return null;
+      // 固定加算（初期評価など）は最大回数を持たない
+      if (effect.max_count === undefined && isFixedEffectType(countSources, effect.type)) delete effect.max_count;
+      return effect;
+    };
+
+    card.event_bonus = [];
     for (let i = 1; i <= EVENT_SLOT_COUNT; i++) {
-      const target = values[`event${i}_target`];
-      const value = toNumber(values[`event${i}_value`]);
-      if (target === undefined && value === undefined) continue;
-      events.push({ target, value });
+      const effect = readEffect(`event${i}`);
+      if (effect) card.event_bonus.push(effect);
     }
-    card.event_bonus = events;
 
     card.effects = [];
     for (let i = 1; i <= EFFECT_SLOT_COUNT; i++) {
-      const effect = {
-        type: values[`effect${i}_type`],
-        target: values[`effect${i}_target`],
-        max_count: toNumber(values[`effect${i}_max_count`]),
-        value: toNumber(values[`effect${i}_value`]),
-      };
-      if (Object.values(effect).every((v) => v === undefined)) {
-        card.effects.push({ empty: true });
-        continue;
-      }
-      // 固定加算（初期評価など）は最大回数を持たない
-      if (effect.max_count === undefined && isFixedEffectType(countSources, effect.type)) delete effect.max_count;
-      card.effects.push(effect);
+      card.effects.push(readEffect(`effect${i}`) ?? { empty: true });
     }
     cards.push(card);
     rowNumbers.push(r);

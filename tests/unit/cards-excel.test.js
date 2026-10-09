@@ -38,8 +38,8 @@ test('新しいカード行：空欄スロットは空スロット、初期評�
   set('カード名', 'テストカード');
   set('レアリティ', 'SSR');
   set('プラン', 'センス');
-  set('イベント1 対象', 'Vo');
-  set('イベント1 値', '20');
+  set('イベント1 種類', '初期評価'); set('イベント1 対象', 'Vo'); set('イベント1 値', '20');
+  set('イベント2 種類', '削除'); set('イベント2 対象', 'Da'); set('イベント2 最大回数', 2); set('イベント2 値', 10);
   set('効果2 種類', '削除'); set('効果2 対象', 'Vo'); set('効果2 最大回数', 4); set('効果2 値', 20);
   set('効果3 種類', '初期評価'); set('効果3 対象', 'Vo'); set('効果3 値', 65);
   set('効果4 種類', 'VoSP終了時'); set('効果4 対象', 'Vo'); set('効果4 最大回数', 3); set('効果4 値', 17);
@@ -52,7 +52,10 @@ test('新しいカード行：空欄スロットは空スロット、初期評�
     rarity: 'SSR',
     plan: 'センス',
     image: '',
-    event_bonus: [{ target: 'Vo', value: 20 }],
+    event_bonus: [
+      { type: '初期評価', target: 'Vo', value: 20 },
+      { type: '削除', target: 'Da', max_count: 2, value: 10 },
+    ],
     effects: [
       { empty: true },
       { type: '削除', target: 'Vo', max_count: 4, value: 20 },

@@ -1,4 +1,4 @@
-import { PARAMETERS, EFFECT_SLOT_COUNT, FIXED_BONUS_TYPES } from './constants.js';
+import { PARAMETERS, EFFECT_SLOT_COUNT } from './constants.js';
 
 /**
  * データ不備を表すエラー。どのファイルのどの項目が不正かを messages に保持する。
@@ -111,6 +111,34 @@ export function isFixedEffectType(countSources, type) {
   return Object.hasOwn(countSources, type) && countSources[type] === null;
 }
 
+/** 効果1件（effects の1スロット、または event_bonus の1件）を検証する */
+function validateEffect(effect, at, effectTypeSet, countSources, label) {
+  const errors = [];
+  if (!isPlainObject(effect)) {
+    return [`${at}: ${label}はオブジェクトで定義してください${label === '効果' ? '（空スロットは { "empty": true }）' : ''}`];
+  }
+  if (effect.empty !== undefined) {
+    errors.push(`${at}.empty: 空スロットにする場合は true を指定してください（値: ${show(effect.empty)}）`);
+  }
+  if (!effectTypeSet.has(effect.type)) {
+    errors.push(`${at}.type: action_types.json / effect_types.json に存在しない効果種類です（値: ${show(effect.type)}）`);
+  }
+  if (!PARAMETERS.includes(effect.target)) {
+    errors.push(`${at}.target: ${PARAMETERS.join(' / ')} のいずれかが必要です（値: ${show(effect.target)}）`);
+  }
+  if (isFixedEffectType(countSources, effect.type)) {
+    if (effect.max_count !== undefined && effect.max_count !== null) {
+      errors.push(`${at}.max_count: 「${effect.type}」は固定加算のため最大発動回数は指定しないでください（値: ${show(effect.max_count)}）`);
+    }
+  } else if (!isNonNegativeInteger(effect.max_count)) {
+    errors.push(`${at}.max_count: 0以上の整数が必要です（値: ${show(effect.max_count)}）`);
+  }
+  if (typeof effect.value !== 'number' || !Number.isFinite(effect.value)) {
+    errors.push(`${at}.value: 数値が必要です（値: ${show(effect.value)}）`);
+  }
+  return errors;
+}
+
 export function validateCards(cards, { planNames, countSources }, file = 'support_cards.json') {
   const errors = [];
   if (!Array.isArray(cards)) return [`${file}: カードを配列で定義してください`];
@@ -146,26 +174,19 @@ export function validateCards(cards, { planNames, countSources }, file = 'suppor
     if (card.initial_bonus !== undefined) {
       errors.push(`${where}.initial_bonus: 初期評価は effects の中に { "type": "初期評価", "target": "Vo", "value": 65 } の形で記入してください`);
     }
-    for (const { key, label } of FIXED_BONUS_TYPES) {
-      const list = card[key];
-      if (list === undefined) continue;
-      if (!Array.isArray(list)) {
-        errors.push(`${where}.${key}: ${label}は配列で定義してください（例: [{ "target": "Vo", "value": 65 }]、なしの場合は []）`);
-        continue;
+    if (card.event_bonus !== undefined) {
+      if (!Array.isArray(card.event_bonus)) {
+        errors.push(`${where}.event_bonus: イベント効果は配列で定義してください（例: [{ "type": "初期評価", "target": "Vo", "value": 20 }]、なしの場合は []）`);
+      } else {
+        card.event_bonus.forEach((effect, j) => {
+          const at = `${where}.event_bonus[${j}]`;
+          if (isEmptySlot(effect)) {
+            errors.push(`${at}: イベント効果に空スロットは使えません。不要な場合は削除してください`);
+            return;
+          }
+          errors.push(...validateEffect(effect, at, effectTypeSet, countSources, 'イベント効果'));
+        });
       }
-      list.forEach((bonus, j) => {
-        const at = `${where}.${key}[${j}]`;
-        if (!isPlainObject(bonus)) {
-          errors.push(`${at}: ${label}はオブジェクトで定義してください`);
-          return;
-        }
-        if (!PARAMETERS.includes(bonus.target)) {
-          errors.push(`${at}.target: ${PARAMETERS.join(' / ')} のいずれかが必要です（値: ${show(bonus.target)}）`);
-        }
-        if (typeof bonus.value !== 'number' || !Number.isFinite(bonus.value)) {
-          errors.push(`${at}.value: 数値が必要です（値: ${show(bonus.value)}）`);
-        }
-      });
     }
     if (!Array.isArray(card.effects) || card.effects.length !== EFFECT_SLOT_COUNT) {
       const len = Array.isArray(card.effects) ? `${card.effects.length}件` : show(card.effects);
@@ -174,30 +195,8 @@ export function validateCards(cards, { planNames, countSources }, file = 'suppor
     }
     card.effects.forEach((effect, j) => {
       const at = `${where}.effects[${j}]`;
-      if (!isPlainObject(effect)) {
-        errors.push(`${at}: 効果はオブジェクトで定義してください（空スロットは { "empty": true }）`);
-        return;
-      }
       if (isEmptySlot(effect)) return;
-      if (effect.empty !== undefined) {
-        errors.push(`${at}.empty: 空スロットにする場合は true を指定してください（値: ${show(effect.empty)}）`);
-      }
-      if (!effectTypeSet.has(effect.type)) {
-        errors.push(`${at}.type: action_types.json / effect_types.json に存在しない効果種類です（値: ${show(effect.type)}）`);
-      }
-      if (!PARAMETERS.includes(effect.target)) {
-        errors.push(`${at}.target: ${PARAMETERS.join(' / ')} のいずれかが必要です（値: ${show(effect.target)}）`);
-      }
-      if (isFixedEffectType(countSources, effect.type)) {
-        if (effect.max_count !== undefined && effect.max_count !== null) {
-          errors.push(`${at}.max_count: 「${effect.type}」は固定加算のため最大発動回数は指定しないでください（値: ${show(effect.max_count)}）`);
-        }
-      } else if (!isNonNegativeInteger(effect.max_count)) {
-        errors.push(`${at}.max_count: 0以上の整数が必要です（値: ${show(effect.max_count)}）`);
-      }
-      if (typeof effect.value !== 'number' || !Number.isFinite(effect.value)) {
-        errors.push(`${at}.value: 数値が必要です（値: ${show(effect.value)}）`);
-      }
+      errors.push(...validateEffect(effect, at, effectTypeSet, countSources, '効果'));
     });
   });
   return errors;

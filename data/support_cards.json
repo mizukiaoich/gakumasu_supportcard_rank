@@ -8,6 +8,7 @@
     "is_sample": true,
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Da",
         "value": 20
       }
@@ -59,8 +60,15 @@
     "is_sample": true,
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vo",
         "value": 30
+      },
+      {
+        "type": "削除",
+        "target": "Da",
+        "max_count": 2,
+        "value": 10
       }
     ],
     "effects": [
@@ -156,6 +164,7 @@
     "is_sample": true,
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vo",
         "value": 10
       }
@@ -202,6 +211,7 @@
     "is_sample": true,
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vo",
         "value": 20
       }
@@ -253,6 +263,7 @@
     "is_sample": true,
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vi",
         "value": 30
       }
@@ -350,6 +361,7 @@
     "is_sample": true,
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vo",
         "value": 10
       }
@@ -395,6 +407,7 @@
     "is_sample": true,
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vi",
         "value": 20
       }
@@ -446,6 +459,7 @@
     "is_sample": true,
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Da",
         "value": 30
       }
@@ -543,6 +557,7 @@
     "is_sample": true,
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Da",
         "value": 10
       }

@@ -85,19 +85,30 @@ test('初期評価（効果スロット）は行動回数に関係なく1回だ�
   assert.equal(many.total, 89);
 });
 
-test('イベント効果は行動回数に関係なく1回だけ固定で加算される', () => {
+test('イベント効果は効果と同じ type で計算される（固定加算も回数分の加算も使える）', () => {
   const c = {
     ...card('ev', 'センス', [effect('相談', 'Da', 5, 3), { type: '初期評価', target: 'Vo', value: 65 }, EMPTY, EMPTY, EMPTY, EMPTY]),
-    event_bonus: [{ target: 'Da', value: 20 }, { target: 'Vi', value: 15 }],
+    event_bonus: [
+      { type: '初期評価', target: 'Da', value: 20 },
+      { type: '初期評価', target: 'Vi', value: 15 },
+      { type: '削除', target: 'Vi', max_count: 2, value: 10 },
+      { type: 'DaSP終了時', target: 'Da', max_count: 3, value: 4 },
+    ],
   };
+  // 行動回数0：固定加算のイベント効果だけが加算される
   const zero = calculateCard(c, counts(), SOURCES);
   assert.deepEqual(zero.scores, { Vo: 65, Da: 20, Vi: 15 });
   assert.equal(zero.total, 100);
 
-  // 行動回数を増やしてもイベント効果は増えない（効果分 3回×3=9 のみ増える）
-  const many = calculateCard(c, counts({ 相談: 3, 授業: 99 }), SOURCES);
-  assert.deepEqual(many.scores, { Vo: 65, Da: 20 + 9, Vi: 15 });
-  assert.deepEqual(many.fixedBonuses.map((f) => [f.key, f.label, f.items.length]), [['event_bonus', 'イベント効果', 2]]);
+  // 削除5回 → MIN(5,2)×10=20、DaSPレッスン1回 → 1×4=4、相談3回 → 3×3=9
+  const many = calculateCard(c, counts({ 相談: 3, 削除: 5, DaSPレッスン: 1, 授業: 99 }), SOURCES);
+  assert.deepEqual(many.scores, { Vo: 65, Da: 20 + 9 + 4, Vi: 15 + 20 });
+  assert.deepEqual(many.eventBreakdown.map((b) => [b.no, b.type, b.fixed, b.countFrom, b.actualCount, b.contribution]), [
+    [1, '初期評価', true, null, 1, 20],
+    [2, '初期評価', true, null, 1, 15],
+    [3, '削除', false, '削除', 2, 20],
+    [4, 'DaSP終了時', false, 'DaSPレッスン', 1, 4],
+  ]);
 
   // event_bonus がないカードはイベント効果0
   const none = calculateCard(card('n', 'センス', c.effects), counts(), SOURCES);

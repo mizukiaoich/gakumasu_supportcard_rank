@@ -94,15 +94,30 @@ test('旧形式の initial_bonus 項目はエラーとして案内する', () =>
   assert.match(validateCards([legacy], ctx)[0], /\(id: a\)\.initial_bonus: 初期評価は effects の中に/);
 });
 
-test('イベント効果（event_bonus）を検証する', () => {
-  const ok = { ...card('a', 'センス', sixEffects()), event_bonus: [{ target: 'Da', value: 20 }] };
+test('イベント効果（event_bonus）は効果と同じルールで検証する', () => {
+  const ok = {
+    ...card('a', 'センス', sixEffects()),
+    event_bonus: [{ type: '初期評価', target: 'Da', value: 20 }, { type: '削除', target: 'Vo', max_count: 2, value: 10 }],
+  };
   assert.deepEqual(validateCards([ok], ctx), []);
   assert.deepEqual(validateCards([{ ...ok, event_bonus: [] }], ctx), []);
   assert.match(validateCards([{ ...ok, event_bonus: 20 }], ctx)[0], /\(id: a\)\.event_bonus: イベント効果は配列/);
+
+  // type なし（旧形式）、対象・値の不正
   const bad = validateCards([{ ...ok, event_bonus: [{ target: 'DA', value: null }] }], ctx);
-  assert.equal(bad.length, 2);
-  assert.ok(bad.some((e) => e.includes('event_bonus[0].target')));
-  assert.ok(bad.some((e) => e.includes('event_bonus[0].value')));
+  assert.equal(bad.length, 4);
+  for (const f of ['type', 'target', 'max_count', 'value']) assert.ok(bad.some((e) => e.includes(`event_bonus[0].${f}`)), f);
+
+  // 固定加算の type に max_count、回数で発動する type に max_count なし
+  const counts = validateCards([{ ...ok, event_bonus: [
+    { type: '初期評価', target: 'Da', max_count: 1, value: 20 },
+    { type: '削除', target: 'Vo', value: 10 },
+  ] }], ctx);
+  assert.ok(counts.some((e) => e.includes('event_bonus[0].max_count: 「初期評価」は固定加算')));
+  assert.ok(counts.some((e) => e.includes('event_bonus[1].max_count: 0以上の整数')));
+
+  // 空スロットは使えない
+  assert.match(validateCards([{ ...ok, event_bonus: [{ empty: true }] }], ctx)[0], /event_bonus\[0\]: イベント効果に空スロットは使えません/);
 });
 
 test('効果種類（effect_types.json）を検証する', () => {

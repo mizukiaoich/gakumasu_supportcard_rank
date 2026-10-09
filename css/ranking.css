@@ -165,17 +165,9 @@ td.col-total { font-size: 1rem; }
 
 .breakdown-title { font-size: 1rem; margin-top: 20px; }
 .breakdown-help { font-size: 0.8rem; color: var(--c-text-sub); margin: 4px 0 10px; }
-.breakdown-table td, .breakdown-table th { white-space: nowrap; }
-.fixed-bonus-list { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; align-items: center; margin: 0; }
-.fixed-bonus-label { font-weight: 700; font-size: 0.9rem; color: var(--c-text-sub); }
-.fixed-bonus-items { margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.fixed-bonus-item {
-  display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px;
-  border-radius: var(--radius-sm); background: var(--c-bg); border: 1px solid var(--c-border);
-}
-.fixed-bonus-value { font-weight: 800; font-variant-numeric: tabular-nums; }
-.fixed-bonus-none { font-size: 0.9rem; color: var(--c-text-sub); }
-.breakdown-table .is-empty-slot td { color: var(--c-text-sub); background: #f8fafc; font-style: italic; }
+.breakdown-table td, .breakdown-table th, .event-table td, .event-table th { white-space: nowrap; }
+.event-none { font-size: 0.9rem; color: var(--c-text-sub); margin-top: 8px; }
+.breakdown-table .is-empty-slot td, .event-table .is-empty-slot td { color: var(--c-text-sub); background: #f8fafc; font-style: italic; }
 .is-capped { color: var(--c-purple); }
 .cap-note { font-size: 0.72rem; font-weight: 600; }
 .count-from { display: block; font-size: 0.72rem; color: var(--c-text-sub); }
