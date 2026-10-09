@@ -10,6 +10,7 @@
       {
         "type": "初期評価",
         "target": "Da",
+        "max_count": 1,
         "value": 20
       }
     ],
@@ -62,6 +63,7 @@
       {
         "type": "初期評価",
         "target": "Vo",
+        "max_count": 1,
         "value": 30
       },
       {
@@ -166,6 +168,7 @@
       {
         "type": "初期評価",
         "target": "Vo",
+        "max_count": 1,
         "value": 10
       }
     ],
@@ -213,6 +216,7 @@
       {
         "type": "初期評価",
         "target": "Vo",
+        "max_count": 1,
         "value": 20
       }
     ],
@@ -265,6 +269,7 @@
       {
         "type": "初期評価",
         "target": "Vi",
+        "max_count": 1,
         "value": 30
       }
     ],
@@ -363,6 +368,7 @@
       {
         "type": "初期評価",
         "target": "Vo",
+        "max_count": 1,
         "value": 10
       }
     ],
@@ -409,6 +415,7 @@
       {
         "type": "初期評価",
         "target": "Vi",
+        "max_count": 1,
         "value": 20
       }
     ],
@@ -461,6 +468,7 @@
       {
         "type": "初期評価",
         "target": "Da",
+        "max_count": 1,
         "value": 30
       }
     ],
@@ -559,6 +567,7 @@
       {
         "type": "初期評価",
         "target": "Da",
+        "max_count": 1,
         "value": 10
       }
     ],

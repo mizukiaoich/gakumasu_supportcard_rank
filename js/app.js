@@ -239,7 +239,7 @@ function showDetail(cardId, scroll) {
         el('td', { class: 'num', text: String(b.no) }),
         el('td', {}, [b.type, el('span', { class: 'count-from', text: '（固定加算・行動回数に関係なし）' })]),
         el('td', {}, [paramBadge(b.target)]),
-        el('td', { class: 'num', text: '—' }),
+        el('td', { class: 'num', text: b.maxCount === null ? '—' : fmt(b.maxCount) }),
         el('td', { class: 'num', text: '—' }),
         el('td', { class: 'num', text: fmt(b.actualCount) }),
         el('td', { class: 'num', text: fmt(b.value) }),

@@ -89,7 +89,7 @@ test('イベント効果は効果と同じ type で計算される（固定加�
   const c = {
     ...card('ev', 'センス', [effect('相談', 'Da', 5, 3), { type: '初期評価', target: 'Vo', value: 65 }, EMPTY, EMPTY, EMPTY, EMPTY]),
     event_bonus: [
-      { type: '初期評価', target: 'Da', value: 20 },
+      { type: '初期評価', target: 'Da', max_count: 1, value: 20 },
       { type: '初期評価', target: 'Vi', value: 15 },
       { type: '削除', target: 'Vi', max_count: 2, value: 10 },
       { type: 'DaSP終了時', target: 'Da', max_count: 3, value: 4 },

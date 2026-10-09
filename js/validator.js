@@ -127,8 +127,9 @@ function validateEffect(effect, at, effectTypeSet, countSources, label) {
     errors.push(`${at}.target: ${PARAMETERS.join(' / ')} のいずれかが必要です（値: ${show(effect.target)}）`);
   }
   if (isFixedEffectType(countSources, effect.type)) {
-    if (effect.max_count !== undefined && effect.max_count !== null) {
-      errors.push(`${at}.max_count: 「${effect.type}」は固定加算のため最大発動回数は指定しないでください（値: ${show(effect.max_count)}）`);
+    // 固定加算は1回だけ加算するので、max_count は 1 か省略のみ
+    if (effect.max_count !== undefined && effect.max_count !== null && effect.max_count !== 1) {
+      errors.push(`${at}.max_count: 「${effect.type}」は固定加算（1回のみ）のため、最大発動回数は 1 にするか省略してください（値: ${show(effect.max_count)}）`);
     }
   } else if (!isNonNegativeInteger(effect.max_count)) {
     errors.push(`${at}.max_count: 0以上の整数が必要です（値: ${show(effect.max_count)}）`);

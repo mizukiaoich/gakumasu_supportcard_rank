@@ -119,7 +119,7 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
 - 「カード一覧」シートに **1行＝1カード** で入力します。効果1〜6・イベント効果1〜2は横に並んでいます（イベント効果も効果と同じく「種類・対象・最大回数・値」の4列）。
 - プラン・対象・効果種類・サンプル列はプルダウンで選べます（選択肢は `data/plans.json`・`data/action_types.json`・`data/effect_types.json` から作成）。
 - 使わない効果スロット、今の計算式で表せない効果（パラメータ上昇量%アップ、条件付きの効果など）は、その効果の4列をすべて空欄にします（空スロット）。
-- 初期評価は効果スロットの1つとして「種類＝初期評価」で入力し、最大回数は空欄にします。
+- 初期評価は効果スロットの1つとして「種類＝初期評価」で入力します。最大回数は 1 か空欄です（固定加算は常に1回だけ）。
 - 問題があると「`カード一覧 5行目 (id: ssr_0001) 効果3 対象: ...`」のように行番号と列名を表示し、JSON は変更しません。
 - 別のファイルを使う場合は `node scripts/cards-excel.mjs import path/to/file.xlsx` のように指定できます。Google スプレッドシートは「ファイル → ダウンロード → Microsoft Excel (.xlsx)」で書き出してください。
 - 行動種類・効果種類・プランを増やしたときは、`npm run cards:export` で Excel を作り直すとプルダウンにも反映されます（既存の入力内容は JSON から引き継がれるので、先に `cards:import` しておいてください）。
@@ -136,7 +136,7 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
   "plan": "センス",
   "image": "images/support_cards/card_0001.webp",
   "event_bonus": [
-    { "type": "初期評価", "target": "Da", "value": 20 }
+    { "type": "初期評価", "target": "Da", "max_count": 1, "value": 20 }
   ],
   "effects": [
     { "type": "おでかけ", "target": "Vo", "max_count": 3, "value": 10 },
@@ -157,11 +157,11 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
 | `plan` | `data/plans.json` の `name` のいずれか |
 | `image` | サイトルートからの画像パス。画像がない場合は `""`（プレースホルダー表示） |
 | `is_sample` | 任意。`true` の場合は画面に「サンプル」と表示。**実データには付けない** |
-| `event_bonus` | イベント効果。`effects` と同じ形式（`type` / `target` / `max_count` / `value`）の配列で、計算方法も同じ。件数の制限なし、空スロットは使わない。なしの場合は `[]` または省略。例：固定で Vo +20 なら `{ "type": "初期評価", "target": "Vo", "value": 20 }` |
+| `event_bonus` | イベント効果。`effects` と同じ形式（`type` / `target` / `max_count` / `value`）の配列で、計算方法も同じ。件数の制限なし、空スロットは使わない。なしの場合は `[]` または省略。例：固定で Vo +20 なら `{ "type": "初期評価", "target": "Vo", "max_count": 1, "value": 20 }` |
 | `effects` | **ちょうど 6 件**。完凸状態の効果を記入 |
 | `effects[].type` | `data/action_types.json` または `data/effect_types.json` の `name` のいずれか |
 | `effects[].target` | `Vo` / `Da` / `Vi` |
-| `effects[].max_count` | 最大発動回数（0 以上の整数）。初期評価など固定加算の効果では省略 |
+| `effects[].max_count` | 最大発動回数（0 以上の整数）。初期評価など固定加算の効果では `1` または省略（常に1回だけ加算） |
 | `effects[].value` | 1 回あたりの上昇値（数値） |
 | 初期評価 | `{ "type": "初期評価", "target": "Vo", "value": 65 }`。効果スロットの1つとして記入し、行動回数に関係なく1回だけ加算 |
 | 空スロット | `{ "empty": true }`（計算対象外） |
@@ -219,7 +219,7 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
 
 たとえば効果 `{ "type": "VoSP終了時", "max_count": 4, "value": 17 }` は、入力した VoSPレッスン の回数（最大4回）× 17 を加算します。DaSPレッスン・ViSPレッスンの回数では発動しません。
 
-`"fixed": true` の効果種類（初期評価）は、行動回数に関係なく `value` を1回だけ加算します。カードの効果には `max_count` を書きません。
+`"fixed": true` の効果種類（初期評価）は、行動回数に関係なく `value` を1回だけ加算します。カードの効果の `max_count` は `1` にするか省略します。
 
 
 ## GitHub Pages の設定手順

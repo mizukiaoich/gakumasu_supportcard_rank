@@ -84,7 +84,11 @@ test('初期評価は effects の中に type: 初期評価 で書き、max_count
   assert.deepEqual(validateCards([card('a', 'センス', effects)], ctx), []);
 
   effects[3] = { type: '初期評価', target: 'Vo', max_count: 1, value: 65 };
-  assert.match(validateCards([card('a', 'センス', effects)], ctx)[0], /effects\[3\]\.max_count: 「初期評価」は固定加算/);
+  assert.deepEqual(validateCards([card('a', 'センス', effects)], ctx), []);
+  for (const bad of [0, 2, '1']) {
+    effects[3] = { type: '初期評価', target: 'Vo', max_count: bad, value: 65 };
+    assert.match(validateCards([card('a', 'センス', effects)], ctx)[0], /effects\[3\]\.max_count: 「初期評価」は固定加算（1回のみ）/, String(bad));
+  }
   effects[3] = { type: '初期評価', target: 'VO', value: '65' };
   assert.equal(validateCards([card('a', 'センス', effects)], ctx).length, 2);
 });
@@ -110,7 +114,7 @@ test('イベント効果（event_bonus）は効果と同じルールで検証す
 
   // 固定加算の type に max_count、回数で発動する type に max_count なし
   const counts = validateCards([{ ...ok, event_bonus: [
-    { type: '初期評価', target: 'Da', max_count: 1, value: 20 },
+    { type: '初期評価', target: 'Da', max_count: 3, value: 20 },
     { type: '削除', target: 'Vo', value: 10 },
   ] }], ctx);
   assert.ok(counts.some((e) => e.includes('event_bonus[0].max_count: 「初期評価」は固定加算')));

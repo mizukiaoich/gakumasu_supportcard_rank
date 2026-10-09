@@ -14,7 +14,7 @@ function calculateEffect(card, effect, label, no, actionCounts, countSources) {
   const base = { no, empty: false, type: effect.type, target: effect.target, value: effect.value };
   if (isFixedEffectType(countSources, effect.type)) {
     return {
-      ...base, fixed: true, countFrom: null, maxCount: null, inputCount: null, actualCount: 1, contribution: effect.value,
+      ...base, fixed: true, countFrom: null, maxCount: effect.max_count ?? null, inputCount: null, actualCount: 1, contribution: effect.value,
     };
   }
   const countFrom = countSources[effect.type] ?? effect.type;

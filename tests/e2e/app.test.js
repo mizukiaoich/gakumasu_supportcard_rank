@@ -295,7 +295,7 @@ test('カードを選ぶと詳細に6つの効果の内訳が表示され、発�
     if (countFrom[e.type] === null) {
       // 初期評価：行動回数に関係なく1回だけ加算
       assert.deepEqual([no, type, target, max, input, actual, value, contribution],
-        [String(i + 1), `${e.type}（固定加算・行動回数に関係なし）`, e.target, '—', '—', '1', String(e.value), `${e.target} +${e.value}`]);
+        [String(i + 1), `${e.type}（固定加算・行動回数に関係なし）`, e.target, e.max_count === undefined ? '—' : String(e.max_count), '—', '1', String(e.value), `${e.target} +${e.value}`]);
       return;
     }
     const actualCount = Math.min(counts[countFrom[e.type]], e.max_count);
