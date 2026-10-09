@@ -199,7 +199,7 @@ function showDetail(cardId, scroll) {
     tr.classList.toggle('is-selected', tr.dataset.cardId === state.selectedId);
   }
   if (!result) {
-    content.replaceChildren(el('p', { class: 'detail-placeholder', text: 'ランキング内のカードを選択すると、評価値と初期評価・イベント効果・6つの効果の内訳が表示されます。' }));
+    content.replaceChildren(el('p', { class: 'detail-placeholder', text: 'ランキング内のカードを選択すると、評価値とイベント効果・6つの効果（初期評価を含む）の内訳が表示されます。' }));
     return;
   }
   const { card, scores, total, fixedBonuses, breakdown } = result;
@@ -234,6 +234,18 @@ function showDetail(cardId, scroll) {
         el('td', { colspan: String(headers.length - 1), text: '空スロット（効果なし・計算対象外）' }),
       ]);
     }
+    if (b.fixed) {
+      return el('tr', { class: 'is-fixed' }, [
+        el('td', { class: 'num', text: String(b.no) }),
+        el('td', {}, [b.type, el('span', { class: 'count-from', text: '（固定加算・行動回数に関係なし）' })]),
+        el('td', {}, [paramBadge(b.target)]),
+        el('td', { class: 'num', text: '—' }),
+        el('td', { class: 'num', text: '—' }),
+        el('td', { class: 'num', text: fmt(b.actualCount) }),
+        el('td', { class: 'num', text: fmt(b.value) }),
+        el('td', { class: 'num contribution', text: `${b.target} +${fmt(b.contribution)}` }),
+      ]);
+    }
     const capped = b.inputCount > b.maxCount;
     return el('tr', {}, [
       el('td', { class: 'num', text: String(b.no) }),
@@ -252,7 +264,7 @@ function showDetail(cardId, scroll) {
   });
 
   const fixedSection = el('div', { class: 'fixed-bonus-section' }, [
-    el('h4', { class: 'breakdown-title', text: '固定加算（初期評価・イベント効果）' }),
+    el('h4', { class: 'breakdown-title', text: 'イベント効果（固定加算）' }),
     el('p', { class: 'breakdown-help', text: '行動回数に関係なく、1回だけそのまま評価値に加算されます。' }),
     el('dl', { class: 'fixed-bonus-list' }, fixedBonuses.flatMap(({ key, label, items }) => [
       el('dt', { class: 'fixed-bonus-label', text: label }),
@@ -269,7 +281,7 @@ function showDetail(cardId, scroll) {
     head,
     fixedSection,
     el('h4', { class: 'breakdown-title', text: '6つの効果の内訳' }),
-    el('p', { class: 'breakdown-help', text: `実際の発動回数 = MIN(入力された行動回数, 最大発動回数)、今回の上昇値 = 実際の発動回数 × 1回あたりの上昇値（育成プラン：${cond.plan}）` }),
+    el('p', { class: 'breakdown-help', text: `実際の発動回数 = MIN(入力された行動回数, 最大発動回数)、今回の上昇値 = 実際の発動回数 × 1回あたりの上昇値。初期評価は行動回数に関係なく1回だけ加算（育成プラン：${cond.plan}）` }),
     el('div', { class: 'table-scroll', tabindex: '0', 'aria-label': '効果の内訳表' }, [
       el('table', { class: 'breakdown-table' }, [
         el('thead', {}, [el('tr', {}, headers.map((h) => el('th', { scope: 'col', text: h })))]),

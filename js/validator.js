@@ -64,6 +64,8 @@ export function validateActionTypes(actionTypes, file = 'action_types.json') {
  * 効果種類の定義（effect_types.json）を検証する。
  * 例: { "name": "VoSP終了時", "count_from": "VoSPレッスン" }
  *   → 効果「VoSP終了時」の発動回数には、行動「VoSPレッスン」の入力回数を使う
+ * 例: { "name": "初期評価", "fixed": true }
+ *   → 行動回数に関係なく value を1回だけ加算する（max_count は不要）
  */
 export function validateEffectTypes(effectTypes, actionNames, file = 'effect_types.json') {
   const errors = [];
@@ -79,7 +81,13 @@ export function validateEffectTypes(effectTypes, actionNames, file = 'effect_typ
     if (seen.has(effectType.name)) errors.push(`${where}.name: "${effectType.name}" が重複しています`);
     if (actions.has(effectType.name)) errors.push(`${where}.name: "${effectType.name}" は action_types.json の行動種類と重複しています`);
     seen.add(effectType.name);
-    if (!actions.has(effectType.count_from)) {
+    if (effectType.fixed !== undefined && effectType.fixed !== true) {
+      errors.push(`${where}.fixed: 固定加算にする場合は true を指定してください（値: ${show(effectType.fixed)}）`);
+    } else if (effectType.fixed === true) {
+      if (effectType.count_from !== undefined) {
+        errors.push(`${where}: fixed: true の効果種類には count_from を指定できません`);
+      }
+    } else if (!actions.has(effectType.count_from)) {
       errors.push(`${where}.count_from: action_types.json に存在しない行動種類です（値: ${show(effectType.count_from)}）`);
     }
   });
@@ -89,19 +97,25 @@ export function validateEffectTypes(effectTypes, actionNames, file = 'effect_typ
 /**
  * カードの効果に使える効果種類名 → 回数を参照する行動種類名 の対応表を作る。
  * 行動種類はそれ自身の回数を、effect_types.json の効果種類は count_from の回数を参照する。
+ * 固定加算（fixed: true）の効果種類は null（回数を参照しない）。
  */
 export function buildCountSources(actionTypes, effectTypes = []) {
   return Object.fromEntries([
     ...actionTypes.map((a) => [a.name, a.name]),
-    ...effectTypes.map((e) => [e.name, e.count_from]),
+    ...effectTypes.map((e) => [e.name, e.fixed === true ? null : e.count_from]),
   ]);
 }
 
-export function validateCards(cards, { planNames, effectTypeNames }, file = 'support_cards.json') {
+/** 固定加算の効果種類か（countSources で回数の参照先が null） */
+export function isFixedEffectType(countSources, type) {
+  return Object.hasOwn(countSources, type) && countSources[type] === null;
+}
+
+export function validateCards(cards, { planNames, countSources }, file = 'support_cards.json') {
   const errors = [];
   if (!Array.isArray(cards)) return [`${file}: カードを配列で定義してください`];
   const plans = new Set(planNames);
-  const effectTypeSet = new Set(effectTypeNames);
+  const effectTypeSet = new Set(Object.keys(countSources));
   const seenIds = new Set();
 
   cards.forEach((card, i) => {
@@ -128,6 +142,9 @@ export function validateCards(cards, { planNames, effectTypeNames }, file = 'sup
     }
     if (card.is_sample !== undefined && typeof card.is_sample !== 'boolean') {
       errors.push(`${where}.is_sample: true / false が必要です（値: ${show(card.is_sample)}）`);
+    }
+    if (card.initial_bonus !== undefined) {
+      errors.push(`${where}.initial_bonus: 初期評価は effects の中に { "type": "初期評価", "target": "Vo", "value": 65 } の形で記入してください`);
     }
     for (const { key, label } of FIXED_BONUS_TYPES) {
       const list = card[key];
@@ -171,7 +188,11 @@ export function validateCards(cards, { planNames, effectTypeNames }, file = 'sup
       if (!PARAMETERS.includes(effect.target)) {
         errors.push(`${at}.target: ${PARAMETERS.join(' / ')} のいずれかが必要です（値: ${show(effect.target)}）`);
       }
-      if (!isNonNegativeInteger(effect.max_count)) {
+      if (isFixedEffectType(countSources, effect.type)) {
+        if (effect.max_count !== undefined && effect.max_count !== null) {
+          errors.push(`${at}.max_count: 「${effect.type}」は固定加算のため最大発動回数は指定しないでください（値: ${show(effect.max_count)}）`);
+        }
+      } else if (!isNonNegativeInteger(effect.max_count)) {
         errors.push(`${at}.max_count: 0以上の整数が必要です（値: ${show(effect.max_count)}）`);
       }
       if (typeof effect.value !== 'number' || !Number.isFinite(effect.value)) {
@@ -191,7 +212,7 @@ export function validateAll({ plans, actionTypes, effectTypes = [], cards }) {
   if (errors.length === 0) {
     errors.push(...validateCards(cards, {
       planNames: plans.map((p) => p.name),
-      effectTypeNames: Object.keys(buildCountSources(actionTypes, effectTypes)),
+      countSources: buildCountSources(actionTypes, effectTypes),
     }));
   }
   if (errors.length > 0) throw new DataValidationError(errors);

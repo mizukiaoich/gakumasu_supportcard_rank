@@ -62,49 +62,46 @@ test('calculateForPlan は選択したプランのカードだけを対象にす
   assert.deepEqual(calculateForPlan(cards, 'アノマリー', counts()), []);
 });
 
-test('初期評価は行動回数に関係なく固定で加算される', () => {
-  const c = {
-    ...card('init', 'センス', [effect('Voレッスン', 'Vo', 2, 5), effect('授業', 'Da', 3, 4), EMPTY, EMPTY, EMPTY, EMPTY]),
-    initial_bonus: [{ target: 'Vo', value: 65 }, { target: 'Vi', value: 10 }],
-  };
+test('初期評価（効果スロット）は行動回数に関係なく1回だけ固定で加算される', () => {
+  const c = card('init', 'センス', [
+    effect('Voレッスン', 'Vo', 2, 5),
+    effect('授業', 'Da', 3, 4),
+    { type: '初期評価', target: 'Vo', value: 65 },
+    { type: '初期評価', target: 'Vi', value: 10 },
+    EMPTY, EMPTY,
+  ]);
   // 行動回数0でも初期評価だけは加算される
-  const zero = calculateCard(c, counts());
+  const zero = calculateCard(c, counts(), SOURCES);
   assert.deepEqual(zero.scores, { Vo: 65, Da: 0, Vi: 10 });
   assert.equal(zero.total, 75);
-  assert.deepEqual(zero.fixedBonuses.find((f) => f.key === 'initial_bonus').items, [{ target: 'Vo', value: 65 }, { target: 'Vi', value: 10 }]);
+  assert.deepEqual(zero.breakdown[2], {
+    no: 3, empty: false, fixed: true, type: '初期評価', countFrom: null, target: 'Vo',
+    maxCount: null, inputCount: null, actualCount: 1, value: 65, contribution: 65,
+  });
 
   // 行動回数を増やしても初期評価の値は変わらず、効果分だけが増える
-  const many = calculateCard(c, counts({ Voレッスン: 9, 授業: 1 }));
+  const many = calculateCard(c, counts({ Voレッスン: 9, 授業: 1 }), SOURCES);
   assert.deepEqual(many.scores, { Vo: 65 + 10, Da: 4, Vi: 10 });
   assert.equal(many.total, 89);
 });
 
-test('initial_bonus がない・空配列のカードは初期評価0として扱う', () => {
-  const effects = [effect('Voレッスン', 'Vo', 1, 5), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY];
-  const none = calculateCard(card('n', 'センス', effects), counts({ Voレッスン: 1 }));
-  const empty = calculateCard({ ...card('e', 'センス', effects), initial_bonus: [] }, counts({ Voレッスン: 1 }));
-  assert.deepEqual(none.scores, { Vo: 5, Da: 0, Vi: 0 });
-  assert.deepEqual(empty.scores, { Vo: 5, Da: 0, Vi: 0 });
-  assert.deepEqual(none.fixedBonuses.map((f) => f.items), [[], []]);
-});
-
 test('イベント効果は行動回数に関係なく1回だけ固定で加算される', () => {
   const c = {
-    ...card('ev', 'センス', [effect('相談', 'Da', 5, 3), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]),
-    initial_bonus: [{ target: 'Vo', value: 65 }],
+    ...card('ev', 'センス', [effect('相談', 'Da', 5, 3), { type: '初期評価', target: 'Vo', value: 65 }, EMPTY, EMPTY, EMPTY, EMPTY]),
     event_bonus: [{ target: 'Da', value: 20 }, { target: 'Vi', value: 15 }],
   };
-  const zero = calculateCard(c, counts());
+  const zero = calculateCard(c, counts(), SOURCES);
   assert.deepEqual(zero.scores, { Vo: 65, Da: 20, Vi: 15 });
   assert.equal(zero.total, 100);
 
   // 行動回数を増やしてもイベント効果は増えない（効果分 3回×3=9 のみ増える）
-  const many = calculateCard(c, counts({ 相談: 3, 授業: 99 }));
+  const many = calculateCard(c, counts({ 相談: 3, 授業: 99 }), SOURCES);
   assert.deepEqual(many.scores, { Vo: 65, Da: 20 + 9, Vi: 15 });
-  assert.deepEqual(many.fixedBonuses.map((f) => [f.key, f.label, f.items.length]), [
-    ['initial_bonus', '初期評価', 1],
-    ['event_bonus', 'イベント効果', 2],
-  ]);
+  assert.deepEqual(many.fixedBonuses.map((f) => [f.key, f.label, f.items.length]), [['event_bonus', 'イベント効果', 2]]);
+
+  // event_bonus がないカードはイベント効果0
+  const none = calculateCard(card('n', 'センス', c.effects), counts(), SOURCES);
+  assert.deepEqual(none.scores, { Vo: 65, Da: 0, Vi: 0 });
 });
 
 test('SP終了時の効果は、同じパラメータのSPレッスンの回数だけ発動する', () => {

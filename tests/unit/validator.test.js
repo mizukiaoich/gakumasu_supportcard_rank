@@ -5,7 +5,7 @@ import { ACTIONS, EFFECT_TYPES, card, effect, EMPTY, counts } from './helpers.js
 
 const ctx = {
   planNames: ['センス', 'ロジック', 'アノマリー'],
-  effectTypeNames: Object.keys(buildCountSources(ACTIONS.map((name) => ({ name })), EFFECT_TYPES)),
+  countSources: buildCountSources(ACTIONS.map((name) => ({ name })), EFFECT_TYPES),
 };
 const sixEffects = () => [
   effect('Voレッスン', 'Vo', 1, 1), effect('授業', 'Da', 1, 1), effect('相談', 'Vi', 1, 1),
@@ -76,18 +76,22 @@ test('行動回数の入力検証：0以上の整数のみ許可', () => {
   assert.deepEqual(errors.map((e) => e.name), ['Voレッスン', '授業', '休む']);
 });
 
-test('初期評価（initial_bonus）を検証する', () => {
-  const ok = { ...card('a', 'センス', sixEffects()), initial_bonus: [{ target: 'Vo', value: 65 }] };
-  assert.deepEqual(validateCards([ok], ctx), []);
-  assert.deepEqual(validateCards([{ ...ok, initial_bonus: [] }], ctx), []);
+test('初期評価は effects の中に type: 初期評価 で書き、max_count は指定しない', () => {
+  const effects = sixEffects();
+  effects[3] = { type: '初期評価', target: 'Vo', value: 65 };
+  assert.deepEqual(validateCards([card('a', 'センス', effects)], ctx), []);
+  effects[3] = { type: '初期評価', target: 'Vo', max_count: null, value: 65 };
+  assert.deepEqual(validateCards([card('a', 'センス', effects)], ctx), []);
 
-  const notArray = validateCards([{ ...ok, initial_bonus: { target: 'Vo', value: 65 } }], ctx);
-  assert.match(notArray[0], /\(id: a\)\.initial_bonus: 初期評価は配列/);
+  effects[3] = { type: '初期評価', target: 'Vo', max_count: 1, value: 65 };
+  assert.match(validateCards([card('a', 'センス', effects)], ctx)[0], /effects\[3\]\.max_count: 「初期評価」は固定加算/);
+  effects[3] = { type: '初期評価', target: 'VO', value: '65' };
+  assert.equal(validateCards([card('a', 'センス', effects)], ctx).length, 2);
+});
 
-  const bad = validateCards([{ ...ok, initial_bonus: [{ target: 'vo', value: '65' }] }], ctx);
-  assert.equal(bad.length, 2);
-  assert.ok(bad.some((e) => e.includes('initial_bonus[0].target')));
-  assert.ok(bad.some((e) => e.includes('initial_bonus[0].value')));
+test('旧形式の initial_bonus 項目はエラーとして案内する', () => {
+  const legacy = { ...card('a', 'センス', sixEffects()), initial_bonus: [{ target: 'Vo', value: 65 }] };
+  assert.match(validateCards([legacy], ctx)[0], /\(id: a\)\.initial_bonus: 初期評価は effects の中に/);
 });
 
 test('イベント効果（event_bonus）を検証する', () => {
@@ -106,12 +110,16 @@ test('効果種類（effect_types.json）を検証する', () => {
   assert.deepEqual(validateEffectTypes([], ACTIONS), []);
   const errors = validateEffectTypes([
     { name: 'VoSP終了時', count_from: 'SPレッスン' },
+    { name: '初期評価X', fixed: true, count_from: 'Voレッスン' },
+    { name: '初期評価Y', fixed: 'yes' },
     { name: 'VoSP終了時', count_from: 'VoSPレッスン' },
     { name: '授業', count_from: '授業' },
   ], ACTIONS);
   assert.ok(errors.some((e) => e.includes('[0].count_from')));
-  assert.ok(errors.some((e) => e.includes('[1].name: "VoSP終了時" が重複')));
-  assert.ok(errors.some((e) => e.includes('[2].name: "授業" は action_types.json の行動種類と重複')));
+  assert.ok(errors.some((e) => e.includes('[1]: fixed: true の効果種類には count_from を指定できません')));
+  assert.ok(errors.some((e) => e.includes('[2].fixed')));
+  assert.ok(errors.some((e) => e.includes('[3].name: "VoSP終了時" が重複')));
+  assert.ok(errors.some((e) => e.includes('[4].name: "授業" は action_types.json の行動種類と重複')));
 });
 
 test('カードの効果には行動種類と effect_types.json の効果種類が使え、旧「SPレッスン」は使えない', () => {

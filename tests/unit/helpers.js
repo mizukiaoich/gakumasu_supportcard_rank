@@ -3,8 +3,9 @@ export const ACTIONS = [
   '授業', 'おでかけ', '相談', '強化', '削除', '活動支給', '休む',
 ];
 
-// data/effect_types.json と同じ対応（SP終了時の効果は各SPレッスンの回数を参照する）
+// data/effect_types.json と同じ定義（初期評価は固定加算、SP終了時の効果は各SPレッスンの回数を参照する）
 export const EFFECT_TYPES = [
+  { name: '初期評価', fixed: true },
   { name: 'VoSP終了時', count_from: 'VoSPレッスン' },
   { name: 'DaSP終了時', count_from: 'DaSPレッスン' },
   { name: 'ViSP終了時', count_from: 'ViSPレッスン' },

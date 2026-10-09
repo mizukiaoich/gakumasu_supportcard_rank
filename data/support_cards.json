@@ -6,12 +6,6 @@
     "plan": "センス",
     "image": "images/support_cards/sample_001.svg",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vo",
-        "value": 65
-      }
-    ],
     "event_bonus": [
       {
         "target": "Da",
@@ -50,10 +44,9 @@
         "value": 8
       },
       {
-        "type": "授業",
-        "target": "Da",
-        "max_count": 3,
-        "value": 6
+        "type": "初期評価",
+        "target": "Vo",
+        "value": 65
       }
     ]
   },
@@ -64,12 +57,6 @@
     "plan": "センス",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Da",
-        "value": 60
-      }
-    ],
     "event_bonus": [
       {
         "target": "Vo",
@@ -108,10 +95,9 @@
         "value": 20
       },
       {
-        "type": "活動支給",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 8
+        "type": "初期評価",
+        "target": "Da",
+        "value": 60
       }
     ]
   },
@@ -122,12 +108,6 @@
     "plan": "センス",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vi",
-        "value": 40
-      }
-    ],
     "event_bonus": [],
     "effects": [
       {
@@ -155,7 +135,9 @@
         "value": 6
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 40
       },
       {
         "type": "休む",
@@ -172,7 +154,6 @@
     "plan": "センス",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [],
     "event_bonus": [
       {
         "target": "Vo",
@@ -219,12 +200,6 @@
     "plan": "ロジック",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vi",
-        "value": 65
-      }
-    ],
     "event_bonus": [
       {
         "target": "Vo",
@@ -263,10 +238,9 @@
         "value": 14
       },
       {
-        "type": "活動支給",
-        "target": "Da",
-        "max_count": 2,
-        "value": 9
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 65
       }
     ]
   },
@@ -277,12 +251,6 @@
     "plan": "ロジック",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vo",
-        "value": 60
-      }
-    ],
     "event_bonus": [
       {
         "target": "Vi",
@@ -321,10 +289,9 @@
         "value": 11
       },
       {
-        "type": "授業",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 6
+        "type": "初期評価",
+        "target": "Vo",
+        "value": 60
       }
     ]
   },
@@ -335,12 +302,6 @@
     "plan": "ロジック",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Da",
-        "value": 40
-      }
-    ],
     "event_bonus": [],
     "effects": [
       {
@@ -374,7 +335,9 @@
         "value": 8
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Da",
+        "value": 40
       }
     ]
   },
@@ -385,12 +348,6 @@
     "plan": "ロジック",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Da",
-        "value": 20
-      }
-    ],
     "event_bonus": [
       {
         "target": "Vo",
@@ -417,7 +374,9 @@
         "value": 6
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Da",
+        "value": 20
       },
       {
         "empty": true
@@ -434,12 +393,6 @@
     "plan": "アノマリー",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Da",
-        "value": 65
-      }
-    ],
     "event_bonus": [
       {
         "target": "Vi",
@@ -478,10 +431,9 @@
         "value": 7
       },
       {
-        "type": "休む",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 9
+        "type": "初期評価",
+        "target": "Da",
+        "value": 65
       }
     ]
   },
@@ -492,12 +444,6 @@
     "plan": "アノマリー",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vi",
-        "value": 60
-      }
-    ],
     "event_bonus": [
       {
         "target": "Da",
@@ -536,10 +482,9 @@
         "value": 8
       },
       {
-        "type": "おでかけ",
-        "target": "Vo",
-        "max_count": 1,
-        "value": 15
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 60
       }
     ]
   },
@@ -550,12 +495,6 @@
     "plan": "アノマリー",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vo",
-        "value": 40
-      }
-    ],
     "event_bonus": [],
     "effects": [
       {
@@ -583,7 +522,9 @@
         "value": 9
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Vo",
+        "value": 40
       },
       {
         "type": "休む",
@@ -600,12 +541,6 @@
     "plan": "アノマリー",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vi",
-        "value": 20
-      }
-    ],
     "event_bonus": [
       {
         "target": "Da",
@@ -632,7 +567,9 @@
         "value": 6
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 20
       },
       {
         "empty": true

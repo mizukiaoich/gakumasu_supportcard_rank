@@ -1,11 +1,11 @@
 import { PARAMETERS, FIXED_BONUS_TYPES } from './constants.js';
-import { isEmptySlot } from './validator.js';
+import { isEmptySlot, isFixedEffectType } from './validator.js';
 
 /**
  * 1枚のカードの評価値を計算する。
- *   初期評価（initial_bonus）・イベント効果（event_bonus）は行動回数に関係なく
- *   value を1回だけそのまま対象パラメータに加算（固定加算）
- *   actualCount  = MIN(ユーザー入力の行動回数, max_count)
+ *   固定加算の効果（初期評価など、effect_types.json で fixed: true）とイベント効果（event_bonus）は
+ *   行動回数に関係なく value を1回だけそのまま対象パラメータに加算
+ *   それ以外の効果: actualCount = MIN(ユーザー入力の行動回数, max_count)
  *   contribution = actualCount × value
  *   対象パラメータ（Vo / Da / Vi）ごとに加算し、total = Vo + Da + Vi
  * 空スロットは計算対象外。データは validator.js で検証済みである前提だが、
@@ -20,7 +20,7 @@ import { isEmptySlot } from './validator.js';
 export function calculateCard(card, actionCounts, countSources = {}) {
   const scores = Object.fromEntries(PARAMETERS.map((p) => [p, 0]));
 
-  // 初期評価・イベント効果：回数に依存しない固定加算（1回のみ）
+  // イベント効果：回数に依存しない固定加算（1回のみ）
   const fixedBonuses = FIXED_BONUS_TYPES.map(({ key, label }) => ({
     key,
     label,
@@ -36,14 +36,31 @@ export function calculateCard(card, actionCounts, countSources = {}) {
   const breakdown = card.effects.map((effect, index) => {
     const no = index + 1;
     if (isEmptySlot(effect)) return { no, empty: true };
+    if (!PARAMETERS.includes(effect.target)) {
+      throw new Error(`カード ${card.id} の効果${no}: 対象パラメータ「${effect.target}」が不正です`);
+    }
+
+    if (isFixedEffectType(countSources, effect.type)) {
+      scores[effect.target] += effect.value;
+      return {
+        no,
+        empty: false,
+        fixed: true,
+        type: effect.type,
+        countFrom: null,
+        target: effect.target,
+        maxCount: null,
+        inputCount: null,
+        actualCount: 1,
+        value: effect.value,
+        contribution: effect.value,
+      };
+    }
 
     const countFrom = countSources[effect.type] ?? effect.type;
     const inputCount = actionCounts[countFrom];
     if (!Number.isInteger(inputCount) || inputCount < 0) {
       throw new Error(`カード ${card.id} の効果${no}: 行動「${countFrom}」の入力回数が不正です（値: ${inputCount}）`);
-    }
-    if (!PARAMETERS.includes(effect.target)) {
-      throw new Error(`カード ${card.id} の効果${no}: 対象パラメータ「${effect.target}」が不正です`);
     }
     const actualCount = Math.min(inputCount, effect.max_count);
     const contribution = actualCount * effect.value;
@@ -51,6 +68,7 @@ export function calculateCard(card, actionCounts, countSources = {}) {
     return {
       no,
       empty: false,
+      fixed: false,
       type: effect.type,
       countFrom,
       target: effect.target,

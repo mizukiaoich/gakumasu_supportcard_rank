@@ -6,7 +6,7 @@ export const EFFECT_SLOT_COUNT = 6;
 
 // 行動回数に関係なく、育成中に1回だけ固定値を加算する評価項目。
 // key はカードデータの項目名、label は画面表示名。項目を増やす場合はここに追加する。
+// （初期評価は効果スロットの1つとして effects に入れる。effect_types.json の fixed: true を参照）
 export const FIXED_BONUS_TYPES = [
-  { key: 'initial_bonus', label: '初期評価' },
   { key: 'event_bonus', label: 'イベント効果' },
 ];
