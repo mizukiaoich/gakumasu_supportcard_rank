@@ -9,10 +9,17 @@
     "start:pages": "node scripts/serve.mjs --port 8080 --base /gakumasu_supportcard_rank/",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "node --test \"tests/unit/*.test.js\"",
-    "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.js\""
+    "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.js\"",
+    "cards:export": "node scripts/cards-excel.mjs export",
+    "cards:check": "node scripts/cards-excel.mjs check",
+    "cards:import": "node scripts/cards-excel.mjs import"
   },
   "devDependencies": {
+    "exceljs": "^4.4.0",
     "playwright": "1.56.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "uuid": "^11.1.1"
+  }
 }
