@@ -9,6 +9,7 @@
   { "name": "強化", "default": 0 },
   { "name": "削除", "default": 0 },
   { "name": "休む", "default": 0 },
+  { "name": "特別指導開始時", "default": 0 },
   { "name": "試験・オーディション終了時", "default": 0 },
   { "name": "好調効果カード獲得時", "default": 0 },
   { "name": "好印象効果カード獲得時", "default": 0 },
