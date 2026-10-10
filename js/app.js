@@ -139,6 +139,13 @@ function showFormErrors({ messages, invalidActions }) {
 
 /* ---------- ランキング表示 ---------- */
 
+/** 内訳表に出す「どの行動回数を使ったか」の説明 */
+function countSourceLabel(type, countFrom) {
+  if (!Array.isArray(countFrom)) return `${countFrom}の回数`;
+  const def = state.data.effectTypes.find((e) => e.name === type);
+  return def?.count_label ?? `${countFrom.join('・')}の合計回数`;
+}
+
 const COLUMNS = ['順位', '画像', 'カード名', 'レアリティ', 'Vo', 'Da', 'Vi', '総合'];
 
 function renderTable(table, ranked, highlight = []) {
@@ -253,7 +260,7 @@ function showDetail(cardId, scroll) {
     return el('tr', {}, [
       el('td', { class: 'num', text: String(b.no) }),
       el('td', {}, [b.type, ...(b.countFrom !== b.type
-        ? [el('span', { class: 'count-from', text: `（${b.countFrom}の回数）` })]
+        ? [el('span', { class: 'count-from', text: `（${countSourceLabel(b.type, b.countFrom)}）` })]
         : [])]),
       el('td', {}, [paramBadge(b.target)]),
       el('td', { class: 'num', text: fmt(b.maxCount) }),

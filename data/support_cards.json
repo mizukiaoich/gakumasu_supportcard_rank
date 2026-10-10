@@ -28,13 +28,13 @@
         "value": 15
       },
       {
-        "type": "削除",
+        "type": "スキル削除時",
         "target": "Vo",
         "max_count": 2,
         "value": 10
       },
       {
-        "type": "削除",
+        "type": "スキル削除時",
         "target": "Vi",
         "max_count": 1,
         "value": 20
@@ -67,7 +67,7 @@
         "value": 30
       },
       {
-        "type": "削除",
+        "type": "スキル削除時",
         "target": "Da",
         "max_count": 2,
         "value": 10
@@ -87,7 +87,7 @@
         "value": 12
       },
       {
-        "type": "強化",
+        "type": "スキル強化時",
         "target": "Vo",
         "max_count": 2,
         "value": 14
@@ -133,7 +133,7 @@
         "value": 12
       },
       {
-        "type": "削除",
+        "type": "スキル削除時",
         "target": "Da",
         "max_count": 2,
         "value": 10
@@ -192,7 +192,7 @@
         "value": 10
       },
       {
-        "type": "強化",
+        "type": "スキル強化時",
         "target": "Vi",
         "max_count": 2,
         "value": 6
@@ -222,13 +222,13 @@
     ],
     "effects": [
       {
-        "type": "強化",
+        "type": "スキル強化時",
         "target": "Vi",
         "max_count": 3,
         "value": 12
       },
       {
-        "type": "削除",
+        "type": "スキル削除時",
         "target": "Vi",
         "max_count": 2,
         "value": 15
@@ -299,7 +299,7 @@
         "value": 10
       },
       {
-        "type": "強化",
+        "type": "スキル強化時",
         "target": "Vo",
         "max_count": 2,
         "value": 11
@@ -333,7 +333,7 @@
         "value": 12
       },
       {
-        "type": "削除",
+        "type": "スキル削除時",
         "target": "Vo",
         "max_count": 1,
         "value": 18
@@ -427,7 +427,7 @@
         "value": 11
       },
       {
-        "type": "強化",
+        "type": "スキル強化時",
         "target": "Da",
         "max_count": 2,
         "value": 13
@@ -439,7 +439,7 @@
         "value": 10
       },
       {
-        "type": "削除",
+        "type": "スキル削除時",
         "target": "Da",
         "max_count": 2,
         "value": 12
@@ -492,7 +492,7 @@
         "value": 8
       },
       {
-        "type": "強化",
+        "type": "スキル強化時",
         "target": "Vo",
         "max_count": 2,
         "value": 10
@@ -526,7 +526,7 @@
         "value": 9
       },
       {
-        "type": "削除",
+        "type": "スキル削除時",
         "target": "Vo",
         "max_count": 2,
         "value": 10
@@ -585,7 +585,7 @@
         "value": 6
       },
       {
-        "type": "強化",
+        "type": "スキル強化時",
         "target": "Da",
         "max_count": 2,
         "value": 6

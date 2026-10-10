@@ -67,6 +67,8 @@ export function validateActionTypes(actionTypes, file = 'action_types.json') {
  * 効果種類の定義（effect_types.json）を検証する。
  * 例: { "name": "VoSP終了時", "count_from": "Voレッスン" }
  *   → 効果「VoSP終了時」の発動回数には、行動「Voレッスン」の入力回数を使う
+ * 例: { "name": "SPレッスン", "count_from": ["Voレッスン", "Daレッスン", "Viレッスン"], "count_label": "…" }
+ *   → 複数の行動の入力回数を合計して使う（count_label は画面表示用の説明、省略可）
  * 例: { "name": "初期評価", "fixed": true }
  *   → 行動回数に関係なく value を1回だけ加算する（max_count は不要）
  */
@@ -90,8 +92,24 @@ export function validateEffectTypes(effectTypes, actionNames, file = 'effect_typ
       if (effectType.count_from !== undefined) {
         errors.push(`${where}: fixed: true の効果種類には count_from を指定できません`);
       }
+    } else if (Array.isArray(effectType.count_from)) {
+      if (effectType.count_from.length === 0) {
+        errors.push(`${where}.count_from: 1件以上の行動種類を指定してください`);
+      }
+      const used = new Set();
+      effectType.count_from.forEach((name, k) => {
+        if (!actions.has(name)) {
+          errors.push(`${where}.count_from[${k}]: action_types.json に存在しない行動種類です（値: ${show(name)}）`);
+        } else if (used.has(name)) {
+          errors.push(`${where}.count_from[${k}]: "${name}" が重複しています`);
+        }
+        used.add(name);
+      });
     } else if (!actions.has(effectType.count_from)) {
       errors.push(`${where}.count_from: action_types.json に存在しない行動種類です（値: ${show(effectType.count_from)}）`);
+    }
+    if (effectType.count_label !== undefined && !isNonEmptyString(effectType.count_label)) {
+      errors.push(`${where}.count_label: 空でない文字列が必要です（値: ${show(effectType.count_label)}）`);
     }
   });
   return errors;
@@ -99,7 +117,7 @@ export function validateEffectTypes(effectTypes, actionNames, file = 'effect_typ
 
 /**
  * カードの効果に使える効果種類名 → 回数を参照する行動種類名 の対応表を作る。
- * 行動種類はそれ自身の回数を、effect_types.json の効果種類は count_from の回数を参照する。
+ * 行動種類はそれ自身の回数を、effect_types.json の効果種類は count_from の回数（配列なら合計）を参照する。
  * 固定加算（fixed: true）の効果種類は null（回数を参照しない）。
  */
 export function buildCountSources(actionTypes, effectTypes = []) {
