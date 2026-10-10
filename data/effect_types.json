@@ -1,6 +1,8 @@
 [
   { "name": "初期評価", "fixed": true },
+  { "name": "SPレッスン", "count_from": ["Voレッスン", "Daレッスン", "Viレッスン"], "count_label": "Vo・Da・Viレッスンの合計回数" },
   { "name": "VoSP終了時", "count_from": "Voレッスン" },
   { "name": "DaSP終了時", "count_from": "Daレッスン" },
-  { "name": "ViSP終了時", "count_from": "Viレッスン" }
+  { "name": "ViSP終了時", "count_from": "Viレッスン" },
+  { "name": "スキル獲得時", "count_from": ["好調効果カード獲得時", "好印象効果カード獲得時", "やる気効果カード獲得時", "集中効果カード獲得時", "元気効果カード獲得時", "強気効果カード獲得時", "温存効果カード獲得時", "全力効果カード獲得時"], "count_label": "各効果カード獲得時の合計回数" }
 ]

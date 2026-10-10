@@ -12,7 +12,8 @@ test('data/ 配下のJSONを読み込め、検証エラーがない', async () =
   const effectTypes = await load('effect_types.json');
   const cards = await load('support_cards.json');
   assert.doesNotThrow(() => validateAll({ plans, actionTypes, effectTypes, cards }));
-  assert.deepEqual(plans.map((p) => p.name), ['センス', 'ロジック', 'アノマリー']);
+  assert.deepEqual(plans.map((p) => p.name), ['センス', 'ロジック', 'アノマリー', 'フリー']);
+  assert.deepEqual(plans.filter((p) => p.all_plans).map((p) => p.name), ['フリー']);
   assert.deepEqual(actionTypes.map((a) => a.name), ACTIONS);
   assert.deepEqual(effectTypes, EFFECT_TYPES);
 });
@@ -23,4 +24,11 @@ test('ダミーカードはすべて is_sample: true で、名前でもサンプ
     assert.equal(c.is_sample, true, c.id);
     assert.match(c.name, /サンプル/, c.id);
   }
+});
+
+test('テスト用ダミーカード（tests/fixtures/sample_cards.json）も検証エラーがない', async () => {
+  const fixture = JSON.parse(await readFile(new URL('../fixtures/sample_cards.json', import.meta.url), 'utf8'));
+  const [plans, actionTypes, effectTypes] = await Promise.all(['plans.json', 'action_types.json', 'effect_types.json'].map(load));
+  assert.doesNotThrow(() => validateAll({ plans, actionTypes, effectTypes, cards: fixture }));
+  assert.ok(fixture.every((c) => c.is_sample === true));
 });

@@ -6,6 +6,7 @@ import { isEmptySlot, isFixedEffectType } from './validator.js';
  *   固定加算の効果（初期評価など、effect_types.json で fixed: true）: value を1回だけ加算
  *   それ以外: actualCount = MIN(ユーザー入力の行動回数, max_count)、contribution = actualCount × value
  * 発動回数の元になる行動回数は countSources で決まる（例: 効果「VoSP終了時」→ 行動「Voレッスン」の回数）。
+ * 参照先が複数（配列）の場合は、それらの入力回数の合計を使う（例: 効果「SPレッスン」→ Vo・Da・Viレッスンの合計）。
  */
 function calculateEffect(card, effect, label, no, actionCounts, countSources) {
   if (!PARAMETERS.includes(effect.target)) {
@@ -18,9 +19,13 @@ function calculateEffect(card, effect, label, no, actionCounts, countSources) {
     };
   }
   const countFrom = countSources[effect.type] ?? effect.type;
-  const inputCount = actionCounts[countFrom];
-  if (!Number.isInteger(inputCount) || inputCount < 0) {
-    throw new Error(`カード ${card.id} の${label}${no}: 行動「${countFrom}」の入力回数が不正です（値: ${inputCount}）`);
+  let inputCount = 0;
+  for (const action of Array.isArray(countFrom) ? countFrom : [countFrom]) {
+    const count = actionCounts[action];
+    if (!Number.isInteger(count) || count < 0) {
+      throw new Error(`カード ${card.id} の${label}${no}: 行動「${action}」の入力回数が不正です（値: ${count}）`);
+    }
+    inputCount += count;
   }
   const actualCount = Math.min(inputCount, effect.max_count);
   return {
@@ -57,7 +62,13 @@ export function calculateCard(card, actionCounts, countSources = {}) {
   return { card, scores, total, breakdown, eventBreakdown };
 }
 
-/** 選択した育成プランのカードだけを抽出して計算する */
-export function calculateForPlan(cards, plan, actionCounts, countSources = {}) {
-  return cards.filter((card) => card.plan === plan).map((card) => calculateCard(card, actionCounts, countSources));
+/**
+ * 選択した育成プランのカードだけを抽出して計算する。
+ * anyPlanNames に含まれるプラン（plans.json で all_plans: true、例: フリー）のカードはどのプランでも対象にする。
+ */
+export function calculateForPlan(cards, plan, actionCounts, countSources = {}, anyPlanNames = []) {
+  const any = new Set(anyPlanNames);
+  return cards
+    .filter((card) => card.plan === plan || any.has(card.plan))
+    .map((card) => calculateCard(card, actionCounts, countSources));
 }

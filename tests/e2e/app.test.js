@@ -7,6 +7,7 @@ import { chromium } from 'playwright';
 import { createServer } from '../../scripts/serve.mjs';
 
 const BASE_PATH = '/gakumasu_supportcard_rank/';
+const FIXTURE = new URL('../fixtures/sample_cards.json', import.meta.url);
 const load = async (name) => JSON.parse(await readFile(new URL(`../../data/${name}`, import.meta.url), 'utf8'));
 
 let server;
@@ -20,7 +21,8 @@ let actionTypes;
 let countFrom;
 
 before(async () => {
-  cards = await load('support_cards.json');
+  // 画面テストは実データではなく、値が既知のダミーカード（tests/fixtures/sample_cards.json）で行う
+  cards = JSON.parse(await readFile(FIXTURE, 'utf8'));
   actionTypes = await load('action_types.json');
   // 効果種類 → 回数を参照する行動（行動種類は自分自身、SP終了時は同じパラメータのレッスン）
   countFrom = Object.fromEntries([
@@ -41,6 +43,7 @@ after(async () => {
 
 async function openPage(viewport = { width: 1280, height: 900 }) {
   context = await browser.newContext({ viewport, hasTouch: viewport.width < 600, isMobile: viewport.width < 600 });
+  await context.route('**/data/support_cards.json', (route) => route.fulfill({ json: cards }));
   context.setDefaultTimeout(10000);
   page = await context.newPage();
   consoleErrors = [];
@@ -80,13 +83,18 @@ async function selectPlan(name) {
   await page.click(`.plan-option:has(input[value="${name}"])`);
 }
 
+/** 効果種類の発動回数の元になる入力回数（参照先が複数なら合計） */
+function inputOf(type, counts) {
+  return [countFrom[type]].flat().reduce((sum, a) => sum + (counts[a] ?? 0), 0);
+}
+
 /** 期待値をテスト側で独立に計算する（固定加算の効果は1回だけ value、それ以外は MIN(入力, max_count) × value。イベント効果も同じ） */
 function expectedScores(card, counts) {
   const s = { Vo: 0, Da: 0, Vi: 0 };
   for (const e of [...card.effects, ...(card.event_bonus ?? [])]) {
     if (e.empty) continue;
     if (countFrom[e.type] === null) s[e.target] += e.value; // 固定加算（初期評価）
-    else s[e.target] += Math.min(counts[countFrom[e.type]] ?? 0, e.max_count) * e.value;
+    else s[e.target] += Math.min(inputOf(e.type, counts), e.max_count) * e.value;
   }
   return { ...s, total: s.Vo + s.Da + s.Vi };
 }
@@ -104,7 +112,7 @@ async function readTable(kind) {
 
 const COUNTS = {
   Voレッスン: 3, Daレッスン: 4, Viレッスン: 2, '授業・営業終了時': 4, おでかけ: 1, 相談: 2,
-  '活動支給・差し入れ選択時': 1, 強化: 3, 削除: 2, 休む: 5, '試験・オーディション終了時': 2, 集中効果カード獲得時: 3,
+  '活動支給・差し入れ選択時': 1, スキル強化時: 3, スキル削除時: 2, 休む: 5, '試験・オーディション終了時': 2, 集中効果カード獲得時: 3,
 };
 
 async function fillCounts(counts) {
@@ -207,7 +215,9 @@ for (const plan of ['センス', 'ロジック', 'アノマリー']) {
     await fillCounts(COUNTS);
     await page.click('#calculate-button');
 
-    const expectedIds = cards.filter((c) => c.plan === plan).map((c) => c.id).sort();
+    // 選択プランのカード＋フリー（どのプランでも使える）カード
+    const expectedIds = cards.filter((c) => c.plan === plan || c.plan === 'フリー').map((c) => c.id).sort();
+    assert.ok(expectedIds.includes('sample_013'));
     for (const kind of ['priority', 'total']) {
       const rows = await readTable(kind);
       assert.deepEqual(rows.map((r) => r.id).sort(), expectedIds, kind);
@@ -275,7 +285,7 @@ test('入力変更後に再計算すると最新の条件で更新される', as
 test('カードを選ぶと詳細に6つの効果の内訳が表示され、発動回数は最大回数を超えない', async () => {
   await openRanking();
   await selectPlan('センス');
-  const counts = { ...COUNTS, おでかけ: 9, 削除: 9 }; // 最大発動回数を超える入力
+  const counts = { ...COUNTS, おでかけ: 9, スキル削除時: 9 }; // 最大発動回数を超える入力
   await fillCounts(counts);
   await page.click('#calculate-button');
   await page.click('[data-ranking="priority"] tr[data-card-id="sample_001"] .card-name-btn');
@@ -299,12 +309,12 @@ test('カードを選ぶと詳細に6つの効果の内訳が表示され、発�
         [String(i + 1), `${e.type}（固定加算・行動回数に関係なし）`, e.target, e.max_count === undefined ? '—' : String(e.max_count), '—', '1', String(e.value), `${e.target} +${e.value}`]);
       return;
     }
-    const actualCount = Math.min(counts[countFrom[e.type]], e.max_count);
+    const actualCount = Math.min(inputOf(e.type, counts), e.max_count);
     assert.equal(no, String(i + 1));
-    assert.equal(type, countFrom[e.type] === e.type ? e.type : `${e.type}（${countFrom[e.type]}の回数）`);
+    assert.equal(type.replace(/（.*）$/, ''), e.type);
     assert.equal(target, e.target);
     assert.equal(Number(max), e.max_count);
-    assert.equal(Number(input), counts[countFrom[e.type]]);
+    assert.equal(Number(input), inputOf(e.type, counts));
     assert.equal(Number(actual.replace('（上限）', '')), actualCount);
     assert.ok(actualCount <= e.max_count);
     assert.equal(Number(value), e.value);
@@ -339,14 +349,14 @@ test('空スロットは詳細で「計算対象外」と表示される', async
 test('回数で発動するイベント効果は、入力した行動回数（上限あり）で計算される', async () => {
   await openRanking();
   await selectPlan('センス');
-  await setCount('削除', 5);
+  await setCount('スキル削除時', 5);
   await page.click('#calculate-button');
   await page.click('[data-ranking="total"] tr[data-card-id="sample_002"]');
   const card = cards.find((c) => c.id === 'sample_002');
-  const ev = card.event_bonus.find((e) => e.type === '削除');
-  const row = await page.locator('.event-table tbody tr', { hasText: '削除' }).evaluate((tr) => [...tr.cells].map((td) => td.textContent));
+  const ev = card.event_bonus.find((e) => e.type === 'スキル削除時');
+  const row = await page.locator('.event-table tbody tr', { hasText: 'スキル削除時' }).evaluate((tr) => [...tr.cells].map((td) => td.textContent));
   assert.deepEqual(row.slice(3), [String(ev.max_count), '5', `${ev.max_count}（上限）`, String(ev.value), `${ev.target} +${ev.max_count * ev.value}`]);
-  const exp = expectedScores(card, { 削除: 5 });
+  const exp = expectedScores(card, { スキル削除時: 5 });
   const tiles = await page.locator('#card-detail .score-value').allTextContents();
   assert.deepEqual(tiles.map(Number), [exp.Vo, exp.Da, exp.Vi, exp.total]);
 });
@@ -432,7 +442,7 @@ test('スマートフォン幅：入力欄とランキングが縦に並び、�
   const results = await page.locator('#results-body').boundingBox();
   assert.ok(results.y >= form.y + form.height, '結果は入力欄の下に表示される');
   const rows = await readTable('priority');
-  assert.deepEqual(rows.map((r) => r.id).sort(), cards.filter((c) => c.plan === 'アノマリー').map((c) => c.id).sort());
+  assert.deepEqual(rows.map((r) => r.id).sort(), cards.filter((c) => c.plan === 'アノマリー' || c.plan === 'フリー').map((c) => c.id).sort());
   await assertNoHorizontalOverflow();
 
   await page.tap('[data-ranking="priority"] tbody tr:first-child .card-name-btn');

@@ -5,6 +5,7 @@ import ExcelJS from 'exceljs';
 import { buildWorkbook, importCards, CARD_SHEET, columnDefs } from '../../scripts/cards-excel-lib.mjs';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../../data/${name}`, import.meta.url), 'utf8'));
+const loadFixture = async () => JSON.parse(await readFile(new URL('../fixtures/sample_cards.json', import.meta.url), 'utf8'));
 const master = async () => ({
   plans: await load('plans.json'),
   actionTypes: await load('action_types.json'),
@@ -20,12 +21,13 @@ async function reload(wb) {
 
 const col = (header) => columnDefs().findIndex((c) => c.header === header) + 1;
 
-test('JSON → Excel → JSON で同じデータに戻る', async () => {
+test('JSON → Excel → JSON で同じデータに戻る（実データ・ダミーデータとも）', async () => {
   const m = await master();
-  const cards = await load('support_cards.json');
-  const { cards: imported, errors } = importCards(await reload(buildWorkbook({ ...m, cards })), m);
-  assert.deepEqual(errors, []);
-  assert.deepEqual(imported, cards);
+  for (const cards of [await load('support_cards.json'), await loadFixture()]) {
+    const { cards: imported, errors } = importCards(await reload(buildWorkbook({ ...m, cards })), m);
+    assert.deepEqual(errors, []);
+    assert.deepEqual(imported, cards);
+  }
 });
 
 test('新しいカード行：空欄スロットは空スロット、初期評価は最大回数なし、数値文字列は数値になる', async () => {
@@ -39,8 +41,8 @@ test('新しいカード行：空欄スロットは空スロット、初期評�
   set('レアリティ', 'SSR');
   set('プラン', 'センス');
   set('イベント1 種類', '初期評価'); set('イベント1 対象', 'Vo'); set('イベント1 最大回数', 1); set('イベント1 値', '20');
-  set('イベント2 種類', '削除'); set('イベント2 対象', 'Da'); set('イベント2 最大回数', 2); set('イベント2 値', 10);
-  set('効果2 種類', '削除'); set('効果2 対象', 'Vo'); set('効果2 最大回数', 4); set('効果2 値', 20);
+  set('イベント2 種類', 'スキル削除時'); set('イベント2 対象', 'Da'); set('イベント2 最大回数', 2); set('イベント2 値', 10);
+  set('効果2 種類', 'スキル削除時'); set('効果2 対象', 'Vo'); set('効果2 最大回数', 4); set('効果2 値', 20);
   set('効果3 種類', '初期評価'); set('効果3 対象', 'Vo'); set('効果3 値', 65);
   set('効果4 種類', 'VoSP終了時'); set('効果4 対象', 'Vo'); set('効果4 最大回数', 3); set('効果4 値', 17);
 
@@ -54,11 +56,11 @@ test('新しいカード行：空欄スロットは空スロット、初期評�
     image: '',
     event_bonus: [
       { type: '初期評価', target: 'Vo', max_count: 1, value: 20 },
-      { type: '削除', target: 'Da', max_count: 2, value: 10 },
+      { type: 'スキル削除時', target: 'Da', max_count: 2, value: 10 },
     ],
     effects: [
       { empty: true },
-      { type: '削除', target: 'Vo', max_count: 4, value: 20 },
+      { type: 'スキル削除時', target: 'Vo', max_count: 4, value: 20 },
       { type: '初期評価', target: 'Vo', value: 65 },
       { type: 'VoSP終了時', target: 'Vo', max_count: 3, value: 17 },
       { empty: true },
@@ -69,7 +71,7 @@ test('新しいカード行：空欄スロットは空スロット、初期評�
 
 test('不正な入力は Excel の行番号・列名つきで報告され、カードは保存されない', async () => {
   const m = await master();
-  const cards = (await load('support_cards.json')).slice(0, 2);
+  const cards = (await loadFixture()).slice(0, 2);
   const wb = buildWorkbook({ ...m, cards });
   const ws = wb.getWorksheet(CARD_SHEET);
   ws.getRow(3).getCell(col('効果2 対象')).value = 'VO';
@@ -85,7 +87,7 @@ test('不正な入力は Excel の行番号・列名つきで報告され、カ�
 
 test('種類が空なのに他の項目が入っている効果はエラーになる（無言で空スロットにしない）', async () => {
   const m = await master();
-  const wb = buildWorkbook({ ...m, cards: (await load('support_cards.json')).slice(0, 1) });
+  const wb = buildWorkbook({ ...m, cards: (await loadFixture()).slice(0, 1) });
   wb.getWorksheet(CARD_SHEET).getRow(2).getCell(col('効果1 種類')).value = null;
   const { errors } = importCards(await reload(wb), m);
   assert.equal(errors.length, 1);

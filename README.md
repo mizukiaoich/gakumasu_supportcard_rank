@@ -9,7 +9,7 @@
 - GitHub Pages で公開可能（プロジェクトサイトのサブパス配下でも動作）
 - PC・スマートフォン対応
 
-> **注意：現在登録されているサポートカード（`sample_001`〜`sample_012`）はすべて動作確認用のダミーデータです。** カード名・効果・数値は実際のゲームデータではありません。画面上でも「サンプル」と表示されます。
+> **注意：** `data/support_cards.json` のカードデータは手作業で入力したものです。計算式で表せない効果（パラメータ上昇量の割合アップ、条件付きの効果など）は空スロットとして扱い、計算に含めていません。テスト用のダミーカードは `tests/fixtures/sample_cards.json` にあります。
 
 本サイトは個人が作成した非公式のファンツールであり、ゲームの公式運営とは関係ありません。
 
@@ -83,13 +83,13 @@ npm run test:e2e     # ブラウザでの画面テスト（サブパス配下で
 │  ├─ app.js                  ランキング計算画面の UI
 │  └─ landing.js              ランディングページ（スマホ用メニュー）
 ├─ data/
-│  ├─ support_cards.json      サポートカード（現在はダミーデータのみ）
+│  ├─ support_cards.json      サポートカード（excel/support_cards.xlsx から変換）
 │  ├─ plans.json              育成プラン
 │  ├─ action_types.json       行動種類（行動回数の入力欄）
 │  └─ effect_types.json       効果種類（SP終了時など、別の行動の回数で発動する効果）
 ├─ images/
 │  ├─ hero/hero-visual.svg    ファーストビューの装飾（オリジナル・差し替え可）
-│  ├─ support_cards/          カード画像（sample_001.svg はダミー画像）
+│  ├─ support_cards/          カード画像（support_001.png など。未配置の画像は「NO IMAGE」表示。sample_001.svg はテスト用ダミー）
 │  └─ favicon.svg
 ├─ excel/support_cards.xlsx   サポートカード入力用の Excel（npm run cards:export / cards:import）
 ├─ scripts/serve.mjs          ローカル確認用の静的サーバー
@@ -154,7 +154,7 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
 | `id` | 一意な文字列（重複不可）。同順位時の最終的な並び順にも使用 |
 | `name` | カード名 |
 | `rarity` | レアリティ（文字列） |
-| `plan` | `data/plans.json` の `name` のいずれか |
+| `plan` | `data/plans.json` の `name` のいずれか。`フリー`（`all_plans: true`）のカードはどのプランを選んでもランキングに含まれる |
 | `image` | サイトルートからの画像パス。画像がない場合は `""`（プレースホルダー表示） |
 | `is_sample` | 任意。`true` の場合は画面に「サンプル」と表示。**実データには付けない** |
 | `event_bonus` | イベント効果。`effects` と同じ形式（`type` / `target` / `max_count` / `value`）の配列で、計算方法も同じ。件数の制限なし、空スロットは使わない。なしの場合は `[]` または省略。例：固定で Vo +20 なら `{ "type": "初期評価", "target": "Vo", "max_count": 1, "value": 20 }` |
@@ -168,7 +168,7 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
 
 データに不備がある場合、ランキング画面に「`support_cards.json: [2] (id: xxx).effects[4].target: ...`」のように問題箇所が表示され、計算は行われません。`npm run test:unit` でもデータファイルの検証が行われます。
 
-**実データへの切り替え時**は、ダミーデータ（`is_sample: true` のカード）を削除し、ゲーム内で確認した正確な値を登録してください。全カードから `is_sample` がなくなると、画面上のサンプル表示も消えます。
+テスト用のダミーカードは `tests/fixtures/sample_cards.json` にあり、画面テストはこのファイルを使います（`data/support_cards.json` の内容に左右されません）。
 
 ## 画像の追加方法
 
@@ -188,17 +188,18 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
   { "name": "センス" },
   { "name": "ロジック" },
   { "name": "アノマリー" },
-  { "name": "新しいプラン" }
+  { "name": "新しいプラン" },
+  { "name": "フリー", "all_plans": true }
 ]
 ```
 
-カードの `plan` には、ここで定義した `name` と同じ文字列を指定してください。
+カードの `plan` には、ここで定義した `name` と同じ文字列を指定してください。`"all_plans": true` のプラン（フリー）は選択肢には表示されず、そのカードはどのプランを選んでもランキングの対象になります。
 
 ## 行動種類の追加方法
 
 `data/action_types.json` に追加します。行動回数の入力欄が自動で増え、カード効果の `type` として使えるようになります。`default` は入力欄の初期値（0 以上の整数、省略時 0）です。
 
-現在の行動種類は、Voレッスン / Daレッスン / Viレッスン（いずれも SPレッスンを含む）/ 授業・営業終了時 / おでかけ / 相談 / 活動支給・差し入れ選択時 / 強化 / 削除 / 休む / 試験・オーディション終了時 / 好調・好印象・やる気・集中・元気・強気・温存・全力 の各「効果カード獲得時」です。これらはそのまま効果の種類としても使えます。
+現在の行動種類は、Voレッスン / Daレッスン / Viレッスン（いずれも SPレッスンを含む）/ 授業・営業終了時 / おでかけ / 相談 / 活動支給・差し入れ選択時 / 強化 / 削除 / 休む / 特別指導開始時 / 試験・オーディション終了時 / 好調・好印象・やる気・集中・元気・強気・温存・全力 の各「効果カード獲得時」です。これらはそのまま効果の種類としても使えます。
 
 `description` を付けると、入力欄の名前の下に補足として表示されます（例：`"description": "SPレッスンを含む"`）。
 

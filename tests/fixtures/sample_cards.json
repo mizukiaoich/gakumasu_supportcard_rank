@@ -1,0 +1,651 @@
+[
+  {
+    "id": "sample_001",
+    "name": "【サンプル】ダミーカードA",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/sample_001.svg",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 10
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 2,
+        "value": 15
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "VoSP終了時",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 8
+      },
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "value": 65
+      }
+    ]
+  },
+  {
+    "id": "sample_002",
+    "name": "【サンプル】ダミーカードB",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 30
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 4,
+        "value": 9
+      },
+      {
+        "type": "DaSP終了時",
+        "target": "Da",
+        "max_count": 3,
+        "value": 12
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 14
+      },
+      {
+        "type": "休む",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": "sample_003",
+    "name": "【サンプル】ダミーカードC",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [],
+    "effects": [
+      {
+        "type": "授業・営業終了時",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 10
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 12
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 6
+      },
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 40
+      },
+      {
+        "type": "休む",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "id": "sample_004",
+    "name": "【サンプル】ダミーカードD",
+    "rarity": "R",
+    "plan": "センス",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 1,
+        "value": 10
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "sample_005",
+    "name": "【サンプル】ダミーカードE",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "スキル強化時",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 12
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 15
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 3,
+        "value": 8
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "ViSP終了時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 14
+      },
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 65
+      }
+    ]
+  },
+  {
+    "id": "sample_006",
+    "name": "【サンプル】ダミーカードF",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 30
+      }
+    ],
+    "effects": [
+      {
+        "type": "VoSP終了時",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 10
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 7
+      },
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 12
+      },
+      {
+        "type": "休む",
+        "target": "Da",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 11
+      },
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": "sample_007",
+    "name": "【サンプル】ダミーカードG",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [],
+    "effects": [
+      {
+        "type": "おでかけ",
+        "target": "Da",
+        "max_count": 3,
+        "value": 9
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 2,
+        "value": 12
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 18
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 2,
+        "value": 7
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "value": 40
+      }
+    ]
+  },
+  {
+    "id": "sample_008",
+    "name": "【サンプル】ダミーカードH",
+    "rarity": "R",
+    "plan": "ロジック",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 7
+      },
+      {
+        "type": "休む",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 7
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 6
+      },
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "value": 20
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "sample_009",
+    "name": "【サンプル】ダミーカードI",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "DaSP終了時",
+        "target": "Da",
+        "max_count": 4,
+        "value": 11
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 13
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 12
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 7
+      },
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "value": 65
+      }
+    ]
+  },
+  {
+    "id": "sample_010",
+    "name": "【サンプル】ダミーカードJ",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 30
+      }
+    ],
+    "effects": [
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 12
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 14
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 8
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": "sample_011",
+    "name": "【サンプル】ダミーカードK",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [],
+    "effects": [
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 9
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 10
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 8
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 2,
+        "value": 9
+      },
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "value": 40
+      },
+      {
+        "type": "休む",
+        "target": "Da",
+        "max_count": 1,
+        "value": 12
+      }
+    ]
+  },
+  {
+    "id": "sample_012",
+    "name": "【サンプル】ダミーカードL",
+    "rarity": "R",
+    "plan": "アノマリー",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 7
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 6
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 6
+      },
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 20
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "sample_013",
+    "name": "【サンプル】ダミーカードM（フリー）",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "",
+    "is_sample": true,
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "SPレッスン",
+        "target": "Da",
+        "max_count": 4,
+        "value": 6
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 5
+      },
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 40
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  }
+]
