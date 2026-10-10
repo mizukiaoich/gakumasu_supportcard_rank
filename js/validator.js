@@ -73,8 +73,10 @@ export function validateActionTypes(actionTypes, file = 'action_types.json') {
  * 効果種類の定義（effect_types.json）を検証する。
  * 例: { "name": "VoSP終了時", "count_from": "Voレッスン" }
  *   → 効果「VoSP終了時」の発動回数には、行動「Voレッスン」の入力回数を使う
- * 例: { "name": "SPレッスン", "count_from": ["Voレッスン", "Daレッスン", "Viレッスン"], "count_label": "…" }
+ * 例: { "name": "スキル獲得時", "count_from": ["好調効果カード獲得時", …], "count_label": "…" }
  *   → 複数の行動の入力回数を合計して使う（count_label は画面表示用の説明、省略可）
+ * 例: { "name": "SPレッスン", "count_from": { "Vo": "Voレッスン", "Da": "Daレッスン", "Vi": "Viレッスン" } }
+ *   → 効果の対象パラメータごとに参照する行動を変える（対象 Vo の効果は Voレッスン の回数だけを使う）
  * 例: { "name": "初期評価", "fixed": true }
  *   → 行動回数に関係なく value を1回だけ加算する（max_count は不要）
  */
@@ -97,6 +99,15 @@ export function validateEffectTypes(effectTypes, actionNames, file = 'effect_typ
     } else if (effectType.fixed === true) {
       if (effectType.count_from !== undefined) {
         errors.push(`${where}: fixed: true の効果種類には count_from を指定できません`);
+      }
+    } else if (isPlainObject(effectType.count_from)) {
+      for (const p of PARAMETERS) {
+        if (!actions.has(effectType.count_from[p])) {
+          errors.push(`${where}.count_from.${p}: action_types.json に存在しない行動種類です（値: ${show(effectType.count_from[p])}）`);
+        }
+      }
+      for (const key of Object.keys(effectType.count_from)) {
+        if (!PARAMETERS.includes(key)) errors.push(`${where}.count_from.${key}: 対象パラメータは ${PARAMETERS.join(' / ')} のみ指定できます`);
       }
     } else if (Array.isArray(effectType.count_from)) {
       if (effectType.count_from.length === 0) {
@@ -123,7 +134,8 @@ export function validateEffectTypes(effectTypes, actionNames, file = 'effect_typ
 
 /**
  * カードの効果に使える効果種類名 → 回数を参照する行動種類名 の対応表を作る。
- * 行動種類はそれ自身の回数を、effect_types.json の効果種類は count_from の回数（配列なら合計）を参照する。
+ * 行動種類はそれ自身の回数を、effect_types.json の効果種類は count_from の回数（配列なら合計、
+ * 対象パラメータ別のオブジェクトなら効果の対象に対応する行動）を参照する。
  * 固定加算（fixed: true）の効果種類は null（回数を参照しない）。
  */
 export function buildCountSources(actionTypes, effectTypes = []) {

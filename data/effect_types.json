@@ -1,6 +1,6 @@
 [
   { "name": "初期評価", "fixed": true },
-  { "name": "SPレッスン", "count_from": ["Voレッスン", "Daレッスン", "Viレッスン"], "count_label": "Vo・Da・Viレッスンの合計回数" },
+  { "name": "SPレッスン", "count_from": { "Vo": "Voレッスン", "Da": "Daレッスン", "Vi": "Viレッスン" }, "count_label": "対象パラメータのレッスン回数（Vo→Voレッスン、Da→Daレッスン、Vi→Viレッスン）" },
   { "name": "VoSP終了時", "count_from": "Voレッスン" },
   { "name": "DaSP終了時", "count_from": "Daレッスン" },
   { "name": "ViSP終了時", "count_from": "Viレッスン" },

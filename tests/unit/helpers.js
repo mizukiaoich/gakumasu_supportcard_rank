@@ -14,7 +14,7 @@ export const ACTIONS = [
 // data/effect_types.json と同じ定義（初期評価は固定加算、SP終了時の効果は同じパラメータのレッスン（SPレッスン含む）の回数を参照する）
 export const EFFECT_TYPES = [
   { name: '初期評価', fixed: true },
-  { name: 'SPレッスン', count_from: ['Voレッスン', 'Daレッスン', 'Viレッスン'], count_label: 'Vo・Da・Viレッスンの合計回数' },
+  { name: 'SPレッスン', count_from: { Vo: 'Voレッスン', Da: 'Daレッスン', Vi: 'Viレッスン' }, count_label: '対象パラメータのレッスン回数（Vo→Voレッスン、Da→Daレッスン、Vi→Viレッスン）' },
   { name: 'VoSP終了時', count_from: 'Voレッスン' },
   { name: 'DaSP終了時', count_from: 'Daレッスン' },
   { name: 'ViSP終了時', count_from: 'Viレッスン' },

@@ -131,7 +131,7 @@ export function buildWorkbook({ plans, actionTypes, effectTypes, cards }) {
   const help = wb.addWorksheet(HELP_SHEET);
   help.getColumn(1).width = 110;
   const fixed = effectTypes.filter((e) => e.fixed === true).map((e) => e.name);
-  const counted = effectTypes.filter((e) => e.fixed !== true).map((e) => `${e.name}（${e.count_label ?? (Array.isArray(e.count_from) ? `${e.count_from.join('・')}の合計回数` : `${e.count_from}の回数`)}）`);
+  const counted = effectTypes.filter((e) => e.fixed !== true).map((e) => `${e.name}（${e.count_label ?? (Array.isArray(e.count_from) ? `${e.count_from.join('・')}の合計回数` : typeof e.count_from === 'object' ? `対象パラメータのレッスン回数（${Object.entries(e.count_from).map(([p, a]) => `${p}→${a}`).join('、')}）` : `${e.count_from}の回数`)}）`);
   [
     'サポートカードデータ 入力シート',
     '',

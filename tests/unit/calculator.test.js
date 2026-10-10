@@ -153,7 +153,7 @@ test('追加した効果種類（試験・オーディション終了時、特�
   assert.deepEqual(r.scores, { Vo: 52, Da: 22, Vi: 38 });
 });
 
-test('SPレッスンは Vo・Da・Viレッスンの合計回数、スキル獲得時は各効果カード獲得時の合計回数で発動する', () => {
+test('SPレッスンは対象パラメータと同じレッスンの回数、スキル獲得時は各効果カード獲得時の合計回数で発動する', () => {
   const c = card('sum', 'センス', [
     effect('SPレッスン', 'Vo', 10, 3),
     effect('スキル獲得時', 'Da', 5, 4),
@@ -166,13 +166,20 @@ test('SPレッスンは Vo・Da・Viレッスンの合計回数、スキル獲�
     好調効果カード獲得時: 1, 集中効果カード獲得時: 2, 全力効果カード獲得時: 1, 'スキル（SSR）獲得時': 9,
     Pドリンク獲得時: 1, スキルチェンジ時: 4,
   }), SOURCES);
-  // SPレッスン: 2+3+1=6回 ×3 = Vo18 / スキル獲得時: 1+2+1=4回 ×4 = Da16（スキル（SSR）獲得時は含まない）
+  // SPレッスン（対象Vo）: Voレッスン2回だけ ×3 = Vo6（Da・Viレッスンは数えない）
+  // スキル獲得時: 1+2+1=4回 ×4 = Da16（スキル（SSR）獲得時は含まない）
   // Pドリンク獲得時 1回×2 = Vi2 / スキルチェンジ時 MIN(4,2)×10 = Vi20
-  assert.deepEqual(r.breakdown.slice(0, 2).map((b) => [b.inputCount, b.actualCount]), [[6, 6], [4, 4]]);
-  assert.deepEqual(r.breakdown[0].countFrom, ['Voレッスン', 'Daレッスン', 'Viレッスン']);
-  assert.deepEqual(r.scores, { Vo: 18, Da: 16, Vi: 22 });
+  assert.deepEqual(r.breakdown.slice(0, 2).map((b) => [b.inputCount, b.actualCount]), [[2, 2], [4, 4]]);
+  assert.equal(r.breakdown[0].countFrom, 'Voレッスン');
+  assert.deepEqual(r.scores, { Vo: 6, Da: 16, Vi: 22 });
+
+  // 対象が Da / Vi の SPレッスン効果は、それぞれ Daレッスン / Viレッスンの回数だけを使う
+  const byTarget = card('sp2', 'センス', [effect('SPレッスン', 'Da', 99, 1), effect('SPレッスン', 'Vi', 99, 1), EMPTY, EMPTY, EMPTY, EMPTY]);
+  const r2 = calculateCard(byTarget, counts({ Voレッスン: 7, Daレッスン: 3, Viレッスン: 1 }), SOURCES);
+  assert.deepEqual(r2.breakdown.slice(0, 2).map((b) => [b.countFrom, b.inputCount]), [['Daレッスン', 3], ['Viレッスン', 1]]);
+  assert.deepEqual(r2.scores, { Vo: 0, Da: 3, Vi: 1 });
 
   // 合計回数にも最大発動回数の上限がかかる
-  const capped = calculateCard(c, counts({ Voレッスン: 5, Daレッスン: 5, Viレッスン: 5 }), SOURCES);
-  assert.equal(capped.breakdown[0].actualCount, 10);
+  const capped = calculateCard(c, counts({ 好調効果カード獲得時: 5, 好印象効果カード獲得時: 5 }), SOURCES);
+  assert.equal(capped.breakdown[1].actualCount, 5);
 });

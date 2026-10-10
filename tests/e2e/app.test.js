@@ -84,8 +84,10 @@ async function selectPlan(name) {
 }
 
 /** 効果種類の発動回数の元になる入力回数（参照先が複数なら合計） */
-function inputOf(type, counts) {
-  return [countFrom[type]].flat().reduce((sum, a) => sum + (counts[a] ?? 0), 0);
+function inputOf(type, counts, target) {
+  const src = countFrom[type];
+  const actions = src && typeof src === 'object' && !Array.isArray(src) ? [src[target]] : [src].flat();
+  return actions.reduce((sum, a) => sum + (counts[a] ?? 0), 0);
 }
 
 /** 期待値をテスト側で独立に計算する（固定加算の効果は1回だけ value、それ以外は MIN(入力, max_count) × value。イベント効果も同じ） */
@@ -94,7 +96,7 @@ function expectedScores(card, counts) {
   for (const e of [...card.effects, ...(card.event_bonus ?? [])]) {
     if (e.empty) continue;
     if (countFrom[e.type] === null) s[e.target] += e.value; // 固定加算（初期評価）
-    else s[e.target] += Math.min(inputOf(e.type, counts), e.max_count) * e.value;
+    else s[e.target] += Math.min(inputOf(e.type, counts, e.target), e.max_count) * e.value;
   }
   return { ...s, total: s.Vo + s.Da + s.Vi };
 }
@@ -309,12 +311,12 @@ test('カードを選ぶと詳細に6つの効果の内訳が表示され、発�
         [String(i + 1), `${e.type}（固定加算・行動回数に関係なし）`, e.target, e.max_count === undefined ? '—' : String(e.max_count), '—', '1', String(e.value), `${e.target} +${e.value}`]);
       return;
     }
-    const actualCount = Math.min(inputOf(e.type, counts), e.max_count);
+    const actualCount = Math.min(inputOf(e.type, counts, e.target), e.max_count);
     assert.equal(no, String(i + 1));
     assert.equal(type.replace(/（.*）$/, ''), e.type);
     assert.equal(target, e.target);
     assert.equal(Number(max), e.max_count);
-    assert.equal(Number(input), inputOf(e.type, counts));
+    assert.equal(Number(input), inputOf(e.type, counts, e.target));
     assert.equal(Number(actual.replace('（上限）', '')), actualCount);
     assert.ok(actualCount <= e.max_count);
     assert.equal(Number(value), e.value);
