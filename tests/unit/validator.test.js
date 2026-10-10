@@ -132,6 +132,7 @@ test('効果種類（effect_types.json）を検証する', () => {
     { name: '初期評価X', fixed: true, count_from: 'Voレッスン' },
     { name: '合計X', count_from: ['Voレッスン', 'Voレッスン', 'SPレッスン'] },
     { name: '合計Y', count_from: [], count_label: '' },
+    { name: '対象別X', count_from: { Vo: 'Voレッスン', Da: 'SPレッスン', VO: 'Voレッスン' } },
     { name: '初期評価Y', fixed: 'yes' },
     { name: 'VoSP終了時', count_from: 'Voレッスン' },
     { name: '授業・営業終了時', count_from: '授業・営業終了時' },
@@ -142,9 +143,12 @@ test('効果種類（effect_types.json）を検証する', () => {
   assert.ok(errors.some((e) => e.includes('[2].count_from[2]: action_types.json に存在しない')));
   assert.ok(errors.some((e) => e.includes('[3].count_from: 1件以上')));
   assert.ok(errors.some((e) => e.includes('[3].count_label')));
-  assert.ok(errors.some((e) => e.includes('[4].fixed')));
-  assert.ok(errors.some((e) => e.includes('[5].name: "VoSP終了時" が重複')));
-  assert.ok(errors.some((e) => e.includes('[6].name: "授業・営業終了時" は action_types.json の行動種類と重複')));
+  assert.ok(errors.some((e) => e.includes('[4].count_from.Da: action_types.json に存在しない')));
+  assert.ok(errors.some((e) => e.includes('[4].count_from.Vi: action_types.json に存在しない')));
+  assert.ok(errors.some((e) => e.includes('[4].count_from.VO: 対象パラメータは')));
+  assert.ok(errors.some((e) => e.includes('[5].fixed')));
+  assert.ok(errors.some((e) => e.includes('[6].name: "VoSP終了時" が重複')));
+  assert.ok(errors.some((e) => e.includes('[7].name: "授業・営業終了時" は action_types.json の行動種類と重複')));
 });
 
 test('カードの効果には行動種類と effect_types.json の効果種類が使え、旧名（削除・強化）は使えない', () => {

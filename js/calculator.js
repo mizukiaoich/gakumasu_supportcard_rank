@@ -18,7 +18,9 @@ function calculateEffect(card, effect, label, no, actionCounts, countSources) {
       ...base, fixed: true, countFrom: null, maxCount: effect.max_count ?? null, inputCount: null, actualCount: 1, contribution: effect.value,
     };
   }
-  const countFrom = countSources[effect.type] ?? effect.type;
+  const source = countSources[effect.type] ?? effect.type;
+  // 対象パラメータ別の指定（例: SPレッスン）は、効果の対象に対応する行動だけを使う
+  const countFrom = source !== null && typeof source === 'object' && !Array.isArray(source) ? source[effect.target] : source;
   let inputCount = 0;
   for (const action of Array.isArray(countFrom) ? countFrom : [countFrom]) {
     const count = actionCounts[action];
