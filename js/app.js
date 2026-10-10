@@ -2,7 +2,9 @@ import { PARAMETERS } from './constants.js';
 import { loadGameData } from './data-loader.js';
 import { validateActionCounts, DataValidationError } from './validator.js';
 import { calculateForPlan } from './calculator.js';
-import { rankByPriority, rankByTotal, PRIORITY_TIEBREAK_TEXT, TOTAL_TIEBREAK_TEXT } from './ranking.js';
+import {
+  rankByPriority, rankByTotal, rankByParameter, PRIORITY_TIEBREAK_TEXT, TOTAL_TIEBREAK_TEXT, parameterTiebreakText,
+} from './ranking.js';
 import { createCardImage } from './card-image.js';
 
 const $ = (id) => document.getElementById(id);
@@ -24,6 +26,7 @@ const state = {
   data: null,
   results: null, // 直近に計算した結果
   selectedId: null,
+  parameterTab: PARAMETERS[0], // パラメータ別ランキングで表示中のパラメータ
 };
 
 /* ---------- 入力フォーム ---------- */
@@ -140,6 +143,45 @@ function showFormErrors({ messages, invalidActions }) {
 
 /* ---------- ランキング表示 ---------- */
 
+/** パラメータ別ランキング：Vo / Da / Vi のタブで表示を切り替える */
+function renderParameterTabs() {
+  const box = document.querySelector('.param-tabs');
+  box.replaceChildren(...PARAMETERS.map((p) => {
+    const tab = el('button', {
+      type: 'button', role: 'tab', id: `param-tab-${p.toLowerCase()}`, 'aria-controls': 'parameter-table',
+      class: `param-tab param-tab-${p.toLowerCase()}`, dataset: { parameter: p }, 'aria-label': `${p}ランキング`,
+    }, [paramBadge(p), el('span', { class: 'param-tab-label', text: 'ランキング' })]);
+    tab.addEventListener('click', () => {
+      state.parameterTab = p;
+      renderParameterRanking();
+    });
+    return tab;
+  }));
+  // 左右キーでタブを移動
+  box.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+    const i = PARAMETERS.indexOf(state.parameterTab);
+    const next = PARAMETERS[(i + (event.key === 'ArrowRight' ? 1 : PARAMETERS.length - 1)) % PARAMETERS.length];
+    state.parameterTab = next;
+    renderParameterRanking();
+    document.getElementById(`param-tab-${next.toLowerCase()}`).focus();
+  });
+}
+
+function renderParameterRanking() {
+  const p = state.parameterTab;
+  for (const tab of document.querySelectorAll('.param-tab')) {
+    const active = tab.dataset.parameter === p;
+    tab.setAttribute('aria-selected', String(active));
+    tab.tabIndex = active ? 0 : -1;
+    tab.classList.toggle('is-active', active);
+  }
+  const table = document.getElementById('parameter-table');
+  table.setAttribute('aria-labelledby', `param-tab-${p.toLowerCase()}`);
+  $('parameter-tiebreak').textContent = parameterTiebreakText(p);
+  if (state.results) renderTable(table, rankByParameter(state.results.list, p), [p]);
+}
+
 /** 内訳表に出す「どの行動回数を使ったか」の説明 */
 function countSourceLabel(type, countFrom) {
   if (!Array.isArray(countFrom)) return `${countFrom}の回数`;
@@ -195,6 +237,7 @@ function renderResults(cond) {
 
   renderTable(document.querySelector('[data-ranking="priority"]'), rankByPriority(results, cond.first, cond.second), [cond.first, cond.second]);
   renderTable(document.querySelector('[data-ranking="total"]'), rankByTotal(results));
+  renderParameterRanking();
 
   // 以前選択していたカードが今回も対象なら詳細を更新、そうでなければ詳細をリセット
   if (!results.some((r) => r.card.id === state.selectedId)) state.selectedId = null;
@@ -326,6 +369,7 @@ async function init() {
   renderPlanOptions(plans);
   renderPrioritySelects();
   renderActionInputs(actionTypes);
+  renderParameterTabs();
 
   const form = $('condition-form');
   const markStale = () => {

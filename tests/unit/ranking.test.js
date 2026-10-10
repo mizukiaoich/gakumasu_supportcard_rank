@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { rankByPriority, rankByTotal } from '../../js/ranking.js';
+import { rankByPriority, rankByTotal, rankByParameter } from '../../js/ranking.js';
 import { scored } from './helpers.js';
 
 const ids = (list) => list.map((r) => r.card.id);
@@ -51,4 +51,18 @@ test('ランキング関数は元の配列を変更しない', () => {
   rankByTotal(list);
   rankByPriority(list, 'Vo', 'Da');
   assert.deepEqual(ids(list), ['a', 'b']);
+});
+
+test('パラメータ別ランキング：指定パラメータの降順、同値なら総合評価、さらに同値ならカードID昇順', () => {
+  const list = [
+    scored('d', 10, 0, 0),
+    scored('c', 10, 50, 0),
+    scored('b', 30, 0, 0),
+    scored('a', 10, 0, 0),
+  ];
+  assert.deepEqual(ids(rankByParameter(list, 'Vo')), ['b', 'c', 'a', 'd']);
+  assert.deepEqual(ids(rankByParameter(list, 'Da')), ['c', 'b', 'a', 'd']);
+  assert.deepEqual(ids(rankByParameter(list, 'Vi')), ['c', 'b', 'a', 'd']);
+  assert.throws(() => rankByParameter(list, 'VO'));
+  assert.deepEqual(ids(list), ['d', 'c', 'b', 'a']); // 元の配列は変更しない
 });

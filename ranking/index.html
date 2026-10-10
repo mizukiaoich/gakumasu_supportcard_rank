@@ -91,6 +91,7 @@
             <nav class="result-tabs" aria-label="ランキングの表示切替">
               <a href="#priority-ranking">優先パラメータランキング</a>
               <a href="#total-ranking">総合評価ランキング</a>
+              <a href="#parameter-ranking">Vo / Da / Vi 別ランキング</a>
               <a href="#card-detail">カード詳細</a>
             </nav>
           </div>
@@ -110,6 +111,16 @@
             <p class="scroll-hint">表は横にスクロールできます →</p>
             <div class="table-scroll" tabindex="0" aria-label="総合評価ランキング表">
               <table class="ranking-table" data-ranking="total"></table>
+            </div>
+          </section>
+
+          <section id="parameter-ranking" class="panel ranking-section" aria-labelledby="parameter-title">
+            <h3 id="parameter-title" class="ranking-title">パラメータ別ランキング</h3>
+            <div class="param-tabs" role="tablist" aria-label="ランキングするパラメータ"></div>
+            <p id="parameter-tiebreak" class="tiebreak"></p>
+            <p class="scroll-hint">表は横にスクロールできます →</p>
+            <div class="table-scroll" tabindex="0" aria-label="パラメータ別ランキング表">
+              <table class="ranking-table" data-ranking="parameter" id="parameter-table" role="tabpanel"></table>
             </div>
           </section>
 
