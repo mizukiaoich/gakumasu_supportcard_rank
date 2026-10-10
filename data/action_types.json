@@ -1,11 +1,21 @@
 [
-  { "name": "レッスン", "default": 0 },
-  { "name": "SPレッスン", "default": 0 },
-  { "name": "授業", "default": 0 },
+  { "name": "Voレッスン", "description": "SPレッスンを含む", "default": 0 },
+  { "name": "Daレッスン", "description": "SPレッスンを含む", "default": 0 },
+  { "name": "Viレッスン", "description": "SPレッスンを含む", "default": 0 },
+  { "name": "授業・営業終了時", "default": 0 },
   { "name": "おでかけ", "default": 0 },
   { "name": "相談", "default": 0 },
+  { "name": "活動支給・差し入れ選択時", "default": 0 },
   { "name": "強化", "default": 0 },
   { "name": "削除", "default": 0 },
-  { "name": "活動支給", "default": 0 },
-  { "name": "休む", "default": 0 }
+  { "name": "休む", "default": 0 },
+  { "name": "試験・オーディション終了時", "default": 0 },
+  { "name": "好調効果カード獲得時", "default": 0 },
+  { "name": "好印象効果カード獲得時", "default": 0 },
+  { "name": "やる気効果カード獲得時", "default": 0 },
+  { "name": "集中効果カード獲得時", "default": 0 },
+  { "name": "元気効果カード獲得時", "default": 0 },
+  { "name": "強気効果カード獲得時", "default": 0 },
+  { "name": "温存効果カード獲得時", "default": 0 },
+  { "name": "全力効果カード獲得時", "default": 0 }
 ]

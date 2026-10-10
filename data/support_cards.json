@@ -6,15 +6,11 @@
     "plan": "センス",
     "image": "images/support_cards/sample_001.svg",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vo",
-        "value": 65
-      }
-    ],
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Da",
+        "max_count": 1,
         "value": 20
       }
     ],
@@ -44,16 +40,15 @@
         "value": 20
       },
       {
-        "type": "SPレッスン",
+        "type": "VoSP終了時",
         "target": "Vo",
         "max_count": 4,
         "value": 8
       },
       {
-        "type": "授業",
-        "target": "Da",
-        "max_count": 3,
-        "value": 6
+        "type": "初期評価",
+        "target": "Vo",
+        "value": 65
       }
     ]
   },
@@ -64,27 +59,29 @@
     "plan": "センス",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Da",
-        "value": 60
-      }
-    ],
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vo",
+        "max_count": 1,
         "value": 30
+      },
+      {
+        "type": "削除",
+        "target": "Da",
+        "max_count": 2,
+        "value": 10
       }
     ],
     "effects": [
       {
-        "type": "レッスン",
+        "type": "Daレッスン",
         "target": "Da",
         "max_count": 4,
         "value": 9
       },
       {
-        "type": "SPレッスン",
+        "type": "DaSP終了時",
         "target": "Da",
         "max_count": 3,
         "value": 12
@@ -108,10 +105,9 @@
         "value": 20
       },
       {
-        "type": "活動支給",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 8
+        "type": "初期評価",
+        "target": "Da",
+        "value": 60
       }
     ]
   },
@@ -122,16 +118,10 @@
     "plan": "センス",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vi",
-        "value": 40
-      }
-    ],
     "event_bonus": [],
     "effects": [
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vi",
         "max_count": 3,
         "value": 10
@@ -149,13 +139,15 @@
         "value": 10
       },
       {
-        "type": "レッスン",
+        "type": "Voレッスン",
         "target": "Vo",
         "max_count": 3,
         "value": 6
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 40
       },
       {
         "type": "休む",
@@ -172,22 +164,23 @@
     "plan": "センス",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [],
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vo",
+        "max_count": 1,
         "value": 10
       }
     ],
     "effects": [
       {
-        "type": "レッスン",
+        "type": "Voレッスン",
         "target": "Vo",
         "max_count": 2,
         "value": 8
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vo",
         "max_count": 2,
         "value": 8
@@ -219,15 +212,11 @@
     "plan": "ロジック",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vi",
-        "value": 65
-      }
-    ],
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vo",
+        "max_count": 1,
         "value": 20
       }
     ],
@@ -245,7 +234,7 @@
         "value": 15
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Da",
         "max_count": 3,
         "value": 8
@@ -257,16 +246,15 @@
         "value": 10
       },
       {
-        "type": "SPレッスン",
+        "type": "ViSP終了時",
         "target": "Vi",
         "max_count": 2,
         "value": 14
       },
       {
-        "type": "活動支給",
-        "target": "Da",
-        "max_count": 2,
-        "value": 9
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 65
       }
     ]
   },
@@ -277,27 +265,23 @@
     "plan": "ロジック",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vo",
-        "value": 60
-      }
-    ],
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vi",
+        "max_count": 1,
         "value": 30
       }
     ],
     "effects": [
       {
-        "type": "SPレッスン",
+        "type": "VoSP終了時",
         "target": "Vo",
         "max_count": 4,
         "value": 10
       },
       {
-        "type": "レッスン",
+        "type": "Voレッスン",
         "target": "Vo",
         "max_count": 3,
         "value": 7
@@ -321,10 +305,9 @@
         "value": 11
       },
       {
-        "type": "授業",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 6
+        "type": "初期評価",
+        "target": "Vo",
+        "value": 60
       }
     ]
   },
@@ -335,12 +318,6 @@
     "plan": "ロジック",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Da",
-        "value": 40
-      }
-    ],
     "event_bonus": [],
     "effects": [
       {
@@ -362,19 +339,21 @@
         "value": 18
       },
       {
-        "type": "レッスン",
+        "type": "Daレッスン",
         "target": "Da",
         "max_count": 2,
         "value": 7
       },
       {
-        "type": "活動支給",
+        "type": "活動支給・差し入れ選択時",
         "target": "Vi",
         "max_count": 2,
         "value": 8
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Da",
+        "value": 40
       }
     ]
   },
@@ -385,21 +364,17 @@
     "plan": "ロジック",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Da",
-        "value": 20
-      }
-    ],
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vo",
+        "max_count": 1,
         "value": 10
       }
     ],
     "effects": [
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Da",
         "max_count": 2,
         "value": 7
@@ -411,13 +386,15 @@
         "value": 7
       },
       {
-        "type": "レッスン",
+        "type": "Viレッスン",
         "target": "Vi",
         "max_count": 2,
         "value": 6
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Da",
+        "value": 20
       },
       {
         "empty": true
@@ -434,21 +411,17 @@
     "plan": "アノマリー",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Da",
-        "value": 65
-      }
-    ],
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Vi",
+        "max_count": 1,
         "value": 20
       }
     ],
     "effects": [
       {
-        "type": "SPレッスン",
+        "type": "DaSP終了時",
         "target": "Da",
         "max_count": 4,
         "value": 11
@@ -472,16 +445,15 @@
         "value": 12
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vo",
         "max_count": 3,
         "value": 7
       },
       {
-        "type": "休む",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 9
+        "type": "初期評価",
+        "target": "Da",
+        "value": 65
       }
     ]
   },
@@ -492,15 +464,11 @@
     "plan": "アノマリー",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vi",
-        "value": 60
-      }
-    ],
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Da",
+        "max_count": 1,
         "value": 30
       }
     ],
@@ -512,13 +480,13 @@
         "value": 12
       },
       {
-        "type": "活動支給",
+        "type": "活動支給・差し入れ選択時",
         "target": "Vi",
         "max_count": 2,
         "value": 14
       },
       {
-        "type": "レッスン",
+        "type": "Viレッスン",
         "target": "Vi",
         "max_count": 3,
         "value": 8
@@ -530,16 +498,15 @@
         "value": 10
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Da",
         "max_count": 2,
         "value": 8
       },
       {
-        "type": "おでかけ",
-        "target": "Vo",
-        "max_count": 1,
-        "value": 15
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 60
       }
     ]
   },
@@ -550,16 +517,10 @@
     "plan": "アノマリー",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vo",
-        "value": 40
-      }
-    ],
     "event_bonus": [],
     "effects": [
       {
-        "type": "レッスン",
+        "type": "Voレッスン",
         "target": "Vo",
         "max_count": 3,
         "value": 9
@@ -571,7 +532,7 @@
         "value": 10
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vi",
         "max_count": 2,
         "value": 8
@@ -583,7 +544,9 @@
         "value": 9
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Vo",
+        "value": 40
       },
       {
         "type": "休む",
@@ -600,15 +563,11 @@
     "plan": "アノマリー",
     "image": "",
     "is_sample": true,
-    "initial_bonus": [
-      {
-        "target": "Vi",
-        "value": 20
-      }
-    ],
     "event_bonus": [
       {
+        "type": "初期評価",
         "target": "Da",
+        "max_count": 1,
         "value": 10
       }
     ],
@@ -620,7 +579,7 @@
         "value": 7
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vo",
         "max_count": 2,
         "value": 6
@@ -632,7 +591,9 @@
         "value": 6
       },
       {
-        "empty": true
+        "type": "初期評価",
+        "target": "Vi",
+        "value": 20
       },
       {
         "empty": true

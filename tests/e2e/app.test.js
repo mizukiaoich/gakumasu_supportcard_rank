@@ -17,10 +17,16 @@ let page;
 let consoleErrors;
 let cards;
 let actionTypes;
+let countFrom;
 
 before(async () => {
   cards = await load('support_cards.json');
   actionTypes = await load('action_types.json');
+  // 効果種類 → 回数を参照する行動（行動種類は自分自身、SP終了時は同じパラメータのレッスン）
+  countFrom = Object.fromEntries([
+    ...actionTypes.map((a) => [a.name, a.name]),
+    ...(await load('effect_types.json')).map((e) => [e.name, e.fixed ? null : e.count_from]),
+  ]);
   server = createServer({ base: BASE_PATH });
   await new Promise((resolve) => server.listen(0, resolve));
   origin = `http://localhost:${server.address().port}`;
@@ -74,13 +80,13 @@ async function selectPlan(name) {
   await page.click(`.plan-option:has(input[value="${name}"])`);
 }
 
-/** 期待値をテスト側で独立に計算する（初期評価・イベント効果は1回だけ固定加算、actualCount = MIN(入力, max_count)、contribution = actualCount × value） */
+/** 期待値をテスト側で独立に計算する（固定加算の効果は1回だけ value、それ以外は MIN(入力, max_count) × value。イベント効果も同じ） */
 function expectedScores(card, counts) {
   const s = { Vo: 0, Da: 0, Vi: 0 };
-  for (const b of [...(card.initial_bonus ?? []), ...(card.event_bonus ?? [])]) s[b.target] += b.value;
-  for (const e of card.effects) {
+  for (const e of [...card.effects, ...(card.event_bonus ?? [])]) {
     if (e.empty) continue;
-    s[e.target] += Math.min(counts[e.type] ?? 0, e.max_count) * e.value;
+    if (countFrom[e.type] === null) s[e.target] += e.value; // 固定加算（初期評価）
+    else s[e.target] += Math.min(counts[countFrom[e.type]] ?? 0, e.max_count) * e.value;
   }
   return { ...s, total: s.Vo + s.Da + s.Vi };
 }
@@ -96,7 +102,10 @@ async function readTable(kind) {
   }));
 }
 
-const COUNTS = { レッスン: 3, SPレッスン: 2, 授業: 4, おでかけ: 1, 相談: 2, 強化: 3, 削除: 2, 活動支給: 1, 休む: 5 };
+const COUNTS = {
+  Voレッスン: 3, Daレッスン: 4, Viレッスン: 2, '授業・営業終了時': 4, おでかけ: 1, 相談: 2,
+  '活動支給・差し入れ選択時': 1, 強化: 3, 削除: 2, 休む: 5, '試験・オーディション終了時': 2, 集中効果カード獲得時: 3,
+};
 
 async function fillCounts(counts) {
   for (const [name, value] of Object.entries(counts)) await setCount(name, value);
@@ -156,9 +165,9 @@ test('第一優先と同じパラメータは第二優先で選べない', async
 
 test('行動回数は＋／－ボタンと直接入力で変更でき、0未満にならない', async () => {
   await openRanking();
-  const input = '.count-input[data-action="レッスン"]';
-  const plus = '.action-item:has(input[data-action="レッスン"]) .count-btn:last-child';
-  const minus = '.action-item:has(input[data-action="レッスン"]) .count-btn:first-child';
+  const input = '.count-input[data-action="Voレッスン"]';
+  const plus = '.action-item:has(input[data-action="Voレッスン"]) .count-btn:last-child';
+  const minus = '.action-item:has(input[data-action="Voレッスン"]) .count-btn:first-child';
   await page.click(plus);
   await page.click(plus);
   assert.equal(await page.inputValue(input), '2');
@@ -172,18 +181,18 @@ test('行動回数は＋／－ボタンと直接入力で変更でき、0未満�
 
 test('不正な行動回数では計算せず、エラーを案内する', async () => {
   await openRanking();
-  await setCount('授業', -2);
+  await setCount('授業・営業終了時', -2);
   await page.click('#calculate-button');
   assert.equal(await page.isVisible('#form-error'), true);
-  assert.match(await page.textContent('#form-error'), /授業：0以上の整数を入力してください/);
-  assert.equal(await page.getAttribute('.count-input[data-action="授業"]', 'aria-invalid'), 'true');
+  assert.match(await page.textContent('#form-error'), /授業・営業終了時：0以上の整数を入力してください/);
+  assert.equal(await page.getAttribute('.count-input[data-action="授業・営業終了時"]', 'aria-invalid'), 'true');
   assert.equal(await page.isVisible('#results-body'), false);
 
-  await setCount('授業', '1.5');
+  await setCount('授業・営業終了時', '1.5');
   await page.click('#calculate-button');
   assert.equal(await page.isVisible('#results-body'), false);
 
-  await setCount('授業', 3);
+  await setCount('授業・営業終了時', 3);
   await page.click('#calculate-button');
   assert.equal(await page.isVisible('#form-error'), false);
   assert.equal(await page.isVisible('#results-body'), true);
@@ -246,17 +255,17 @@ test('入力変更後に再計算すると最新の条件で更新される', as
   const zero = await readTable('total');
   for (const row of zero) {
     const card = cards.find((c) => c.id === row.id);
-    const fixed = [...(card.initial_bonus ?? []), ...(card.event_bonus ?? [])].reduce((sum, b) => sum + b.value, 0);
+    const fixed = [...card.effects, ...(card.event_bonus ?? [])].filter((e) => e.type === '初期評価').reduce((sum, b) => sum + b.value, 0);
     assert.equal(row.total, fixed, row.id);
   }
-  await setCount('レッスン', 4);
+  await setCount('Voレッスン', 4);
   assert.equal(await page.isVisible('#stale-notice'), true);
   await page.click('#calculate-button');
   assert.equal(await page.isVisible('#stale-notice'), false);
   const updated = await readTable('total');
   for (const row of updated) {
     const card = cards.find((c) => c.id === row.id);
-    assert.equal(row.total, expectedScores(card, { レッスン: 4 }).total, row.id);
+    assert.equal(row.total, expectedScores(card, { Voレッスン: 4 }).total, row.id);
   }
   assert.ok(updated.some((r) => r.total !== zero.find((z) => z.id === r.id).total), "再計算で値が更新される");
 });
@@ -281,25 +290,30 @@ test('カードを選ぶと詳細に6つの効果の内訳が表示され、発�
 
   const card = cards.find((c) => c.id === 'sample_001');
   const cells = await detail.locator('.breakdown-table tbody tr').evaluateAll((trs) => trs.map((tr) => [...tr.cells].map((td) => td.textContent)));
+  assert.ok(card.effects.some((e) => e.type === '初期評価'), 'sample_001 は初期評価を持つ');
   card.effects.forEach((e, i) => {
     const [no, type, target, max, input, actual, value, contribution] = cells[i];
-    const actualCount = Math.min(counts[e.type], e.max_count);
+    if (countFrom[e.type] === null) {
+      // 初期評価：行動回数に関係なく1回だけ加算
+      assert.deepEqual([no, type, target, max, input, actual, value, contribution],
+        [String(i + 1), `${e.type}（固定加算・行動回数に関係なし）`, e.target, e.max_count === undefined ? '—' : String(e.max_count), '—', '1', String(e.value), `${e.target} +${e.value}`]);
+      return;
+    }
+    const actualCount = Math.min(counts[countFrom[e.type]], e.max_count);
     assert.equal(no, String(i + 1));
-    assert.equal(type, e.type);
+    assert.equal(type, countFrom[e.type] === e.type ? e.type : `${e.type}（${countFrom[e.type]}の回数）`);
     assert.equal(target, e.target);
     assert.equal(Number(max), e.max_count);
-    assert.equal(Number(input), counts[e.type]);
+    assert.equal(Number(input), counts[countFrom[e.type]]);
     assert.equal(Number(actual.replace('（上限）', '')), actualCount);
     assert.ok(actualCount <= e.max_count);
     assert.equal(Number(value), e.value);
     assert.equal(contribution, `${e.target} +${actualCount * e.value}`);
   });
-  // 初期評価・イベント効果（固定加算）が詳細に表示される
-  for (const key of ['initial_bonus', 'event_bonus']) {
-    const texts = await detail.locator(`[data-bonus="${key}"] .fixed-bonus-value`).allTextContents();
-    assert.deepEqual(texts, card[key].map((b) => `${b.target} +${b.value}`), key);
-    assert.ok(texts.length > 0, key);
-  }
+  // イベント効果も同じ列構成の表で内訳が表示される
+  const eventRows = await detail.locator('.event-table tbody tr').evaluateAll((trs) => trs.map((tr) => [...tr.cells].map((td) => td.textContent)));
+  assert.ok(card.event_bonus.length > 0);
+  assert.deepEqual(eventRows.map((r) => [r[1].replace(/（.*$/, ''), r[2], r[7]]), card.event_bonus.map((e) => [e.type, e.target, `${e.target} +${e.value}`]));
 
   const exp = expectedScores(card, counts);
   const tiles = await detail.locator('.score-value').allTextContents();
@@ -317,8 +331,24 @@ test('空スロットは詳細で「計算対象外」と表示される', async
   assert.equal(await page.locator('.breakdown-table tr.is-empty-slot').count(), 2);
   assert.match(await page.locator('.breakdown-table tr.is-empty-slot').first().textContent(), /計算対象外/);
   // sample_004 は初期評価なし（イベント効果はあり）
-  assert.equal(await page.textContent('[data-bonus="initial_bonus"] .fixed-bonus-none'), '初期評価なし');
-  assert.equal(await page.textContent('[data-bonus="event_bonus"] .fixed-bonus-value'), 'Vo +10');
+  assert.equal(await page.locator('.breakdown-table tr.is-fixed').count(), 0);
+  assert.equal(await page.locator('.event-table tbody tr').count(), 1);
+  assert.match(await page.textContent('.event-table tbody tr'), /Vo \+10/);
+});
+
+test('回数で発動するイベント効果は、入力した行動回数（上限あり）で計算される', async () => {
+  await openRanking();
+  await selectPlan('センス');
+  await setCount('削除', 5);
+  await page.click('#calculate-button');
+  await page.click('[data-ranking="total"] tr[data-card-id="sample_002"]');
+  const card = cards.find((c) => c.id === 'sample_002');
+  const ev = card.event_bonus.find((e) => e.type === '削除');
+  const row = await page.locator('.event-table tbody tr', { hasText: '削除' }).evaluate((tr) => [...tr.cells].map((td) => td.textContent));
+  assert.deepEqual(row.slice(3), [String(ev.max_count), '5', `${ev.max_count}（上限）`, String(ev.value), `${ev.target} +${ev.max_count * ev.value}`]);
+  const exp = expectedScores(card, { 削除: 5 });
+  const tiles = await page.locator('#card-detail .score-value').allTextContents();
+  assert.deepEqual(tiles.map(Number), [exp.Vo, exp.Da, exp.Vi, exp.total]);
 });
 
 /* ---------- 画像 ---------- */
@@ -391,9 +421,9 @@ test('スマートフォン幅：入力欄とランキングが縦に並び、�
   await openPage({ width: 375, height: 740 });
   await openRanking();
   await page.tap('.plan-option:has(input[value="アノマリー"])');
-  const plus = '.action-item:has(input[data-action="授業"]) .count-btn:last-child';
+  const plus = '.action-item:has(input[data-action="授業・営業終了時"]) .count-btn:last-child';
   for (let i = 0; i < 3; i++) await page.tap(plus);
-  assert.equal(await page.inputValue('.count-input[data-action="授業"]'), '3');
+  assert.equal(await page.inputValue('.count-input[data-action="授業・営業終了時"]'), '3');
   const btn = await page.locator('.count-btn').first().boundingBox();
   assert.ok(btn.width >= 36 && btn.height >= 36, 'タップしやすいボタンサイズ');
 
