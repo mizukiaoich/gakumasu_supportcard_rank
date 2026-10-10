@@ -1,400 +1,36 @@
 [
   {
-    "id": "sample_001",
-    "name": "【サンプル】ダミーカードA",
-    "rarity": "SSR",
-    "plan": "センス",
-    "image": "images/support_cards/sample_001.svg",
-    "is_sample": true,
-    "event_bonus": [
-      {
-        "type": "初期評価",
-        "target": "Da",
-        "max_count": 1,
-        "value": 20
-      }
-    ],
-    "effects": [
-      {
-        "type": "おでかけ",
-        "target": "Vo",
-        "max_count": 3,
-        "value": 10
-      },
-      {
-        "type": "相談",
-        "target": "Da",
-        "max_count": 2,
-        "value": 15
-      },
-      {
-        "type": "スキル削除時",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 10
-      },
-      {
-        "type": "スキル削除時",
-        "target": "Vi",
-        "max_count": 1,
-        "value": 20
-      },
-      {
-        "type": "VoSP終了時",
-        "target": "Vo",
-        "max_count": 4,
-        "value": 8
-      },
-      {
-        "type": "初期評価",
-        "target": "Vo",
-        "value": 65
-      }
-    ]
-  },
-  {
-    "id": "sample_002",
-    "name": "【サンプル】ダミーカードB",
-    "rarity": "SSR",
-    "plan": "センス",
-    "image": "",
-    "is_sample": true,
-    "event_bonus": [
-      {
-        "type": "初期評価",
-        "target": "Vo",
-        "max_count": 1,
-        "value": 30
-      },
-      {
-        "type": "スキル削除時",
-        "target": "Da",
-        "max_count": 2,
-        "value": 10
-      }
-    ],
-    "effects": [
-      {
-        "type": "Daレッスン",
-        "target": "Da",
-        "max_count": 4,
-        "value": 9
-      },
-      {
-        "type": "DaSP終了時",
-        "target": "Da",
-        "max_count": 3,
-        "value": 12
-      },
-      {
-        "type": "スキル強化時",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 14
-      },
-      {
-        "type": "休む",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 10
-      },
-      {
-        "type": "相談",
-        "target": "Da",
-        "max_count": 1,
-        "value": 20
-      },
-      {
-        "type": "初期評価",
-        "target": "Da",
-        "value": 60
-      }
-    ]
-  },
-  {
-    "id": "sample_003",
-    "name": "【サンプル】ダミーカードC",
-    "rarity": "SR",
-    "plan": "センス",
-    "image": "",
-    "is_sample": true,
-    "event_bonus": [],
-    "effects": [
-      {
-        "type": "授業・営業終了時",
-        "target": "Vi",
-        "max_count": 3,
-        "value": 10
-      },
-      {
-        "type": "おでかけ",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 12
-      },
-      {
-        "type": "スキル削除時",
-        "target": "Da",
-        "max_count": 2,
-        "value": 10
-      },
-      {
-        "type": "Voレッスン",
-        "target": "Vo",
-        "max_count": 3,
-        "value": 6
-      },
-      {
-        "type": "初期評価",
-        "target": "Vi",
-        "value": 40
-      },
-      {
-        "type": "休む",
-        "target": "Vi",
-        "max_count": 1,
-        "value": 15
-      }
-    ]
-  },
-  {
-    "id": "sample_004",
-    "name": "【サンプル】ダミーカードD",
+    "id": "support_001",
+    "name": "頼れる先輩お姉さん",
     "rarity": "R",
-    "plan": "センス",
-    "image": "",
-    "is_sample": true,
+    "plan": "フリー",
+    "image": "images/support_cards/support_001.png",
     "event_bonus": [
       {
         "type": "初期評価",
-        "target": "Vo",
+        "target": "Vi",
         "max_count": 1,
         "value": 10
       }
     ],
     "effects": [
-      {
-        "type": "Voレッスン",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 8
-      },
-      {
-        "type": "授業・営業終了時",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 8
-      },
-      {
-        "type": "相談",
-        "target": "Da",
-        "max_count": 1,
-        "value": 10
-      },
-      {
-        "type": "スキル強化時",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 6
-      },
       {
         "empty": true
       },
       {
         "empty": true
-      }
-    ]
-  },
-  {
-    "id": "sample_005",
-    "name": "【サンプル】ダミーカードE",
-    "rarity": "SSR",
-    "plan": "ロジック",
-    "image": "",
-    "is_sample": true,
-    "event_bonus": [
-      {
-        "type": "初期評価",
-        "target": "Vo",
-        "max_count": 1,
-        "value": 20
-      }
-    ],
-    "effects": [
-      {
-        "type": "スキル強化時",
-        "target": "Vi",
-        "max_count": 3,
-        "value": 12
-      },
-      {
-        "type": "スキル削除時",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 15
-      },
-      {
-        "type": "授業・営業終了時",
-        "target": "Da",
-        "max_count": 3,
-        "value": 8
-      },
-      {
-        "type": "おでかけ",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 10
-      },
-      {
-        "type": "ViSP終了時",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 14
-      },
-      {
-        "type": "初期評価",
-        "target": "Vi",
-        "value": 65
-      }
-    ]
-  },
-  {
-    "id": "sample_006",
-    "name": "【サンプル】ダミーカードF",
-    "rarity": "SSR",
-    "plan": "ロジック",
-    "image": "",
-    "is_sample": true,
-    "event_bonus": [
-      {
-        "type": "初期評価",
-        "target": "Vi",
-        "max_count": 1,
-        "value": 30
-      }
-    ],
-    "effects": [
-      {
-        "type": "VoSP終了時",
-        "target": "Vo",
-        "max_count": 4,
-        "value": 10
-      },
-      {
-        "type": "Voレッスン",
-        "target": "Vo",
-        "max_count": 3,
-        "value": 7
-      },
-      {
-        "type": "相談",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 12
-      },
-      {
-        "type": "休む",
-        "target": "Da",
-        "max_count": 2,
-        "value": 10
-      },
-      {
-        "type": "スキル強化時",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 11
-      },
-      {
-        "type": "初期評価",
-        "target": "Vo",
-        "value": 60
-      }
-    ]
-  },
-  {
-    "id": "sample_007",
-    "name": "【サンプル】ダミーカードG",
-    "rarity": "SR",
-    "plan": "ロジック",
-    "image": "",
-    "is_sample": true,
-    "event_bonus": [],
-    "effects": [
-      {
-        "type": "おでかけ",
-        "target": "Da",
-        "max_count": 3,
-        "value": 9
-      },
-      {
-        "type": "相談",
-        "target": "Da",
-        "max_count": 2,
-        "value": 12
-      },
-      {
-        "type": "スキル削除時",
-        "target": "Vo",
-        "max_count": 1,
-        "value": 18
-      },
-      {
-        "type": "Daレッスン",
-        "target": "Da",
-        "max_count": 2,
-        "value": 7
-      },
-      {
-        "type": "活動支給・差し入れ選択時",
-        "target": "Vi",
-        "max_count": 2,
-        "value": 8
-      },
-      {
-        "type": "初期評価",
-        "target": "Da",
-        "value": 40
-      }
-    ]
-  },
-  {
-    "id": "sample_008",
-    "name": "【サンプル】ダミーカードH",
-    "rarity": "R",
-    "plan": "ロジック",
-    "image": "",
-    "is_sample": true,
-    "event_bonus": [
-      {
-        "type": "初期評価",
-        "target": "Vo",
-        "max_count": 1,
-        "value": 10
-      }
-    ],
-    "effects": [
-      {
-        "type": "授業・営業終了時",
-        "target": "Da",
-        "max_count": 2,
-        "value": 7
-      },
-      {
-        "type": "休む",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 7
       },
       {
         "type": "Viレッスン",
         "target": "Vi",
-        "max_count": 2,
-        "value": 6
+        "max_count": 99,
+        "value": 9
       },
       {
-        "type": "初期評価",
-        "target": "Da",
-        "value": 20
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 7
       },
       {
         "empty": true
@@ -405,195 +41,8879 @@
     ]
   },
   {
-    "id": "sample_009",
-    "name": "【サンプル】ダミーカードI",
-    "rarity": "SSR",
-    "plan": "アノマリー",
-    "image": "",
-    "is_sample": true,
+    "id": "support_002",
+    "name": "お姉ちゃん直伝メニュー",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_002.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_003",
+    "name": "わたしのペースで",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_003.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_004",
+    "name": "完全無欠のプランニング",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_004.png",
     "event_bonus": [
       {
         "type": "初期評価",
         "target": "Vi",
         "max_count": 1,
-        "value": 20
+        "value": 10
       }
     ],
     "effects": [
       {
-        "type": "DaSP終了時",
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_005",
+    "name": "いめーじとれーにんぐ",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_005.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_006",
+    "name": "スイッチON！",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_006.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
         "target": "Da",
-        "max_count": 4,
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "おでかけ",
+        "target": "Da",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_007",
+    "name": "憧れを目指して",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_007.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 33
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_008",
+    "name": "ひたむき居残りレッスン",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_008.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 33
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_009",
+    "name": "王子様のひと呼吸",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_009.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 33
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_010",
+    "name": "枝毛をくるり",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_010.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 33
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "休む",
+        "target": "Da",
+        "max_count": 99,
         "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_011",
+    "name": "全力、その後",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_011.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 33
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "休む",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_012",
+    "name": "念入りにストレッチ",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_012.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 33
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "休む",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_013",
+    "name": "謹厳実直",
+    "rarity": "R",
+    "plan": "フリー",
+    "image": "images/support_cards/support_013.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "特別指導開始時",
+        "target": "Da",
+        "max_count": 3,
+        "value": 13
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_014",
+    "name": "はじめてのお友達",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_014.png",
+    "event_bonus": [],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_015",
+    "name": "いつか、きっと花開く",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_015.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "休む",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_016",
+    "name": "ほっとけないクラスメイト",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_016.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_017",
+    "name": "思惑とガクガク",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_017.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_018",
+    "name": "マイペース、マイライフ",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_018.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "相談",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_019",
+    "name": "実食！例のSSD",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_019.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_020",
+    "name": "嬉し恥ずかし夢心地",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_020.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 26
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_021",
+    "name": "ふわふわでワクワク",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_021.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_022",
+    "name": "魅惑の大腿四頭筋",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_022.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_023",
+    "name": "ほっぺた、ぷに",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_023.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 26
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_024",
+    "name": "てとりあしとり",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_024.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_025",
+    "name": "愛無き暗記は難しい",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_025.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 26
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_026",
+    "name": "のらりくらりしっかり",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_026.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_027",
+    "name": "今はあえて、背を向けて",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_027.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_028",
+    "name": "体当たりのラブコール",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_028.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_029",
+    "name": "イヤホンはんぶんこ",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_029.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "休む",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_030",
+    "name": "パシャっとキメポ",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_030.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "休む",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_031",
+    "name": "どりゃぎゃ",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_031.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "好調効果カード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_032",
+    "name": "かちこちストレッチ",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_032.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "好印象効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_033",
+    "name": "海、楽しまなきゃ！",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_033.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "やる気効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "休む",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_034",
+    "name": "第五種接近遭遇",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_034.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "集中効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "相談",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_035",
+    "name": "やさしさ、あったかい",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_035.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_036",
+    "name": "ふわふわなお面？",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_036.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "おでかけ",
+        "target": "Da",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_037",
+    "name": "キュッと締めて",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_037.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "Pドリンク交換時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_038",
+    "name": "りっぱなすすき！",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_038.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_039",
+    "name": "ブレイクタイムは珈琲で",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_039.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "Pドリンク交換時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_040",
+    "name": "千奈の恩返し",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_040.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_041",
+    "name": "興味深い飲み物",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_041.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_042",
+    "name": "SSDのひみつ",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_042.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_043",
+    "name": "トンボをつかまえて",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_043.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
       },
       {
         "type": "スキル強化時",
         "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
         "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_044",
+    "name": "バズっちゃお！",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_044.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "type": "おでかけ",
+        "target": "Da",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_045",
+    "name": "サンマ、パタパタ",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_045.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_046",
+    "name": "ディカプルエックスエル！",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_046.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_047",
+    "name": "きゅる～んωポーズッ☆",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_047.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "やる気効果カード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_048",
+    "name": "カロリー/2でハッピー×2",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_048.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_049",
+    "name": "基礎＞応用",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_049.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_050",
+    "name": "まだまだのばしてー",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_050.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_051",
+    "name": "目指すはテッペン",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_051.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_052",
+    "name": "SSCの爆誕",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_052.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
         "value": 13
       },
       {
         "type": "おでかけ",
         "target": "Vi",
-        "max_count": 2,
+        "max_count": 99,
         "value": 10
       },
       {
-        "type": "スキル削除時",
-        "target": "Da",
-        "max_count": 2,
-        "value": 12
+        "empty": true
       },
       {
-        "type": "授業・営業終了時",
-        "target": "Vo",
-        "max_count": 3,
-        "value": 7
-      },
-      {
-        "type": "初期評価",
-        "target": "Da",
-        "value": 65
+        "empty": true
       }
     ]
   },
   {
-    "id": "sample_010",
-    "name": "【サンプル】ダミーカードJ",
-    "rarity": "SSR",
-    "plan": "アノマリー",
-    "image": "",
-    "is_sample": true,
+    "id": "support_053",
+    "name": "まごころを込めて",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_053.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_054",
+    "name": "ピューとシューの二重奏",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_054.png",
     "event_bonus": [
       {
         "type": "初期評価",
         "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "type": "好印象効果カード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_055",
+    "name": "虫愛づる王子様",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_055.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_056",
+    "name": "ガールズ♡トーク",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_056.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "おでかけ",
+        "target": "Da",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_057",
+    "name": "奥義、三重とび！",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_057.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "全力効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_058",
+    "name": "屈辱の2位",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_058.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_059",
+    "name": "2名様、ご案内～♪",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_059.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "元気効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_060",
+    "name": "主菓子、甘い、薄茶、渋み",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_060.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_061",
+    "name": "あん・どぅ・とろわっ！",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_061.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "強気効果カード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_062",
+    "name": "ばたんきゅー",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_062.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 16
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_063",
+    "name": "むず×2ふぁっしょんしょー",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_063.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "集中効果カード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_064",
+    "name": "スパルタ＆スパイス",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_064.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "温存効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_065",
+    "name": "今日は見学なんです",
+    "rarity": "SR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_065.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Da",
+        "max_count": 3,
+        "value": 16
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_066",
+    "name": "ちべたなひととき",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_066.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "集中効果カード獲得時",
+        "target": "Vi",
         "max_count": 1,
         "value": 30
       }
     ],
     "effects": [
       {
-        "type": "相談",
+        "type": "初期評価",
         "target": "Vi",
-        "max_count": 3,
-        "value": 12
+        "max_count": 1,
+        "value": 49
       },
       {
-        "type": "活動支給・差し入れ選択時",
+        "type": "スキル獲得時",
         "target": "Vi",
-        "max_count": 2,
-        "value": 14
+        "max_count": 99,
+        "value": 2
       },
       {
         "type": "Viレッスン",
         "target": "Vi",
-        "max_count": 3,
-        "value": 8
+        "max_count": 99,
+        "value": 13
       },
       {
-        "type": "スキル強化時",
-        "target": "Vo",
-        "max_count": 2,
-        "value": 10
-      },
-      {
-        "type": "授業・営業終了時",
-        "target": "Da",
-        "max_count": 2,
-        "value": 8
-      },
-      {
-        "type": "初期評価",
+        "type": "スキル削除時",
         "target": "Vi",
-        "value": 60
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
       }
     ]
   },
   {
-    "id": "sample_011",
-    "name": "【サンプル】ダミーカードK",
+    "id": "support_067",
+    "name": "師弟の修行",
     "rarity": "SR",
-    "plan": "アノマリー",
-    "image": "",
-    "is_sample": true,
-    "event_bonus": [],
+    "plan": "ロジック",
+    "image": "images/support_cards/support_067.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "特別指導開始時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 30
+      }
+    ],
     "effects": [
       {
-        "type": "Voレッスン",
+        "empty": true
+      },
+      {
+        "type": "スキルカスタム時",
+        "target": "Vi",
+        "max_count": 6,
+        "value": 8
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "やる気効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_068",
+    "name": "トゲトゲ注意報",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_068.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "温存効果カード獲得時",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 30
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "スキル（SSR）獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "type": "特別指導開始時",
         "target": "Vo",
         "max_count": 3,
-        "value": 9
+        "value": 18
       },
       {
         "type": "スキル削除時",
         "target": "Vo",
-        "max_count": 2,
-        "value": 10
-      },
-      {
-        "type": "授業・営業終了時",
-        "target": "Vi",
-        "max_count": 2,
+        "max_count": 99,
         "value": 8
       },
       {
-        "type": "相談",
-        "target": "Da",
-        "max_count": 2,
-        "value": 9
+        "empty": true
       },
       {
-        "type": "初期評価",
-        "target": "Vo",
-        "value": 40
-      },
-      {
-        "type": "休む",
-        "target": "Da",
-        "max_count": 1,
-        "value": 12
+        "empty": true
       }
     ]
   },
   {
-    "id": "sample_012",
-    "name": "【サンプル】ダミーカードL",
-    "rarity": "R",
-    "plan": "アノマリー",
-    "image": "",
-    "is_sample": true,
+    "id": "support_069",
+    "name": "腹筋で背筋で体幹キープ！",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_069.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "好印象効果カード獲得時",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 30
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "好印象効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_070",
+    "name": "はっぴぃはろうぃ～～ん！",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_070.png",
     "event_bonus": [
       {
         "type": "初期評価",
         "target": "Da",
         "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "好調効果カード獲得時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_071",
+    "name": "あったか足ツボマッサージ",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_071.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "スキルカスタム時",
+        "target": "Vo",
+        "max_count": 6,
+        "value": 8
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 10
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_072",
+    "name": "ごきげんような挨拶♪",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_072.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vi",
+        "max_count": 6,
+        "value": 11
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_073",
+    "name": "眠れる森の王子様",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_073.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 15
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "type": "特別指導開始時",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 18
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_074",
+    "name": "バディ？",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_074.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_075",
+    "name": "ピコピコでポーン",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_075.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "温存効果カード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_076",
+    "name": "佑芽ソリレース、疾走！",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_076.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "全力効果カード獲得時",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 4,
+        "value": 15
+      },
+      {
+        "type": "温存効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_077",
+    "name": "ぐつぐつ、いいにおい♪",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_077.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 15
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "type": "スキルチェンジ時",
+        "target": "Vo",
+        "max_count": 3,
+        "value": 16
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_078",
+    "name": "おひさま笑顔、満開ふたつ",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_078.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "温存効果カード獲得時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "特別指導開始時",
+        "target": "Da",
+        "max_count": 3,
+        "value": 18
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_079",
+    "name": "仲良しの証",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_079.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "集中効果カード獲得時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vi",
+        "max_count": 6,
+        "value": 11
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "特別指導開始時",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 18
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_080",
+    "name": "一番星と王子様",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_080.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_081",
+    "name": "洗濯物のバランスタワー",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_081.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Da",
+        "max_count": 6,
+        "value": 11
+      },
+      {
+        "type": "スキルチェンジ時",
+        "target": "Da",
+        "max_count": 3,
+        "value": 16
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_082",
+    "name": "お近づきの印☆",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_082.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "温存効果カード獲得時",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "相談",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_083",
+    "name": "騎士とおてんば姫",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_083.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 4,
+        "value": 15
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_084",
+    "name": "ひっぱり じゅーなん",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_084.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "相談",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 30
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "type": "温存効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_085",
+    "name": "パクパクもぐもぐ",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_085.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "type": "スキルチェンジ時",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 16
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_086",
+    "name": "のんびり美味しいひととき",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_086.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 4,
+        "value": 15
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_087",
+    "name": "ゆずれないもの",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_087.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 26
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_088",
+    "name": "ゆるるんあくび顔",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_088.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 2,
         "value": 10
       }
     ],
     "effects": [
       {
-        "type": "おでかけ",
+        "empty": true
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
         "target": "Vi",
         "max_count": 2,
-        "value": 7
+        "value": 26
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "温存効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_089",
+    "name": "ずっしりスイカでりしゃす",
+    "rarity": "SR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_089.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 3,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "好印象効果カード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Da",
+        "max_count": 4,
+        "value": 15
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_090",
+    "name": "奇遇な必然",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_090.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 40
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_091",
+    "name": "こんにゃくなきもだめし",
+    "rarity": "SR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_091.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 49
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 15
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_092",
+    "name": "おやすみのふたり",
+    "rarity": "SR",
+    "plan": "センス",
+    "image": "images/support_cards/support_092.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "Pドリンク獲得時",
+        "target": "Vo",
+        "max_count": 10,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_093",
+    "name": "仕事のつもりで臨みなさい",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_093.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_094",
+    "name": "仲直りしましょう",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_094.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
       },
       {
         "type": "授業・営業終了時",
         "target": "Vo",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_095",
+    "name": "わたしたち、やればできる",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_095.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_096",
+    "name": "こいつらめんどくさー",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_096.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_097",
+    "name": "さみだれ",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_097.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_098",
+    "name": "みんなの意見を聞かせて♪",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_098.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "type": "アクティブカード強化時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_099",
+    "name": "迷子のおしらせです",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_099.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_100",
+    "name": "すっかり仲良しって感じ♪",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_100.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
         "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_101",
+    "name": "第2回教室パーティー！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_101.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_102",
+    "name": "1人たりとも欠ける事なく",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_102.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "相談",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 14
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_103",
+    "name": "プロデュースって大変ね",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_103.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_104",
+    "name": "さあ、もう一戦！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_104.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_105",
+    "name": "わたしと美鈴、超仲良し",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_105.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "アクティブカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 2
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_106",
+    "name": "お母さんか！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_106.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 99,
+        "value": 8
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_107",
+    "name": "盛り上げてこー！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_107.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 13
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_108",
+    "name": "ぜったいに取るんだ！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_108.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル（SSR）獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_109",
+    "name": "貸せ、手本を見せてやる！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_109.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vi",
+        "max_count": 6,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_110",
+    "name": "オシャレもメイクも♪",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_110.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_111",
+    "name": "みいつけた。",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_111.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "元気効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 12
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_112",
+    "name": "パーティー楽しみだねっ！",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_112.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "アクティブカード強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_113",
+    "name": "イクラ～♪　ウニ～♪",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_113.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vi",
+        "max_count": 6,
+        "value": 11
+      },
+      {
+        "type": "好印象効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_114",
+    "name": "きみは、自慢の生徒です",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_114.png",
+    "event_bonus": [],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_115",
+    "name": "ほら、一緒に持と♪",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_115.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
         "value": 6
+      },
+      {
+        "type": "アクティブカード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_116",
+    "name": "まじか。",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_116.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 99,
+        "value": 18
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_117",
+    "name": "あら、奇遇ね",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_117.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_118",
+    "name": "また、あんなに無理をして",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_118.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 15
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_119",
+    "name": "私の目に狂いはない",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_119.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_120",
+    "name": "可愛いと可愛いで可愛い！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_120.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "アクティブカード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_121",
+    "name": "おいしい顔、いただき～！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_121.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
       },
       {
         "type": "スキル強化時",
         "target": "Da",
-        "max_count": 2,
-        "value": 6
+        "max_count": 99,
+        "value": 4
       },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_122",
+    "name": "まるで王子様みたいな",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_122.png",
+    "event_bonus": [
       {
         "type": "初期評価",
         "target": "Vi",
+        "max_count": 1,
         "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_123",
+    "name": "お疲れ様、千奈ちゃん。",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_123.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "アクティブカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_124",
+    "name": "次の桜の季節には。",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_124.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_125",
+    "name": "ぐぬぬぬぬ…………！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_125.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_126",
+    "name": "お姉ちゃんに任せなさい！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_126.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_127",
+    "name": "あなたにも作ってあげる！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_127.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "休む",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 22
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_128",
+    "name": "何やってるんだろう、",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_128.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_129",
+    "name": "まだ上がりませんように！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_129.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_130",
+    "name": "晴れたね",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_130.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "休む",
+        "target": "Da",
+        "max_count": 99,
+        "value": 22
+      },
+      {
+        "type": "おでかけ",
+        "target": "Da",
+        "max_count": 99,
+        "value": 15
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_131",
+    "name": "「ア」じゃなくて「エ」！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_131.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_132",
+    "name": "もうっ！　冷たいよ！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_132.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 22
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_133",
+    "name": "一時休戦です",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_133.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_134",
+    "name": "夏を楽しみましょう！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_134.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "Pドリンク交換時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_135",
+    "name": "花火、やりませんか……？",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_135.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "アクティブカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 18
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_136",
+    "name": "夏を満喫するわよ！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_136.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_137",
+    "name": "あっちも行きたいですわ！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_137.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "アクティブカード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_138",
+    "name": "ゆっくりと過ごしましょう",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_138.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "Pドリンク交換時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_139",
+    "name": "新たな挑戦の成功ですわ！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_139.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "アクティブカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_140",
+    "name": "二人ならあっという間だね",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_140.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_141",
+    "name": "似合うんじゃない？",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_141.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "おでかけ",
+        "target": "Da",
+        "max_count": 99,
+        "value": 15
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_142",
+    "name": "すっかり秋色ですわね！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_142.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "好調効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_143",
+    "name": "会長、準備は万端です",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_143.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 15
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_144",
+    "name": "食欲の秋なんです",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_144.png",
+    "event_bonus": [],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_145",
+    "name": "そろそろ焼けたかな？",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_145.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_146",
+    "name": "ぜったい追いついてやる！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_146.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_147",
+    "name": "キラキラして綺麗～っ！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_147.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "相談",
+        "target": "Da",
+        "max_count": 99,
+        "value": 18
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 22
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_148",
+    "name": "あったかいね",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_148.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 18
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_149",
+    "name": "待ちなさーい！",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_149.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "アクティブカード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_150",
+    "name": "もう一度、最初から！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_150.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_151",
+    "name": "これが私達の、3年間",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_151.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_152",
+    "name": "はいっ、みんなも一緒に♪",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_152.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 15
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_153",
+    "name": "バレンタイン♡会議中ーっ！",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_153.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "type": "アクティブカード強化時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_154",
+    "name": "絶対にお渡ししますわっ！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_154.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 15
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_155",
+    "name": "あなたたちのことが好き",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_155.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_156",
+    "name": "新生活のはじまりだね",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_156.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 15
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "温存効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_157",
+    "name": "ひとりで立てますか？",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_157.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_158",
+    "name": "ここから始まるんだね！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_158.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_159",
+    "name": "相手にとって不足なしよ！",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_159.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 22
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_160",
+    "name": "相変わらず不器用ね",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_160.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "type": "好印象効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 15
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_161",
+    "name": "利用し合うのが友達！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_161.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 22
+      },
+      {
+        "type": "スキルチェンジ時",
+        "target": "Da",
+        "max_count": 3,
+        "value": 21
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_162",
+    "name": "ひとりごとです",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_162.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "type": "スキルチェンジ時",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 21
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 22
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_163",
+    "name": "よくやったな、倉本。",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_163.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "Pドリンク獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_164",
+    "name": "推し活なひととき、だね！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_164.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "好印象効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "スキルカスタム時",
+        "target": "Vi",
+        "max_count": 6,
+        "value": 11
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_165",
+    "name": "いつも頑張ってるね。",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_165.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "Pドリンク獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_166",
+    "name": "どんな関係なんですか？",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_166.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "元気効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_167",
+    "name": "放っておけない気になる子",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_167.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "type": "相談",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_168",
+    "name": "いつまでも続けばいいのに",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_168.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "Pドリンク獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_169",
+    "name": "おい、来てやったぞ！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_169.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "集中効果カード獲得時",
+        "target": "Da",
+        "max_count": 3,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "Pドリンク獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 5
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_170",
+    "name": "おっと、危ないよ",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_170.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "やる気効果カード獲得時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 30
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_171",
+    "name": "ｖギャルピーーースッｖ",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_171.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_172",
+    "name": "ちょっと詳しいんです！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_172.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 4,
+        "value": 21
+      },
+      {
+        "type": "スキルカスタム時",
+        "target": "Vi",
+        "max_count": 6,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_173",
+    "name": "大運動会、開催っ！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_173.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 21
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_174",
+    "name": "これは――お城ッ！！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_174.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "特別指導開始時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 30
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "好調効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "スキルカスタム時",
+        "target": "Vo",
+        "max_count": 6,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_175",
+    "name": "月村手毬、興味深いわね",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_175.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_176",
+    "name": "クールダウンが大切よ！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_176.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "type": "相談",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 18
+      },
+      {
+        "type": "スキル（SSR）獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "授業・営業終了時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 7
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_177",
+    "name": "レディ・セット、ゴー！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_177.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vo",
+        "max_count": 6,
+        "value": 15
+      },
+      {
+        "type": "アクティブカード強化時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_178",
+    "name": "やっと見つけたぞ！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_178.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 11
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_179",
+    "name": "メリクリ、おねーちゃん♪",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_179.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル（SSR）獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_180",
+    "name": "なぜこんなところにッ！？",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_180.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "全力効果カード獲得時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 30
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル（SSR）獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_181",
+    "name": "自分と向き合う時間だ",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_181.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "好調効果カード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Da",
+        "max_count": 4,
+        "value": 21
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_182",
+    "name": "堂々とサボってる！？",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_182.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "好印象効果カード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_183",
+    "name": "手毬のリサイタル、だね",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_183.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_184",
+    "name": "思い出の宝箱だ、ね",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_184.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 22
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_185",
+    "name": "かかってらっしゃい！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_185.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 4,
+        "value": 21
+      },
+      {
+        "type": "元気効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "メンタルカード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 3
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_186",
+    "name": "合格おめでとう！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_186.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "集中効果カード獲得時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 35
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル（SSR）獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "集中効果カード獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_187",
+    "name": "あたしの勝ち、ですね～！",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_187.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_188",
+    "name": "進化したお弁当、気になる",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_188.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "Pアイテム獲得時",
+        "target": "Vi",
+        "max_count": 6,
+        "value": 15
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_189",
+    "name": "長旅おつかれさま！",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_189.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "好調効果カード獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 4
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 4,
+        "value": 21
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_190",
+    "name": "上かッ！！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_190.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Da",
+        "max_count": 4,
+        "value": 21
+      },
+      {
+        "type": "Daレッスン",
+        "target": "Da",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_191",
+    "name": "あなたとふたり、電車で",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_191.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 21
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_192",
+    "name": "……騒々しいお祭りね",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_192.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "試験・オーディション終了時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 22
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 38
+      },
+      {
+        "type": "SPレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_193",
+    "name": "私たちも成長していくぞ！",
+    "rarity": "SSR",
+    "plan": "フリー",
+    "image": "images/support_cards/support_193.png",
+    "event_bonus": [],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 39
+      },
+      {
+        "type": "相談",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 38
+      },
+      {
+        "type": "おでかけ",
+        "target": "Da",
+        "max_count": 2,
+        "value": 38
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_194",
+    "name": "私を楽しませろ",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_194.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Da",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Da",
+        "max_count": 2,
+        "value": 38
+      },
+      {
+        "type": "メンタルカード強化時",
+        "target": "Da",
+        "max_count": 99,
+        "value": 9
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_195",
+    "name": "どーなっちゃうの～？",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_195.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "特別指導開始時",
+        "target": "Vi",
+        "max_count": 3,
+        "value": 25
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 38
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_196",
+    "name": "おでん、通りま～すッ！",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_196.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル（SSR）獲得時",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 6
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "おでかけ",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 38
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_197",
+    "name": "次の曲は～ッあの曲だ！！",
+    "rarity": "SSR",
+    "plan": "ロジック",
+    "image": "images/support_cards/support_197.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 20
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 22
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_198",
+    "name": "インタビューお願いします",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_198.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vi",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Viレッスン",
+        "target": "Vi",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vi",
+        "max_count": 4,
+        "value": 22
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_199",
+    "name": "風紀が乱れるぞ！",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_199.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      }
+    ],
+    "effects": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 65
+      },
+      {
+        "empty": true
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキルチェンジ時",
+        "target": "Vo",
+        "max_count": 5,
+        "value": 21
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_200",
+    "name": "食レポ、得意かも！",
+    "rarity": "SSR",
+    "plan": "アノマリー",
+    "image": "images/support_cards/support_200.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "特別指導開始時",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 25
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 22
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "活動支給・差し入れ選択時",
+        "target": "Vo",
+        "max_count": 2,
+        "value": 38
+      },
+      {
+        "empty": true
+      },
+      {
+        "empty": true
+      }
+    ]
+  },
+  {
+    "id": "support_201",
+    "name": "大切な思い出、またひとつ",
+    "rarity": "SSR",
+    "plan": "センス",
+    "image": "images/support_cards/support_201.png",
+    "event_bonus": [
+      {
+        "type": "初期評価",
+        "target": "Vo",
+        "max_count": 1,
+        "value": 20
+      },
+      {
+        "type": "集中効果カード獲得時",
+        "target": "Vi",
+        "max_count": 2,
+        "value": 10
+      }
+    ],
+    "effects": [
+      {
+        "empty": true
+      },
+      {
+        "type": "スキル削除時",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 20
+      },
+      {
+        "type": "Voレッスン",
+        "target": "Vo",
+        "max_count": 99,
+        "value": 17
+      },
+      {
+        "type": "スキル獲得時",
+        "target": "Vo",
+        "max_count": 4,
+        "value": 22
       },
       {
         "empty": true

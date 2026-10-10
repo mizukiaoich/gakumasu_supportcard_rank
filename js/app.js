@@ -30,7 +30,8 @@ const state = {
 
 function renderPlanOptions(plans) {
   const box = $('plan-options');
-  box.replaceChildren(...plans.map((plan, i) => {
+  // all_plans のプラン（フリー）は選択肢に出さず、どのプランを選んでも対象に含める
+  box.replaceChildren(...plans.filter((p) => p.all_plans !== true).map((plan, i) => {
     const input = el('input', { type: 'radio', name: 'plan', value: plan.name, id: `plan-${i}` });
     if (i === 0) input.checked = true;
     return el('label', { class: 'plan-option', for: `plan-${i}` }, [input, el('span', { text: plan.name })]);
@@ -181,10 +182,13 @@ function renderTable(table, ranked, highlight = []) {
 }
 
 function renderResults(cond) {
-  const results = calculateForPlan(state.data.cards, cond.plan, cond.actionCounts, state.data.countSources);
+  const anyPlans = state.data.plans.filter((p) => p.all_plans === true).map((p) => p.name);
+  const results = calculateForPlan(state.data.cards, cond.plan, cond.actionCounts, state.data.countSources, anyPlans);
+  const anyCount = results.filter((r) => anyPlans.includes(r.card.plan)).length;
   state.results = { cond, list: results };
 
-  $('result-conditions').textContent = `育成プラン：${cond.plan} ／ 対象カード：${results.length}枚 ／ 完凸状態で計算`;
+  const anyNote = anyCount > 0 ? `（うち${anyPlans.join('・')} ${anyCount}枚）` : '';
+  $('result-conditions').textContent = `育成プラン：${cond.plan} ／ 対象カード：${results.length}枚${anyNote} ／ 完凸状態で計算`;
   $('priority-title').textContent = `優先パラメータランキング：第一優先 ${cond.first} ／ 第二優先 ${cond.second}`;
   $('priority-tiebreak').textContent = PRIORITY_TIEBREAK_TEXT;
   $('total-tiebreak').textContent = TOTAL_TIEBREAK_TEXT;

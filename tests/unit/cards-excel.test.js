@@ -5,6 +5,7 @@ import ExcelJS from 'exceljs';
 import { buildWorkbook, importCards, CARD_SHEET, columnDefs } from '../../scripts/cards-excel-lib.mjs';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../../data/${name}`, import.meta.url), 'utf8'));
+const loadFixture = async () => JSON.parse(await readFile(new URL('../fixtures/sample_cards.json', import.meta.url), 'utf8'));
 const master = async () => ({
   plans: await load('plans.json'),
   actionTypes: await load('action_types.json'),
@@ -20,12 +21,13 @@ async function reload(wb) {
 
 const col = (header) => columnDefs().findIndex((c) => c.header === header) + 1;
 
-test('JSON → Excel → JSON で同じデータに戻る', async () => {
+test('JSON → Excel → JSON で同じデータに戻る（実データ・ダミーデータとも）', async () => {
   const m = await master();
-  const cards = await load('support_cards.json');
-  const { cards: imported, errors } = importCards(await reload(buildWorkbook({ ...m, cards })), m);
-  assert.deepEqual(errors, []);
-  assert.deepEqual(imported, cards);
+  for (const cards of [await load('support_cards.json'), await loadFixture()]) {
+    const { cards: imported, errors } = importCards(await reload(buildWorkbook({ ...m, cards })), m);
+    assert.deepEqual(errors, []);
+    assert.deepEqual(imported, cards);
+  }
 });
 
 test('新しいカード行：空欄スロットは空スロット、初期評価は最大回数なし、数値文字列は数値になる', async () => {
@@ -69,7 +71,7 @@ test('新しいカード行：空欄スロットは空スロット、初期評�
 
 test('不正な入力は Excel の行番号・列名つきで報告され、カードは保存されない', async () => {
   const m = await master();
-  const cards = (await load('support_cards.json')).slice(0, 2);
+  const cards = (await loadFixture()).slice(0, 2);
   const wb = buildWorkbook({ ...m, cards });
   const ws = wb.getWorksheet(CARD_SHEET);
   ws.getRow(3).getCell(col('効果2 対象')).value = 'VO';
@@ -85,7 +87,7 @@ test('不正な入力は Excel の行番号・列名つきで報告され、カ�
 
 test('種類が空なのに他の項目が入っている効果はエラーになる（無言で空スロットにしない）', async () => {
   const m = await master();
-  const wb = buildWorkbook({ ...m, cards: (await load('support_cards.json')).slice(0, 1) });
+  const wb = buildWorkbook({ ...m, cards: (await loadFixture()).slice(0, 1) });
   wb.getWorksheet(CARD_SHEET).getRow(2).getCell(col('効果1 種類')).value = null;
   const { errors } = importCards(await reload(wb), m);
   assert.equal(errors.length, 1);

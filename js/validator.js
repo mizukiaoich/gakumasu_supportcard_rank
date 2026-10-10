@@ -35,7 +35,13 @@ export function validatePlans(plans, file = 'plans.json') {
     }
     if (seen.has(plan.name)) errors.push(`${where}.name: "${plan.name}" が重複しています`);
     seen.add(plan.name);
+    if (plan.all_plans !== undefined && plan.all_plans !== true) {
+      errors.push(`${where}.all_plans: どのプランでも使えるカード用の場合は true を指定してください（値: ${show(plan.all_plans)}）`);
+    }
   });
+  if (plans.every((p) => isPlainObject(p) && p.all_plans === true)) {
+    errors.push(`${file}: 選択できる育成プラン（all_plans なし）が1件以上必要です`);
+  }
   return errors;
 }
 

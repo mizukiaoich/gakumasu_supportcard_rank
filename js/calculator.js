@@ -62,7 +62,13 @@ export function calculateCard(card, actionCounts, countSources = {}) {
   return { card, scores, total, breakdown, eventBreakdown };
 }
 
-/** 選択した育成プランのカードだけを抽出して計算する */
-export function calculateForPlan(cards, plan, actionCounts, countSources = {}) {
-  return cards.filter((card) => card.plan === plan).map((card) => calculateCard(card, actionCounts, countSources));
+/**
+ * 選択した育成プランのカードだけを抽出して計算する。
+ * anyPlanNames に含まれるプラン（plans.json で all_plans: true、例: フリー）のカードはどのプランでも対象にする。
+ */
+export function calculateForPlan(cards, plan, actionCounts, countSources = {}, anyPlanNames = []) {
+  const any = new Set(anyPlanNames);
+  return cards
+    .filter((card) => card.plan === plan || any.has(card.plan))
+    .map((card) => calculateCard(card, actionCounts, countSources));
 }

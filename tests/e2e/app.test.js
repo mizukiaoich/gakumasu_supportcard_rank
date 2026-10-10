@@ -7,6 +7,7 @@ import { chromium } from 'playwright';
 import { createServer } from '../../scripts/serve.mjs';
 
 const BASE_PATH = '/gakumasu_supportcard_rank/';
+const FIXTURE = new URL('../fixtures/sample_cards.json', import.meta.url);
 const load = async (name) => JSON.parse(await readFile(new URL(`../../data/${name}`, import.meta.url), 'utf8'));
 
 let server;
@@ -20,7 +21,8 @@ let actionTypes;
 let countFrom;
 
 before(async () => {
-  cards = await load('support_cards.json');
+  // 画面テストは実データではなく、値が既知のダミーカード（tests/fixtures/sample_cards.json）で行う
+  cards = JSON.parse(await readFile(FIXTURE, 'utf8'));
   actionTypes = await load('action_types.json');
   // 効果種類 → 回数を参照する行動（行動種類は自分自身、SP終了時は同じパラメータのレッスン）
   countFrom = Object.fromEntries([
@@ -41,6 +43,7 @@ after(async () => {
 
 async function openPage(viewport = { width: 1280, height: 900 }) {
   context = await browser.newContext({ viewport, hasTouch: viewport.width < 600, isMobile: viewport.width < 600 });
+  await context.route('**/data/support_cards.json', (route) => route.fulfill({ json: cards }));
   context.setDefaultTimeout(10000);
   page = await context.newPage();
   consoleErrors = [];
@@ -212,7 +215,9 @@ for (const plan of ['センス', 'ロジック', 'アノマリー']) {
     await fillCounts(COUNTS);
     await page.click('#calculate-button');
 
-    const expectedIds = cards.filter((c) => c.plan === plan).map((c) => c.id).sort();
+    // 選択プランのカード＋フリー（どのプランでも使える）カード
+    const expectedIds = cards.filter((c) => c.plan === plan || c.plan === 'フリー').map((c) => c.id).sort();
+    assert.ok(expectedIds.includes('sample_013'));
     for (const kind of ['priority', 'total']) {
       const rows = await readTable(kind);
       assert.deepEqual(rows.map((r) => r.id).sort(), expectedIds, kind);
@@ -437,7 +442,7 @@ test('スマートフォン幅：入力欄とランキングが縦に並び、�
   const results = await page.locator('#results-body').boundingBox();
   assert.ok(results.y >= form.y + form.height, '結果は入力欄の下に表示される');
   const rows = await readTable('priority');
-  assert.deepEqual(rows.map((r) => r.id).sort(), cards.filter((c) => c.plan === 'アノマリー').map((c) => c.id).sort());
+  assert.deepEqual(rows.map((r) => r.id).sort(), cards.filter((c) => c.plan === 'アノマリー' || c.plan === 'フリー').map((c) => c.id).sort());
   await assertNoHorizontalOverflow();
 
   await page.tap('[data-ranking="priority"] tbody tr:first-child .card-name-btn');
