@@ -22,7 +22,7 @@ const TYPES = {
   '.ico': 'image/x-icon',
 };
 
-export function createServer({ base = '/' } = {}) {
+export function createServer({ base = '/', root = ROOT } = {}) {
   const prefix = base.endsWith('/') ? base : `${base}/`;
   return http.createServer(async (req, res) => {
     const url = new URL(req.url, 'http://localhost');
@@ -33,8 +33,8 @@ export function createServer({ base = '/' } = {}) {
       return;
     }
     const rel = pathname.slice(prefix.length);
-    let file = path.join(ROOT, rel);
-    if (!file.startsWith(ROOT)) {
+    let file = path.join(root, rel);
+    if (!file.startsWith(root)) {
       res.writeHead(403).end('Forbidden');
       return;
     }

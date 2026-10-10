@@ -239,6 +239,8 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
 
 ビルドは不要です。`.github/workflows/pages.yml` が `main` へのプッシュ時にリポジトリのファイルをそのまま公開します。
 
+公開時には `scripts/stamp-version.mjs` が JS・CSS の参照にコミット ID の版番号（`?v=...`）を付け、データ（JSON）も同じ版番号で読み込みます。更新直後にブラウザのキャッシュで古いプログラムと新しいデータが混ざり、「データを読み込めませんでした」となるのを防ぐためです（リポジトリ内のファイルは変更されません）。
+
 1. 変更を `main` ブランチにマージ（またはプッシュ）します。
 2. GitHub のリポジトリ画面で **Settings → Pages** を開きます。
 3. **Build and deployment** の **Source** を **GitHub Actions** にします。
