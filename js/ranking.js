@@ -31,5 +31,17 @@ export function rankByTotal(results) {
   return [...results].sort((a, b) => b.total - a.total || compareId(a, b));
 }
 
+/**
+ * パラメータ別（単独）ランキング。
+ *   1. 指定パラメータ（降順）
+ *   2. 総合評価（降順）
+ *   3. カードID（昇順）
+ */
+export function rankByParameter(results, parameter) {
+  if (!PARAMETERS.includes(parameter)) throw new Error(`パラメータが不正です（${parameter}）`);
+  return [...results].sort((a, b) => b.scores[parameter] - a.scores[parameter] || b.total - a.total || compareId(a, b));
+}
+
 export const PRIORITY_TIEBREAK_TEXT = '同値の場合の比較順：第一優先 → 第二優先 → 総合評価 → カードID（昇順）';
 export const TOTAL_TIEBREAK_TEXT = '同値の場合の比較順：総合評価 → カードID（昇順）';
+export const parameterTiebreakText = (p) => `同値の場合の比較順：${p} → 総合評価 → カードID（昇順）`;

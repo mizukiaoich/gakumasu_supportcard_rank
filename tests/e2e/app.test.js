@@ -260,6 +260,37 @@ test('総合評価ランキングは総合の降順（同値はID順）に並ぶ
   assert.ok(rows.length > 1);
 });
 
+test('パラメータ別ランキング：Vo / Da / Vi のタブで切り替わり、それぞれの値の降順に並ぶ', async () => {
+  await openRanking();
+  await selectPlan('センス');
+  await fillCounts(COUNTS);
+  await page.click('#calculate-button');
+  const tabs = await page.$$eval('.param-tab', (els) => els.map((e) => [e.textContent, e.getAttribute('aria-selected')]));
+  assert.deepEqual(tabs, [['Voランキング', 'true'], ['Daランキング', 'false'], ['Viランキング', 'false']]);
+
+  const total = await readTable('total');
+  for (const p of ['Vo', 'Da', 'Vi']) {
+    await page.click(`.param-tab[data-parameter="${p}"]`);
+    assert.equal(await page.getAttribute(`.param-tab[data-parameter="${p}"]`, 'aria-selected'), 'true');
+    assert.equal(await page.textContent('#parameter-tiebreak'), `同値の場合の比較順：${p} → 総合評価 → カードID（昇順）`);
+    const rows = await readTable('parameter');
+    const sorted = [...rows].sort((a, b) => b[p] - a[p] || b.total - a.total || (a.id < b.id ? -1 : 1));
+    assert.deepEqual(rows.map((r) => r.id), sorted.map((r) => r.id), p);
+    assert.deepEqual(rows.map((r) => r.id).sort(), total.map((r) => r.id).sort(), '対象カードは総合ランキングと同じ');
+    assert.equal(await page.locator(`[data-ranking="parameter"] th.is-priority`).count(), 1);
+  }
+
+  // 選んだタブは再計算後も保たれる
+  await setCount('おでかけ', 3);
+  await page.click('#calculate-button');
+  assert.equal(await page.getAttribute('.param-tab[data-parameter="Vi"]', 'aria-selected'), 'true');
+
+  // キーボード（←→）でも切り替えられる
+  await page.focus('.param-tab[data-parameter="Vi"]');
+  await page.keyboard.press('ArrowRight');
+  assert.equal(await page.getAttribute('.param-tab[data-parameter="Vo"]', 'aria-selected'), 'true');
+});
+
 test('入力変更後に再計算すると最新の条件で更新される', async () => {
   await openRanking();
   await page.click('#calculate-button');
@@ -330,7 +361,7 @@ test('カードを選ぶと詳細に6つの効果の内訳が表示され、発�
   const exp = expectedScores(card, counts);
   const tiles = await detail.locator('.score-value').allTextContents();
   assert.deepEqual(tiles.map(Number), [exp.Vo, exp.Da, exp.Vi, exp.total]);
-  assert.equal(await page.locator('tr.is-selected').count(), 2); // 両ランキングで選択表示
+  assert.equal(await page.locator('tr.is-selected').count(), 3); // 3つのランキングすべてで選択表示
 });
 
 test('空スロットは詳細で「計算対象外」と表示される', async () => {

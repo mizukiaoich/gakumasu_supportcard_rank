@@ -4,6 +4,11 @@ import { validateAll, buildCountSources } from './validator.js';
 // ドメイン直下でも同じように解決できるよう、このファイル自身の URL を基準にする。
 export const SITE_ROOT = new URL('../', import.meta.url);
 
+// 公開時に scripts/stamp-version.mjs が JS の URL に付ける版番号（?v=...）。
+// データ（JSON）にも同じ版番号を付けて、ブラウザのキャッシュで古いコードと新しいデータが混ざらないようにする。
+// ローカル実行時は版番号がないので、常に最新のデータを取りにいく。
+const VERSION = new URL(import.meta.url).searchParams.get('v');
+
 /** サイトルートからの相対パスを絶対 URL に変換する（データ・画像共通） */
 export function resolveSitePath(path) {
   return new URL(path, SITE_ROOT).href;
@@ -12,7 +17,9 @@ export function resolveSitePath(path) {
 async function fetchJson(path) {
   let res;
   try {
-    res = await fetch(resolveSitePath(path), { cache: 'no-cache' });
+    const url = new URL(resolveSitePath(path));
+    if (VERSION) url.searchParams.set('v', VERSION);
+    res = await fetch(url, { cache: VERSION ? 'default' : 'no-cache' });
   } catch (e) {
     throw new Error(`${path} を読み込めませんでした（${e.message}）。ローカルではWebサーバー経由で開いてください。`);
   }
