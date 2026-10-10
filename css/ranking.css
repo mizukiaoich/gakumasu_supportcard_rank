@@ -59,7 +59,8 @@ select {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
   padding: 6px 8px 6px 12px; background: var(--c-bg); border-radius: var(--radius-sm);
 }
-.action-name { font-weight: 700; font-size: 0.92rem; }
+.action-name { font-weight: 700; font-size: 0.92rem; line-height: 1.4; min-width: 0; }
+.action-desc { display: block; font-size: 0.72rem; font-weight: 600; color: var(--c-text-sub); }
 .counter { display: flex; align-items: center; gap: 4px; }
 .count-btn {
   width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--c-sky);

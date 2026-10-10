@@ -80,7 +80,10 @@ function renderActionInputs(actionTypes) {
     minus.addEventListener('click', () => step(-1));
     plus.addEventListener('click', () => step(1));
     return el('li', { class: 'action-item' }, [
-      el('label', { class: 'action-name', for: id, text: action.name }),
+      el('label', { class: 'action-name', for: id }, [
+        action.name,
+        ...(action.description ? [el('span', { class: 'action-desc', text: action.description })] : []),
+      ]),
       el('div', { class: 'counter' }, [minus, input, plus]),
     ]);
   }));

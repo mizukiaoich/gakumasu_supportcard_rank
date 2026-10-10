@@ -1,14 +1,16 @@
 export const ACTIONS = [
-  'Voレッスン', 'Daレッスン', 'Viレッスン', 'VoSPレッスン', 'DaSPレッスン', 'ViSPレッスン',
-  '授業', 'おでかけ', '相談', '強化', '削除', '活動支給', '休む',
+  'Voレッスン', 'Daレッスン', 'Viレッスン', '授業・営業終了時', 'おでかけ', '相談', '活動支給・差し入れ選択時',
+  '強化', '削除', '休む', '試験・オーディション終了時',
+  '好調効果カード獲得時', '好印象効果カード獲得時', 'やる気効果カード獲得時', '集中効果カード獲得時',
+  '元気効果カード獲得時', '強気効果カード獲得時', '温存効果カード獲得時', '全力効果カード獲得時',
 ];
 
-// data/effect_types.json と同じ定義（初期評価は固定加算、SP終了時の効果は各SPレッスンの回数を参照する）
+// data/effect_types.json と同じ定義（初期評価は固定加算、SP終了時の効果は同じパラメータのレッスン（SPレッスン含む）の回数を参照する）
 export const EFFECT_TYPES = [
   { name: '初期評価', fixed: true },
-  { name: 'VoSP終了時', count_from: 'VoSPレッスン' },
-  { name: 'DaSP終了時', count_from: 'DaSPレッスン' },
-  { name: 'ViSP終了時', count_from: 'ViSPレッスン' },
+  { name: 'VoSP終了時', count_from: 'Voレッスン' },
+  { name: 'DaSP終了時', count_from: 'Daレッスン' },
+  { name: 'ViSP終了時', count_from: 'Viレッスン' },
 ];
 
 export const effect = (type, target, max_count, value) => ({ type, target, max_count, value });

@@ -1,6 +1,6 @@
 [
   { "name": "初期評価", "fixed": true },
-  { "name": "VoSP終了時", "count_from": "VoSPレッスン" },
-  { "name": "DaSP終了時", "count_from": "DaSPレッスン" },
-  { "name": "ViSP終了時", "count_from": "ViSPレッスン" }
+  { "name": "VoSP終了時", "count_from": "Voレッスン" },
+  { "name": "DaSP終了時", "count_from": "Daレッスン" },
+  { "name": "ViSP終了時", "count_from": "Viレッスン" }
 ]

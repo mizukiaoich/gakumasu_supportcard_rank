@@ -121,7 +121,7 @@
     "event_bonus": [],
     "effects": [
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vi",
         "max_count": 3,
         "value": 10
@@ -180,7 +180,7 @@
         "value": 8
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vo",
         "max_count": 2,
         "value": 8
@@ -234,7 +234,7 @@
         "value": 15
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Da",
         "max_count": 3,
         "value": 8
@@ -345,7 +345,7 @@
         "value": 7
       },
       {
-        "type": "活動支給",
+        "type": "活動支給・差し入れ選択時",
         "target": "Vi",
         "max_count": 2,
         "value": 8
@@ -374,7 +374,7 @@
     ],
     "effects": [
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Da",
         "max_count": 2,
         "value": 7
@@ -445,7 +445,7 @@
         "value": 12
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vo",
         "max_count": 3,
         "value": 7
@@ -480,7 +480,7 @@
         "value": 12
       },
       {
-        "type": "活動支給",
+        "type": "活動支給・差し入れ選択時",
         "target": "Vi",
         "max_count": 2,
         "value": 14
@@ -498,7 +498,7 @@
         "value": 10
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Da",
         "max_count": 2,
         "value": 8
@@ -532,7 +532,7 @@
         "value": 10
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vi",
         "max_count": 2,
         "value": 8
@@ -579,7 +579,7 @@
         "value": 7
       },
       {
-        "type": "授業",
+        "type": "授業・営業終了時",
         "target": "Vo",
         "max_count": 2,
         "value": 6

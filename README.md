@@ -198,7 +198,9 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
 
 `data/action_types.json` に追加します。行動回数の入力欄が自動で増え、カード効果の `type` として使えるようになります。`default` は入力欄の初期値（0 以上の整数、省略時 0）です。
 
-現在の行動種類は、Voレッスン / Daレッスン / Viレッスン / VoSPレッスン / DaSPレッスン / ViSPレッスン / 授業 / おでかけ / 相談 / 強化 / 削除 / 活動支給 / 休む です（レッスン・SPレッスンは Vo / Da / Vi 別に入力します）。
+現在の行動種類は、Voレッスン / Daレッスン / Viレッスン（いずれも SPレッスンを含む）/ 授業・営業終了時 / おでかけ / 相談 / 活動支給・差し入れ選択時 / 強化 / 削除 / 休む / 試験・オーディション終了時 / 好調・好印象・やる気・集中・元気・強気・温存・全力 の各「効果カード獲得時」です。これらはそのまま効果の種類としても使えます。
+
+`description` を付けると、入力欄の名前の下に補足として表示されます（例：`"description": "SPレッスンを含む"`）。
 
 ```json
 { "name": "新しい行動", "default": 0 }
@@ -211,13 +213,13 @@ npm run cards:import   # 検証して問題がなければ data/support_cards.js
 ```json
 [
   { "name": "初期評価", "fixed": true },
-  { "name": "VoSP終了時", "count_from": "VoSPレッスン" },
-  { "name": "DaSP終了時", "count_from": "DaSPレッスン" },
-  { "name": "ViSP終了時", "count_from": "ViSPレッスン" }
+  { "name": "VoSP終了時", "count_from": "Voレッスン" },
+  { "name": "DaSP終了時", "count_from": "Daレッスン" },
+  { "name": "ViSP終了時", "count_from": "Viレッスン" }
 ]
 ```
 
-たとえば効果 `{ "type": "VoSP終了時", "max_count": 4, "value": 17 }` は、入力した VoSPレッスン の回数（最大4回）× 17 を加算します。DaSPレッスン・ViSPレッスンの回数では発動しません。
+たとえば効果 `{ "type": "VoSP終了時", "max_count": 4, "value": 17 }` は、入力した Voレッスン（SPレッスンを含む）の回数（最大4回）× 17 を加算します。Daレッスン・Viレッスンの回数では発動しません。
 
 `"fixed": true` の効果種類（初期評価）は、行動回数に関係なく `value` を1回だけ加算します。カードの効果の `max_count` は `1` にするか省略します。
 

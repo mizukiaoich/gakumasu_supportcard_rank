@@ -8,7 +8,7 @@ const ctx = {
   countSources: buildCountSources(ACTIONS.map((name) => ({ name })), EFFECT_TYPES),
 };
 const sixEffects = () => [
-  effect('Voレッスン', 'Vo', 1, 1), effect('授業', 'Da', 1, 1), effect('相談', 'Vi', 1, 1),
+  effect('Voレッスン', 'Vo', 1, 1), effect('授業・営業終了時', 'Da', 1, 1), effect('相談', 'Vi', 1, 1),
   EMPTY, EMPTY, EMPTY,
 ];
 
@@ -72,8 +72,8 @@ test('validateAll は問題があれば DataValidationError を投げる', () =>
 
 test('行動回数の入力検証：0以上の整数のみ許可', () => {
   assert.deepEqual(validateActionCounts(counts({ Voレッスン: 3 }), ACTIONS), []);
-  const errors = validateActionCounts(counts({ Voレッスン: -1, 授業: 1.5, 休む: Number.NaN }), ACTIONS);
-  assert.deepEqual(errors.map((e) => e.name), ['Voレッスン', '授業', '休む']);
+  const errors = validateActionCounts(counts({ Voレッスン: -1, '授業・営業終了時': 1.5, 休む: Number.NaN }), ACTIONS);
+  assert.deepEqual(errors.map((e) => e.name), ['Voレッスン', '授業・営業終了時', '休む']);
 });
 
 test('初期評価は effects の中に type: 初期評価 で書き、max_count は指定しない', () => {
@@ -131,14 +131,14 @@ test('効果種類（effect_types.json）を検証する', () => {
     { name: 'VoSP終了時', count_from: 'SPレッスン' },
     { name: '初期評価X', fixed: true, count_from: 'Voレッスン' },
     { name: '初期評価Y', fixed: 'yes' },
-    { name: 'VoSP終了時', count_from: 'VoSPレッスン' },
-    { name: '授業', count_from: '授業' },
+    { name: 'VoSP終了時', count_from: 'Voレッスン' },
+    { name: '授業・営業終了時', count_from: '授業・営業終了時' },
   ], ACTIONS);
   assert.ok(errors.some((e) => e.includes('[0].count_from')));
   assert.ok(errors.some((e) => e.includes('[1]: fixed: true の効果種類には count_from を指定できません')));
   assert.ok(errors.some((e) => e.includes('[2].fixed')));
   assert.ok(errors.some((e) => e.includes('[3].name: "VoSP終了時" が重複')));
-  assert.ok(errors.some((e) => e.includes('[4].name: "授業" は action_types.json の行動種類と重複')));
+  assert.ok(errors.some((e) => e.includes('[4].name: "授業・営業終了時" は action_types.json の行動種類と重複')));
 });
 
 test('カードの効果には行動種類と effect_types.json の効果種類が使え、旧「SPレッスン」は使えない', () => {

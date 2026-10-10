@@ -22,7 +22,7 @@ let countFrom;
 before(async () => {
   cards = await load('support_cards.json');
   actionTypes = await load('action_types.json');
-  // 効果種類 → 回数を参照する行動（行動種類は自分自身、SP終了時は各SPレッスン）
+  // 効果種類 → 回数を参照する行動（行動種類は自分自身、SP終了時は同じパラメータのレッスン）
   countFrom = Object.fromEntries([
     ...actionTypes.map((a) => [a.name, a.name]),
     ...(await load('effect_types.json')).map((e) => [e.name, e.fixed ? null : e.count_from]),
@@ -103,8 +103,9 @@ async function readTable(kind) {
 }
 
 const COUNTS = {
-  Voレッスン: 3, Daレッスン: 1, Viレッスン: 2, VoSPレッスン: 2, DaSPレッスン: 4, ViSPレッスン: 1,
-  授業: 4, おでかけ: 1, 相談: 2, 強化: 3, 削除: 2, 活動支給: 1, 休む: 5 };
+  Voレッスン: 3, Daレッスン: 4, Viレッスン: 2, '授業・営業終了時': 4, おでかけ: 1, 相談: 2,
+  '活動支給・差し入れ選択時': 1, 強化: 3, 削除: 2, 休む: 5, '試験・オーディション終了時': 2, 集中効果カード獲得時: 3,
+};
 
 async function fillCounts(counts) {
   for (const [name, value] of Object.entries(counts)) await setCount(name, value);
@@ -180,18 +181,18 @@ test('行動回数は＋／－ボタンと直接入力で変更でき、0未満�
 
 test('不正な行動回数では計算せず、エラーを案内する', async () => {
   await openRanking();
-  await setCount('授業', -2);
+  await setCount('授業・営業終了時', -2);
   await page.click('#calculate-button');
   assert.equal(await page.isVisible('#form-error'), true);
-  assert.match(await page.textContent('#form-error'), /授業：0以上の整数を入力してください/);
-  assert.equal(await page.getAttribute('.count-input[data-action="授業"]', 'aria-invalid'), 'true');
+  assert.match(await page.textContent('#form-error'), /授業・営業終了時：0以上の整数を入力してください/);
+  assert.equal(await page.getAttribute('.count-input[data-action="授業・営業終了時"]', 'aria-invalid'), 'true');
   assert.equal(await page.isVisible('#results-body'), false);
 
-  await setCount('授業', '1.5');
+  await setCount('授業・営業終了時', '1.5');
   await page.click('#calculate-button');
   assert.equal(await page.isVisible('#results-body'), false);
 
-  await setCount('授業', 3);
+  await setCount('授業・営業終了時', 3);
   await page.click('#calculate-button');
   assert.equal(await page.isVisible('#form-error'), false);
   assert.equal(await page.isVisible('#results-body'), true);
@@ -420,9 +421,9 @@ test('スマートフォン幅：入力欄とランキングが縦に並び、�
   await openPage({ width: 375, height: 740 });
   await openRanking();
   await page.tap('.plan-option:has(input[value="アノマリー"])');
-  const plus = '.action-item:has(input[data-action="授業"]) .count-btn:last-child';
+  const plus = '.action-item:has(input[data-action="授業・営業終了時"]) .count-btn:last-child';
   for (let i = 0; i < 3; i++) await page.tap(plus);
-  assert.equal(await page.inputValue('.count-input[data-action="授業"]'), '3');
+  assert.equal(await page.inputValue('.count-input[data-action="授業・営業終了時"]'), '3');
   const btn = await page.locator('.count-btn').first().boundingBox();
   assert.ok(btn.width >= 36 && btn.height >= 36, 'タップしやすいボタンサイズ');
 

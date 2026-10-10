@@ -53,6 +53,9 @@ export function validateActionTypes(actionTypes, file = 'action_types.json') {
     }
     if (seen.has(action.name)) errors.push(`${where}.name: "${action.name}" が重複しています`);
     seen.add(action.name);
+    if (action.description !== undefined && typeof action.description !== 'string') {
+      errors.push(`${where}.description: 文字列が必要です（値: ${show(action.description)}）`);
+    }
     if (action.default !== undefined && !isNonNegativeInteger(action.default)) {
       errors.push(`${where}.default: 0以上の整数が必要です（値: ${show(action.default)}）`);
     }
@@ -62,8 +65,8 @@ export function validateActionTypes(actionTypes, file = 'action_types.json') {
 
 /**
  * 効果種類の定義（effect_types.json）を検証する。
- * 例: { "name": "VoSP終了時", "count_from": "VoSPレッスン" }
- *   → 効果「VoSP終了時」の発動回数には、行動「VoSPレッスン」の入力回数を使う
+ * 例: { "name": "VoSP終了時", "count_from": "Voレッスン" }
+ *   → 効果「VoSP終了時」の発動回数には、行動「Voレッスン」の入力回数を使う
  * 例: { "name": "初期評価", "fixed": true }
  *   → 行動回数に関係なく value を1回だけ加算する（max_count は不要）
  */

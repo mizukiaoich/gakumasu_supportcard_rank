@@ -19,7 +19,7 @@ const BASE_COLUMNS = [
   { key: 'is_sample', header: 'サンプル', width: 9 },
 ];
 const EFFECT_FIELDS = [
-  { key: 'type', label: '種類', width: 14 },
+  { key: 'type', label: '種類', width: 24 },
   { key: 'target', label: '対象', width: 7 },
   { key: 'max_count', label: '最大回数', width: 9 },
   { key: 'value', label: '値', width: 8 },

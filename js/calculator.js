@@ -5,7 +5,7 @@ import { isEmptySlot, isFixedEffectType } from './validator.js';
  * 効果1件（effects の1スロット、または event_bonus の1件）を計算し、内訳を返す。
  *   固定加算の効果（初期評価など、effect_types.json で fixed: true）: value を1回だけ加算
  *   それ以外: actualCount = MIN(ユーザー入力の行動回数, max_count)、contribution = actualCount × value
- * 発動回数の元になる行動回数は countSources で決まる（例: 効果「VoSP終了時」→ 行動「VoSPレッスン」の回数）。
+ * 発動回数の元になる行動回数は countSources で決まる（例: 効果「VoSP終了時」→ 行動「Voレッスン」の回数）。
  */
 function calculateEffect(card, effect, label, no, actionCounts, countSources) {
   if (!PARAMETERS.includes(effect.target)) {
